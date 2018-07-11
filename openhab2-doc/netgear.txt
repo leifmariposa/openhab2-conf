@@ -1,0 +1,33 @@
+https://github.com/MatMaul/pynetgear/blob/master/README.md
+
+pip3 install pynetgear
+
+add to crontab
+* * * * * python -m pynetgear "Bigoton11" > /tmp/devices
+
+
+
+
+In xxx.rules
+------------
+var Number LeifIsHome = 0
+
+rule "WhoIsHome"
+when
+  Time cron "0 * * ? * *"
+then
+  var String result = executeCommandLine("/home/openhabian/precence_detektion/leif.sh", 1000)
+  if (result != "") {
+    LeifIsHome = 5
+  } else {
+    if (LeifIsHome > 0) {
+      LeifIsHome = LeifIsHome - 1
+    }
+  }
+  if (LeifIsHome == 5) {
+    LeifsPhone.postUpdate(ON)
+  }
+  if (LeifIsHome == 0) {
+    LeifsPhone.postUpdate(OFF)
+  }
+end

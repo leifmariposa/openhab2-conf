@@ -1,0 +1,19 @@
+Verisure
+--------
+git clone https://github.com/jarlebh/openhab2-addons.git
+cd openhab2-addons
+git checkout verisure
+cd addons/binding/
+cd org.openhab.binding.verisure
+mvn package
+
+Neato
+-----
+cd addons/binding/
+git clone https://github.com/HerzScheisse/NeatoBinding.git org.openhab.binding.neato
+cd org.openhab.binding.neato
+mvn package
+
+
+
+jar-file is in target folder

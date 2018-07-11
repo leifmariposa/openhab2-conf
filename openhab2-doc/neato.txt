@@ -1,0 +1,20 @@
+Neato
+-----
+
+Build Neato binding from:
+https://github.com/HerzScheisse/NeatoBinding.git
+
+Copy jar-file to target
+
+Goto PaperUI/Configuration/Bindings
+Edit the Neato Binding - add your login and password to neato
+Go to inbox and scan for items with the Neato binding.
+
+Serial:
+OPS06118-7C3866F157EE
+
+Secret:
+D7F711816C6C6B8D
+
+Name:
+Alice

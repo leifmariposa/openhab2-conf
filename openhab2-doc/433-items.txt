@@ -1,0 +1,74 @@
+Tmpgivare ute
+Packettype    = TEMP
+subtype       = TEMP7 - Viking 02811, Proove TSS330,311346
+Sequence nbr  = 72
+ID            = 4200 decimal:16896
+Temperature   = 26,8 °C
+Signal level  = 7  -64dBm
+Battery       = OK
+
+Tempgivare inne
+Packettype    = TEMP
+subtype       = TEMP7 - Viking 02811, Proove TSS330,311346
+Sequence nbr  = 85
+ID            = 5800 decimal:22528
+Temperature   = 25,5 °C
+Signal level  = 7  -64dBm
+Battery       = OK
+
+
+
+Remote:
+ID: 04BF38E decimal:4977550
+Unit 1 - Entre
+Unit 2 - Byrå, Livingroom
+Unit 3 - Window 1, Livingroom
+Unit 4 - Window 2, Livingroom
+
+Actuator (entrance, wall light) - paired with remote: ID: 04BF38E decimal:4977550, unit 1
+Actuator (livingroom, bureau) - paired with remote: ID: 04BF38E decimal:4977550, unit 2
+Actuator (livingroom, window 1) - paired with remote: ID: 04BF38E decimal:4977550, unit 3
+Actuator (livingroom, window 2) - paired with remote: ID: 04BF38E decimal:4977550, unit 4
+
+väggswitch
+
+left on
+2018-06-06 15:07:45
+Packettype    = Lighting2
+subtype       = AC
+Sequence nbr  = 2
+ID            = 0EC4B2E decimal:15485742
+Unit          = 2
+Command       = On
+Signal level  = 7  -64dBm
+
+left off
+2018-06-06 15:09:29
+Packettype    = Lighting2
+subtype       = AC
+Sequence nbr  = 11
+ID            = 0EC4B2E decimal:15485742
+Unit          = 2
+Command       = Off
+Signal level  = 7  -64dBm
+
+
+right on
+2018-06-06 15:09:49
+Packettype    = Lighting2
+subtype       = AC
+Sequence nbr  = 13
+ID            = 0EC4B2E decimal:15485742
+Unit          = 1
+Command       = On
+Signal level  = 7  -64dBm
+
+right off
+2018-06-06 15:10:07
+Packettype    = Lighting2
+subtype       = AC
+Sequence nbr  = 17
+ID            = 0EC4B2E decimal:15485742
+Unit          = 1
+Command       = Off
+Signal level  = 7  -64dBm

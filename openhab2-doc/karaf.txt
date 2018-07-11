@@ -1,0 +1,10 @@
+loggin in:
+sudo ssh -p 8101 openhab@localhost
+
+list things:
+openhab> smarthome:things list
+
+remove a thing:
+openhab> smarthome:things remove chromecast:chromecast:01ca93c4581606fb41838ea8d295c78a
+
+ log:set TRACE org.openhab.binding.verisure

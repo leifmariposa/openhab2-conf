@@ -1,0 +1,46 @@
+First install MQTT Broker (Mosquitto)
+
+
+https://github.com/eschava/broadlink-mqtt.git
+
+pip install paho-mqtt broadlink
+
+cd /opt
+git clone https://github.com/eschava/broadlink-mqtt.git
+cd broadlink-mqtt/
+./mqtt.py
+
+
+Run as service
+--------------
+Create broadlink.service in /usr/lib/systemd/system
+[Unit]
+Description=Starts and stops the Broadink Python script
+Documentation=https://github.com/eschava/broadlink-mqtt
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=/opt/broadlink-mqtt/mqtt.conf
+User=openhabian
+Group=openhabian
+WorkingDirectory=/opt/broadlink-mqtt/
+PermissionsStartOnly=true
+ExecStart=/usr/bin/python /opt/broadlink-mqtt/mqtt.py
+# Shutdown delay in seconds, before process is tried to be killed with KILL (if configured)
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl daemon-reload
+sudo service broadlink start
+
+
+record
+------
+mosquitto_pub -h localhost -t "broadlink/tv/samsung/hdmi4" -m "record"
+
+replay
+------
+mosquitto_pub -h localhost -t "broadlink/tv/samsung/volumeup" -m "replay"

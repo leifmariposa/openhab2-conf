@@ -1,0 +1,6 @@
+Verisure
+--------
+
+Build Verisure binding from:
+https://github.com/jarlebh/openhab2-addons.git
+

@@ -1,0 +1,54 @@
+broker
+======
+sudo apt-get install mosquitto
+sudo apt-get install mosquitto-clients
+
+Receive:
+mosquitto_sub -h localhost -t "sensor/temperature"
+
+Send:
+mosquitto_pub -h localhost -t "sensor/temperature" -m 22.5
+
+
+openhab
+=======
+https://community.openhab.org/t/mqtt-binding-v1-11-getting-started-101/33958
+
+install binding: MQTT Binding
+
+
+/etc/openhab2/services/mqtt.cfg
+-------------------------------
+broker.url=tcp://localhost:1883
+broker.clientId=openhabian
+
+
+mqtt.items
+----------
+Switch MQTT_Test "Testing.." { mqtt="<[broker:testing/mqtt/topic:state:default], >[broker:testing/mqtt/back-topic:command:*:default]" }
+// ^-- Item Type              ^-- Item linked Channel
+//         ^-- Item Name              ^-- Inbound MQTT configuration              ^-- Outbound MQTT configuration
+//                   ^-- Item Label
+
+
+in x.sitemap
+------------
+  Frame label="Misc" {
+    Switch item=reboot_pi
+  }
+
+
+test
+----
+mosquitto_pub -h localhost -t "testing/mqtt/topic" -m "ON"
+mosquitto_pub -h localhost -t "testing/mqtt/topic" -m "OFF"
+
+
+
+MQTT Action
+===========
+https://www.openhab.org/addons/actions/mqtt/
+
+install binding: MQTT Action
+
+publish(String brokerName, String topic, String message)

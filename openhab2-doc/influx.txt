@@ -1,0 +1,4 @@
+influx -username admin -password Bigoton111
+
+Erase all data:
+DROP SERIES FROM /.*/

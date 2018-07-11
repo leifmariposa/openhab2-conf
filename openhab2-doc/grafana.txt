@@ -1,0 +1,1 @@
+sudo grafana-cli plugins install natel-discrete-panel

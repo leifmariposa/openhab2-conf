@@ -1,0 +1,26 @@
+TRÅDFRI Gateway
+serialNumber: gw-a0cc2b6f9869
+
+TRADFRI remote control
+Non-Colour Scene Controller
+modelId: TRADFRI remote control
+tradfri:0830:gwa0cc2b6f9869:65536:battery_level
+tradfri:0830:gwa0cc2b6f9869:65536:battery_low
+
+Garden bulb
+Dimmable Light
+modelId: TRADFRI bulb E27 opal 1000lm
+tradfri:0100:gwa0cc2b6f9869:65537:brightness
+
+Livingroom left bulb
+Color Temperature Light
+modelId: TRADFRI bulb E27 WS clear 950lm
+tradfri:0220:gwa0cc2b6f9869:65539:brightness
+tradfri:0220:gwa0cc2b6f9869:65539:color_temperature
+
+Livingroom right bulb
+Color Temperature Light
+modelId: TRADFRI bulb E27 WS clear 950lm
+tradfri:0220:gwa0cc2b6f9869:65538:brightness
+tradfri:0220:gwa0cc2b6f9869:65538:color_temperature
+
