@@ -1,0 +1,21 @@
+Strategies {
+  everyMinute : "0 * * * * ?"
+  everyFiveMinutes : "0 */5 * * * ?"
+  everyHour : "0 0 * * * ?"
+  everyDay : "0 0 0 * * ?"
+  every2Minutes : "0 */2 * ? * *"
+}
+
+Items {
+  LeifsPhone: strategy = everyChange, everyFiveMinutes
+  KellysPhone: strategy = everyChange, everyFiveMinutes
+  AlexandersPhone: strategy = everyChange, everyFiveMinutes
+  JonathansPhone: strategy = everyChange, everyFiveMinutes
+  FreezerSensorTemperature: strategy = everyChange, everyFiveMinutes
+  GardenSensorTemperature: strategy = everyChange, everyFiveMinutes
+  FridgeSensorTemperature: strategy = everyChange, everyFiveMinutes
+  LivingRoomSensorTemperature: strategy = everyChange, everyFiveMinutes
+  KitchenSensorTemperature: strategy = everyChange, everyFiveMinutes
+  MasterBedroomSensorTemperature: strategy = everyChange, everyFiveMinutes
+  ConservatorySensorTemperature: strategy = everyChange, everyFiveMinutes
+}

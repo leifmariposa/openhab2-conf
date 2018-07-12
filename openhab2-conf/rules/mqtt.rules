@@ -1,0 +1,50 @@
+// TV livingroom
+rule "TV power on"
+when
+  Item tv_power_on received command ON
+then
+  publish("broker", "broadlink/tv/samsung/poweron", "replay")
+end
+
+rule "TV power off"
+when
+  Item tv_power_off received command ON
+then
+  publish("broker", "broadlink/tv/samsung/poweroff", "replay")
+end
+
+rule "TV volume up"
+when
+  Item tv_volume_up received command ON
+then
+  publish("broker", "broadlink/tv/samsung/volumeup", "replay")
+end
+
+rule "TV volume down"
+when
+  Item tv_volume_down received command ON
+then
+  publish("broker", "broadlink/tv/samsung/volumedown", "replay")
+end
+
+// LG
+rule "LG power"
+when
+  Item lg_power received command ON
+then
+  publish("broker", "broadlink/audio/lg/power", "replay")
+end
+
+rule "LG volume up"
+when
+  Item lg_volume_up received command ON
+then
+  publish("broker", "broadlink/audio/lg/volumeup", "replay")
+end
+
+rule "LG volume down"
+when
+  Item lg_volume_down received command ON
+then
+  publish("broker", "broadlink/audio/lg/volumedown", "replay")
+end

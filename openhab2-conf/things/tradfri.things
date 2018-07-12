@@ -1,0 +1,6 @@
+Bridge tradfri:gateway:mygateway [ host="192.168.1.10", code="ODXl9oyZeTOQUUTi" ] {
+    0830 TradfriRemoteControl "Tradfri Remote Control"@"Living room" [ id=65536 ]
+    0100 GardenBulb "Garden Bulb"@"Garden" [ id=65537 ]
+    0220 LivingRoomLeftBulb "Living Room Left Bulb"@"Living room" [ id=65539 ]
+    0220 LivingRoomRightBulb "Living Room Right Bulb"@"Living room" [ id=65538 ]
+}

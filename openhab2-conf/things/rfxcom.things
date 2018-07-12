@@ -1,0 +1,17 @@
+Bridge rfxcom:bridge:rfx "RFXCOM USB Transceiver"@"System" [ serialPort="/dev/ttyUSB0", enableLighting4=true, enableFineOffsetViking=true, enableAC=true, ignoreConfig=false, enableUndecoded=true ] {
+  Thing temperature 16896 "GardenSensor"@"Garden" [deviceId="16896", subType="TEMP7"]
+  Thing temperature 22528 "FreezerSensor"@"Laundry room" [deviceId="22528", subType="TEMP7"]
+  Thing temperature 19968 "FridgeSensor"@"Kitchen" [deviceId="19968", subType="TEMP7"]
+  Thing temperature 11520 "LivingRoomSensor"@"Living room" [deviceId="11520", subType="TEMP7"]
+  Thing temperature 13824 "KitchenSensor"@"Kitchen" [deviceId="13824", subType="TEMP7"]
+  Thing temperature 18432 "MasterBedroomSensor"@"Master bedroom" [deviceId="18432", subType="TEMP7"]
+  Thing temperature 16384 "ConservatorySensor"@"Conservatory" [deviceId="16384", subType="TEMP7"]
+
+  Thing lighting2 livingroomswitch1 "Switch 1"@"Living room" [deviceId="15485742.1", subType="AC"]
+  Thing lighting2 livingroomswitch2 "Switch 2"@"Living room" [deviceId="15485742.2", subType="AC"]
+
+  Thing lighting2 lightentrancewall "Light Wall"@"Entrance" [deviceId="4977550.1", subType="AC"]
+  Thing lighting2 lightlivingroombureau "Light Bureau"@"Living room" [deviceId="4977550.2", subType="AC"]
+  Thing lighting2 lightlivingroomwindow1 "Light Window 1"@"Living room" [deviceId="4977550.3", subType="AC"]
+  Thing lighting2 lightlivingroomwindow2 "Light Window 2"@"Living room" [deviceId="4977550.4", subType="AC"]
+}

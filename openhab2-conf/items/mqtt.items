@@ -1,0 +1,13 @@
+Switch MQTT_Test "Testing.." { mqtt="<[broker:testing/mqtt/topic:state:default], >[broker:testing/mqtt/back-topic:command:*:default]" }
+// ^-- Item Type              ^-- Item linked Channel
+//         ^-- Item Name              ^-- Inbound MQTT configuration              ^-- Outbound MQTT configuration
+//                   ^-- Item Label
+
+Switch tv_power_on "TV on" (vent) {autoupdate="false"}
+Switch tv_power_off "TV off" (vent) {autoupdate="false"}
+Switch tv_volume_up "TV volume up" (vent) {autoupdate="false"}
+Switch tv_volume_down "TV volume down" (vent) {autoupdate="false"}
+
+Switch lg_power "LG on" (vent) {autoupdate="false"}
+Switch lg_volume_up "LG volume up" (vent) {autoupdate="false"}
+Switch lg_volume_down "LG volume down" (vent) {autoupdate="false"}

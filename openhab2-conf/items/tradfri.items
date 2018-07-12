@@ -1,0 +1,15 @@
+Group LightsBrightness
+Group LightsBrightness
+Dimmer GardenBulbBrightness "Garden Light [%s]" (LightsBrightness) { channel="tradfri:0100:mygateway:GardenBulb:brightness" }
+
+Dimmer LivingRoomLeftBulbBrightness "Living Room Left Light [%s]" (LightsBrightness) { channel="tradfri:0220:mygateway:LivingRoomLeftBulb:brightness" }
+Dimmer LivingRoomLeftBulbColor "Living Room Left Light Color [%s]" (LightsColor) { channel="tradfri:0220:mygateway:LivingRoomLeftBulb:color_temperature" }
+
+Dimmer LivingRoomRightBulbBrightness "Living Room Right Light [%s]" (LightsBrightness) { channel="tradfri:0220:mygateway:LivingRoomRightBulb:brightness" }
+Dimmer LivingRoomRightBulbColor "Living Room Right Light Color [%s]" (LightsColor) { channel="tradfri:0220:mygateway:LivingRoomRightBulb:color_temperature" }
+
+Number RemoteControlBatteryLevel { channel="tradfri:0830:mygateway:TradfriRemoteControl:battery_level" }
+Switch RemoteControlBatteryLow { channel="tradfri:0830:mygateway:TradfriRemoteControl:battery_low" }
+
+Dimmer Livingroom_Brightness "Living Room Brightness [%s]"
+Dimmer Livingroom_Color "Living Room Color [%s]"

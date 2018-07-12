@@ -1,0 +1,6 @@
+Bridge verisure:bridge:1 "Verisure" [pin="xxx", username="xxx", password="xxx"] {
+  Thing climatesensor 2S2R_86V9 "Kitchen Alarm Siren"@"Kitchen" [ deviceId="2S2R_86V9"]
+  Thing climatesensor 2AAS_W66F "Kitchen Alarm Smoke detector"@"Kitchen" [ deviceId="2AAS W66F"]
+  Thing doorwindow 2J45_7HEH "Entrance Door"@"Entrance" [ deviceId="2J45_7HEH"]
+  Thing smartplug 2A77_H2QX "Living room smartplug"@"Living room" [ deviceId="2A77_H2QX" ]
+}

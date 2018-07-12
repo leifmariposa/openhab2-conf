@@ -1,0 +1,20 @@
+/*Group GroupNeato
+String NeatoName  "Name [%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:name" }
+Number NeatoBattery  "Battery level [%.0f %%]" <battery> (GroupNeato) { channel="neato:vacuumcleaner:alice:battery-level" }
+String NeatoState  "Status [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:state" }
+String NeatoError  "Error [%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:error" }
+String NeatoVersion  "Version [%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:version" }
+String NeatoModel  "Model [%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:model-name" }
+String NeatoFirmware  "Firmware [%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:firmware" }
+String NeatoAction  "Action [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:action" }
+Switch NeatoDockHasBeenSeen  "Seen dock [%s]" <present> (GroupNeato) { channel="neato:vacuumcleaner:alice:dock-has-been-seen" }
+Switch NeatoIsDocked  "In dock [MAP(neato-sv.map):%s]" <present> (GroupNeato) { channel="neato:vacuumcleaner:alice:is-docked" }
+Switch NeatoIsScheduled  "Scheduled [%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:is-sceduled" }
+Switch NeatoIsCharging  "Is Charging [%s]" <heating> (GroupNeato) { channel="neato:vacuumcleaner:alice:is-charging" }
+String NeatoCategory  "Cleaning Category [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:cleaning-category" }
+String NeatoMode  "Cleaning Mode [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:cleaning-mode" }
+String NeatoModifier  "Cleaning Modifier [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:cleaning-modifier" }
+//Number NeatoSpotWidth  "SpotWidth [%.0f]" <niveau> (GroupNeato) { channel="neato:vacuumcleaner:alice:spot-width" }
+//Number NeatoSpotHeight  "SpotHeight [%.0f]" <niveau> (GroupNeato) { channel="neato:vacuumcleaner:alice:spot-height" }
+//Number NeatoCleaningNavigationMode  "Navigation mode [%.0f]" <niveau> (GroupNeato) { channel="neato:vacuumcleaner:alice:cleaning-navigation-mode" }
+String NeatoCommand  "Send Command" { channel="neato:vacuumcleaner:alice:command" }*/

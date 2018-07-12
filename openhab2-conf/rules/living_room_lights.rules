@@ -1,0 +1,167 @@
+// Imports
+//import org.openhab.core.library.types.*
+//import org.openhab.core.persistence.*
+//import org.openhab.model.script.actions.*
+
+// Global Variables
+var Number LeifIsHome = 0
+var Number KellyIsHome = 0
+var Number AlexanderIsHome = 0
+var Number JonathanIsHome = 0
+var Number PrevSunElevation
+
+rule "Livingroom_Brightness"
+when
+  Item Livingroom_Brightness changed
+then
+  sendCommand(GardenBulbBrightness, Livingroom_Brightness.state);
+  sendCommand(LivingRoomLeftBulbBrightness, Livingroom_Brightness.state);
+  sendCommand(LivingRoomRightBulbBrightness, Livingroom_Brightness.state);
+end
+
+rule "Livingroom_Color"
+when
+  Item Livingroom_Color changed
+then
+  sendCommand(LivingRoomLeftBulbColor, Livingroom_Color.state);
+  sendCommand(LivingRoomRightBulbColor, Livingroom_Color.state);
+end
+
+rule "Turn on all lights"
+when
+  Item turn_on_all_lights received command ON
+then
+  sendCommand(EntranceWallLight, ON)
+  sendCommand(LivingRoomBureauLight, ON)
+  sendCommand(LivingRoomWindow1Light, ON)
+  sendCommand(LivingRoomWindow2Light, ON)
+  sendCommand(Livingroom_Brightness, 50)
+end
+
+rule "Turn off all lights"
+when
+  Item turn_off_all_lights received command ON
+then
+  sendCommand(EntranceWallLight, OFF)
+  sendCommand(LivingRoomBureauLight, OFF)
+  sendCommand(LivingRoomWindow1Light, OFF)
+  sendCommand(LivingRoomWindow2Light, OFF)
+  sendCommand(Livingroom_Brightness, 0)
+end
+
+rule "About 1 hour before sunset"
+when
+  Item SunElevation changed
+then
+  var Number limit = 5.0
+
+  if (SunElevation.state < limit && PrevSunElevation >= limit) {
+    logInfo('logTime', 'Sun -> lights on')
+    sendCommand(turn_on_all_lights, ON)
+  }
+
+  PrevSunElevation = SunElevation.state
+end
+
+rule "Wall switch 2 -> lights on"
+when
+  Item LivingRoomSwitch2 changed
+then
+  logInfo('logTime', 'Wall switch 2 -> lights on')
+  sendCommand(turn_on_all_lights, ON)
+end
+
+rule "Wall switch 1 -> lights off"
+when
+  Item LivingRoomSwitch1 changed
+then
+  logInfo('logTime', 'Wall switch 1 -> lights off')
+  sendCommand(turn_off_all_lights, ON)
+end
+
+rule "Time -> lights off"
+when
+  //         ss mm hh
+  Time cron "00 20 23 * * ? *"
+then
+  logInfo('logTime', 'Time -> lights off')
+  sendCommand(turn_off_all_lights, ON)
+end
+
+rule "Reboot"
+when
+  Item reboot_pi received command ON
+then
+  executeCommandLine("sudo reboot", 1000)
+end
+
+rule "WhoIsHome"
+when
+  Time cron "0 * * ? * *"
+then
+  var String result = executeCommandLine("/home/openhabian/precence_detektion/leif.sh", 1000)
+  if (result != "") {
+    LeifIsHome = 5
+  } else {
+    if (LeifIsHome > 0) {
+      LeifIsHome = LeifIsHome - 1
+    }
+  }
+  if (LeifIsHome == 5) {
+    LeifsPhone.postUpdate(ON)
+  }
+  if (LeifIsHome == 0) {
+    LeifsPhone.postUpdate(OFF)
+  }
+  //logInfo('logTime', 'result: {}, LeifIsHome: {}', result, LeifIsHome)
+
+  result = executeCommandLine("/home/openhabian/precence_detektion/kelly.sh", 1000)
+  if (result != "") {
+    KellyIsHome = 5
+  } else {
+    if (KellyIsHome > 0) {
+      KellyIsHome = KellyIsHome - 1
+    }
+  }
+  if (KellyIsHome == 5) {
+    KellysPhone.postUpdate(ON)
+  }
+  if (KellyIsHome == 0) {
+    KellysPhone.postUpdate(OFF)
+  }
+  //logInfo('logTime', 'result: {}, KellyIsHome: {}', result, KellyIsHome)
+
+  result = executeCommandLine("/home/openhabian/precence_detektion/alexander.sh", 1000)
+  if (result != "") {
+    AlexanderIsHome = 5
+  } else {
+    if (AlexanderIsHome > 0) {
+      AlexanderIsHome = AlexanderIsHome - 1
+    }
+  }
+  if (AlexanderIsHome == 5) {
+    AlexandersPhone.postUpdate(ON)
+  }
+  if (AlexanderIsHome == 0) {
+    AlexandersPhone.postUpdate(OFF)
+  }
+  //logInfo('logTime', 'result: {}, AlexanderIsHome: {}', result, AlexanderIsHome)
+
+  result = executeCommandLine("/home/openhabian/precence_detektion/jonathan.sh", 1000)
+  if (result != "") {
+    JonathanIsHome = 5
+  } else {
+    if (JonathanIsHome > 0) {
+      JonathanIsHome = JonathanIsHome - 1
+    }
+  }
+  if (JonathanIsHome == 5) {
+    JonathansPhone.postUpdate(ON)
+  }
+  if (JonathanIsHome == 0) {
+    JonathansPhone.postUpdate(OFF)
+  }
+  //logInfo('logTime', 'result: {}, JonathanIsHome: {}', result, JonathanIsHome)
+end
+
+

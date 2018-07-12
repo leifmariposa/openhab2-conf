@@ -1,0 +1,1 @@
+//neato:vacuumcleaner:alice [ serial="xxx", secret="xxx", name="xxx", refresh=60 ]

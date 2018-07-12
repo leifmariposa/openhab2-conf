@@ -1,0 +1,5 @@
+ON=Home
+OFF=Away
+Home=ON
+Away=OFF
+-=Unknown
