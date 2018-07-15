@@ -1,0 +1,45 @@
+/*
+ * Global variables
+ */
+var Boolean freezer_alarm_triggered = false
+var Boolean fridge_alarm_triggered = false
+
+/*
+ * Freezer high temperature alarm
+ */
+rule "Freezer temperature alarm"
+when
+  Item FreezerSensorTemperature changed
+then
+  var Number limit = -16.0
+  var Number temperature = ((FreezerSensorTemperature.state) as DecimalType).floatValue
+
+  if (temperature > limit) {
+    if (freezer_alarm_triggered == false) {
+      freezer_alarm_triggered = true
+      sendMail("leifmariposa@hotmail.com", "Test email", "The temperature in the freezer is high: " + temperature.toString() + " °C")
+    }
+  } else {
+    freezer_alarm_triggered = false
+  }
+end
+
+/*
+ * Fridge high temperature alarm
+ */
+rule "Fridge temperature alarm"
+when
+  Item FridgeSensorTemperature changed
+then
+  var Number limit = 5.0
+  var Number temperature = ((FridgeSensorTemperature.state) as DecimalType).floatValue
+
+  if (temperature > limit) {
+    if (fridge_alarm_triggered == false) {
+      fridge_alarm_triggered = true
+      sendMail("leifmariposa@hotmail.com", "Test email", "The temperature in the freezer is high: " + temperature.toString() + " °C")
+    }
+  } else {
+    fridge_alarm_triggered = true
+  }
+end

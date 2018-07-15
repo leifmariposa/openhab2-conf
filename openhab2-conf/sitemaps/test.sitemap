@@ -11,20 +11,19 @@ sitemap test label="Mostigen 1"
   Frame label="Lights" {
     Switch item=turn_on_all_lights mappings=[ON="Activate"]
     Switch item=turn_off_all_lights mappings=[ON="Activate"]
-    Switch item=EntranceWallLight label="Entrance, wall"
-    Switch item=LivingRoomBureauLight label="Living room, bureau"
-    Switch item=LivingRoomWindow1Light label="Living room, window 1"
-    Switch item=LivingRoomWindow2Light label="Living room, window 2"
-    Slider item=Livingroom_Brightness label="Living room brightness [%.0f %%]"
-    Slider item=Livingroom_Color label="Living room color [%.0f %%]"
-    Frame label="Individual lights" {
+    Text label="Enskilda lampor" {
+      Switch item=EntranceWallLight label="Entrance, wall"
+      Switch item=LivingRoomBureauLight label="Living room, bureau"
+      Switch item=LivingRoomWindow1Light label="Living room, window 1"
+      Switch item=LivingRoomWindow2Light label="Living room, window 2"
+      Slider item=Livingroom_Brightness label="Living room brightness [%.0f %%]"
+      Slider item=Livingroom_Color label="Living room color [%.0f %%]"
+      Slider item=Livingroom_Color label="Living room color [%.0f %%]"
       Slider item=LivingRoomLeftBulbBrightness label="Living room left light brightness [%.0f %%]"
       Slider item=LivingRoomRightBulbBrightness label="Living room right light brightness [%.0f %%]"
       Slider item=GardenBulbBrightness label="Garden light brightness [%.0f %%]"
       Slider item=LivingRoomLeftBulbColor label="Living room left light color [%.0f %%]"
       Slider item=LivingRoomRightBulbColor label="Living room right light color [%.0f %%]"
-    }
-    Group item=LightsBrightness label="Brightness" {
       Slider item=LivingRoomLeftBulbBrightness label="Living room left light brightness [%.0f %%]"
     }
   }
