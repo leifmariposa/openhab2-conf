@@ -14,4 +14,5 @@ Switch LivingRoomSwitch2 "Switch" <lighting2> { channel="rfxcom:lighting2:rfx:li
 Switch EntranceWallLight "Light" <lighting2> { channel="rfxcom:lighting2:rfx:lightentrancewall:command" }
 Switch LivingRoomBureauLight "Light" <lighting2> { channel="rfxcom:lighting2:rfx:lightlivingroombureau:command" }
 Switch LivingRoomWindow1Light "Light" <lighting2> { channel="rfxcom:lighting2:rfx:lightlivingroomwindow1:command" }
+Switch LivingRoomWindow2Light "Light" <lighting2> { channel="rfxcom:lighting2:rfx:lightlivingroomwindow2:command" }
 Switch HallwayLight "Light" <lighting2> { channel="rfxcom:lighting2:rfx:lighthallway:command" }
