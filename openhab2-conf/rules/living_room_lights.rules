@@ -34,6 +34,7 @@ when
   Item turn_on_all_lights received command ON
 then
   sendCommand(EntranceWallLight, ON)
+  sendCommand(HallwayLight, ON)
   sendCommand(LivingRoomBureauLight, ON)
   sendCommand(LivingRoomWindow1Light, ON)
   sendCommand(LivingRoomWindow2Light, ON)
@@ -45,6 +46,7 @@ when
   Item turn_off_all_lights received command ON
 then
   sendCommand(EntranceWallLight, OFF)
+  sendCommand(HallwayLight, OFF)
   sendCommand(LivingRoomBureauLight, OFF)
   sendCommand(LivingRoomWindow1Light, OFF)
   sendCommand(LivingRoomWindow2Light, OFF)

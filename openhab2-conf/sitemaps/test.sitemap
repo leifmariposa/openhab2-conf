@@ -12,7 +12,8 @@ sitemap test label="Mostigen 1"
     Switch item=turn_on_all_lights mappings=[ON="Activate"]
     Switch item=turn_off_all_lights mappings=[ON="Activate"]
     Text label="More lights ..." {
-      Switch item=EntranceWallLight label="Entrance, wall"
+      Switch item=EntranceWallLight label="Entrance"
+      Switch item=HallwayLight label="Hallway"
       Switch item=LivingRoomBureauLight label="Living room, bureau"
       Switch item=LivingRoomWindow1Light label="Living room, window 1"
       Switch item=LivingRoomWindow2Light label="Living room, window 2"
