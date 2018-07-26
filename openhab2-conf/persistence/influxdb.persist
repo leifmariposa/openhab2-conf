@@ -18,4 +18,5 @@ Items {
   KitchenSensorTemperature: strategy = everyChange, everyFiveMinutes
   MasterBedroomSensorTemperature: strategy = everyChange, everyFiveMinutes
   ConservatorySensorTemperature: strategy = everyChange, everyFiveMinutes
+  eletricity_consumption: strategy = everyFiveMinutes
 }

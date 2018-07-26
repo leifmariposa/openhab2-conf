@@ -3,4 +3,6 @@ Switch KellysPhone "[MAP(presence.map):%s]" <woman_1>
 Switch AlexandersPhone "[MAP(presence.map):%s]" <boy_1>
 Switch JonathansPhone "[MAP(presence.map):%s]" <boy_2>
 
+Number General_ChartPeriod "Chart period"
+
 Number SunElevation "SunElevation [%.1f]" <sun> (ASTRO) { channel="astro:sun:a7321665:position#elevation" }

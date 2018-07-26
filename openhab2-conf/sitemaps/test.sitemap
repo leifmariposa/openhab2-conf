@@ -11,7 +11,7 @@ sitemap test label="Mostigen 1"
   Frame label="Lights" {
     Switch item=turn_on_all_lights mappings=[ON="Activate"]
     Switch item=turn_off_all_lights mappings=[ON="Activate"]
-    Text label="Enskilda lampor" {
+    Text label="More lights ..." {
       Switch item=EntranceWallLight label="Entrance, wall"
       Switch item=LivingRoomBureauLight label="Living room, bureau"
       Switch item=LivingRoomWindow1Light label="Living room, window 1"
@@ -29,13 +29,97 @@ sitemap test label="Mostigen 1"
   }
 
   Frame label="Temperatures" {
-    Text item=FreezerSensorTemperature label="Freezer"
-    Text item=FridgeSensorTemperature label="Fridge"
-    Text item=GardenSensorTemperature label="Garden"
-    Text item=LivingRoomSensorTemperature label="Living room"
-    Text item=KitchenSensorTemperature label="Kitchen"
-    Text item=MasterBedroomSensorTemperature label="Master bedroom"
-    Text item=ConservatorySensorTemperature label="Conservatory"
+    Text item=LivingRoomSensorTemperature label="In"
+    Text item=GardenSensorTemperature label="Out"
+    Text label="More temperatures ..." {
+      Text item=FreezerSensorTemperature label="Freezer"
+      Text item=FridgeSensorTemperature label="Fridge"
+      Text item=GardenSensorTemperature label="Garden"
+      Text item=LivingRoomSensorTemperature label="Living room"
+      Text item=KitchenSensorTemperature label="Kitchen"
+      Text item=MasterBedroomSensorTemperature label="Master bedroom"
+      Text item=ConservatorySensorTemperature label="Conservatory"
+    }
+    Text label="Temperature graphs" icon="line" {
+      Frame label="Time period" {
+        Switch item=General_ChartPeriod label="Select" mappings=[0="Hour", 1="Day", 2="Week", 3="Month", 4="Year"]
+      }
+      Frame label="Garden" {
+        Chart item=GardenSensorTemperature period=h refresh=1000 visibility=[General_ChartPeriod==0]
+        Chart item=GardenSensorTemperature period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
+        Chart item=GardenSensorTemperature period=W refresh=1000 visibility=[General_ChartPeriod==2]
+        Chart item=GardenSensorTemperature period=M refresh=1000 visibility=[General_ChartPeriod==3]
+        Chart item=GardenSensorTemperature period=Y refresh=1000 visibility=[General_ChartPeriod==4]
+      }
+      Frame label="Conservatory" {
+        Chart item=ConservatorySensorTemperature period=h refresh=1000 visibility=[General_ChartPeriod==0]
+        Chart item=ConservatorySensorTemperature period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
+        Chart item=ConservatorySensorTemperature period=W refresh=1000 visibility=[General_ChartPeriod==2]
+        Chart item=ConservatorySensorTemperature period=M refresh=1000 visibility=[General_ChartPeriod==3]
+        Chart item=ConservatorySensorTemperature period=Y refresh=1000 visibility=[General_ChartPeriod==4]
+      }
+      Frame label="Living room" {
+        Chart item=LivingRoomSensorTemperature period=h refresh=1000 visibility=[General_ChartPeriod==0]
+        Chart item=LivingRoomSensorTemperature period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
+        Chart item=LivingRoomSensorTemperature period=W refresh=1000 visibility=[General_ChartPeriod==2]
+        Chart item=LivingRoomSensorTemperature period=M refresh=1000 visibility=[General_ChartPeriod==3]
+        Chart item=LivingRoomSensorTemperature period=Y refresh=1000 visibility=[General_ChartPeriod==4]
+      }
+      Frame label="Kitchen" {
+        Chart item=KitchenSensorTemperature period=h refresh=1000 visibility=[General_ChartPeriod==0]
+        Chart item=KitchenSensorTemperature period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
+        Chart item=KitchenSensorTemperature period=W refresh=1000 visibility=[General_ChartPeriod==2]
+        Chart item=KitchenSensorTemperature period=M refresh=1000 visibility=[General_ChartPeriod==3]
+        Chart item=KitchenSensorTemperature period=Y refresh=1000 visibility=[General_ChartPeriod==4]
+      }
+      Frame label="Master bedroom" {
+        Chart item=MasterBedroomSensorTemperature period=h refresh=1000 visibility=[General_ChartPeriod==0]
+        Chart item=MasterBedroomSensorTemperature period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
+        Chart item=MasterBedroomSensorTemperature period=W refresh=1000 visibility=[General_ChartPeriod==2]
+        Chart item=MasterBedroomSensorTemperature period=M refresh=1000 visibility=[General_ChartPeriod==3]
+        Chart item=MasterBedroomSensorTemperature period=Y refresh=1000 visibility=[General_ChartPeriod==4]
+      }
+      Frame label="Refrigerator" {
+        Chart item=FridgeSensorTemperature period=h refresh=1000 visibility=[General_ChartPeriod==0]
+        Chart item=FridgeSensorTemperature period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
+        Chart item=FridgeSensorTemperature period=W refresh=1000 visibility=[General_ChartPeriod==2]
+        Chart item=FridgeSensorTemperature period=M refresh=1000 visibility=[General_ChartPeriod==3]
+        Chart item=FridgeSensorTemperature period=Y refresh=1000 visibility=[General_ChartPeriod==4]
+      }
+      Frame label="Freezer" {
+        Chart item=FreezerSensorTemperature period=h refresh=1000 visibility=[General_ChartPeriod==0]
+        Chart item=FreezerSensorTemperature period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
+        Chart item=FreezerSensorTemperature period=W refresh=1000 visibility=[General_ChartPeriod==2]
+        Chart item=FreezerSensorTemperature period=M refresh=1000 visibility=[General_ChartPeriod==3]
+        Chart item=FreezerSensorTemperature period=Y refresh=1000 visibility=[General_ChartPeriod==4]
+      }
+    }
+  }
+
+  Frame label="Electricity" {
+    Text item=eletricity_consumption
+    Text item=kwh_today
+    Text item=energy_cost_today
+    Text label="More electricity ..." {
+      Text item=eletricity_consumption
+      Text item=kwh_today
+      Text item=kwh_yesterday
+      Text item=kwh_month
+      Text item=kwh_last_month
+      Text item=kwh_current
+      Text item=kwh_at_midnight
+      Text item=kwh_at_new_month
+    }
+    Text label="Graph" icon="line" {
+      Frame label="Electricity consumption" {
+        Switch item=General_ChartPeriod label="Time period" mappings=[0="Hour", 1="Day", 2="Week", 3="Month", 4="Year"]
+        Chart item=eletricity_consumption period=h refresh=1000 visibility=[General_ChartPeriod==0]
+        Chart item=eletricity_consumption period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
+        Chart item=eletricity_consumption period=W refresh=1000 visibility=[General_ChartPeriod==2]
+        Chart item=eletricity_consumption period=M refresh=1000 visibility=[General_ChartPeriod==3]
+        Chart item=eletricity_consumption period=Y refresh=1000 visibility=[General_ChartPeriod==4]
+      }
+    }
   }
 
   Frame label="Alarm" {
@@ -56,10 +140,10 @@ sitemap test label="Mostigen 1"
 
   Frame label="Misc" {
     Switch item=reboot_pi
-    Switch item=MQTT_Test
+    //Switch item=MQTT_Test
   }
 
-  Frame label="MQTT" {
+  /*Frame label="MQTT" {
     Switch item=tv_power_on mappings=[ON="Activate"]
     Switch item=tv_power_off mappings=[ON="Activate"]
     Switch item=tv_volume_up mappings=[ON="Activate"]
@@ -67,5 +151,5 @@ sitemap test label="Mostigen 1"
     Switch item=lg_power mappings=[ON="Activate"]
     Switch item=lg_volume_up mappings=[ON="Activate"]
     Switch item=lg_volume_down mappings=[ON="Activate"]
-  }
+  }*/
 }

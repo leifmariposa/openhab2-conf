@@ -1,0 +1,27 @@
+https://www.howtogeek.com/167190/how-and-why-to-assign-the-.local-domain-to-your-raspberry-pi/
+
+On Windows
+----------
+If you’re running a Windows machine that does not have iTunes installed (which would have installed a
+companion Bonjour client for mDNS resolution), you can resolve the lack of native mDNS support by
+downloading Apple’s Bonjour Printer Service helper app here. Although the download page makes it sound
+like it’s a printer-only tool, it effectively adds mDNS/Bonjour support across the board to Windows.
+https://support.apple.com/kb/DL999?locale=sv_SE
+
+
+On pi
+-----
+sudo apt-get update
+sudo apt-get upgrade
+(sudo apt-get dist-upgrade)
+sudo apt-get install avahi-daemon
+
+
+
+
+
+
+
+Didn't work for ping
+--------------------
+sudo apt-get -y install samba

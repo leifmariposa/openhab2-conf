@@ -1,3 +1,57 @@
+// Electricity
+rule "Watt"
+when
+  Item eletricity changed
+then
+  var String power  = transform("JSONPATH", "$.Watt", (eletricity.state).toString)
+  eletricity_consumption.postUpdate(power)
+
+  var String kwh  = transform("JSONPATH", "$.kWh", (eletricity.state).toString)
+  kwh_current.postUpdate((kwh).toString)
+end
+
+rule "kWh"
+when
+  Item kwh_current changed
+then
+  var date	= now.getDayOfMonth
+  var month	= now.getMonthOfYear
+
+  if (kwh_at_midnight.state === NULL) {
+    logInfo('logTime', 'kwh_at_midnight reset to kwh_current')
+    kwh_at_midnight.postUpdate((kwh_current.state).toString)
+  }
+  if (kwh_at_new_month.state === NULL) {
+    logInfo('logTime', 'kwh_at_new_month reset to kwh_current')
+    kwh_at_new_month.postUpdate((kwh_current.state).toString)
+  }
+
+  //logInfo('logTime', 'current_date: ' + current_date.state + ', new date: ' + date)
+  if (current_date.state != date) {
+    current_date.postUpdate((date).toString)
+
+    kwh_yesterday.postUpdate(((kwh_current.state as Number) - (kwh_at_midnight.state as Number)).toString)
+    kwh_today.postUpdate((0).toString)
+    kwh_at_midnight.postUpdate((kwh_current.state).toString)
+  }
+
+  //logInfo('logTime', 'current_month: ' + current_month.state + ', new month: ' + month)
+  if (current_month.state != month) {
+    current_month.postUpdate((month).toString)
+
+    kwh_last_month.postUpdate(((kwh_current.state as Number) - (kwh_at_new_month.state as Number)).toString)
+    kwh_month.postUpdate((0).toString)
+    kwh_at_new_month.postUpdate((kwh_current.state).toString)
+  }
+
+  kwh_today.postUpdate(((kwh_current.state as Number) - (kwh_at_midnight.state as Number)).toString)
+  kwh_month.postUpdate(((kwh_current.state as Number) - (kwh_at_new_month.state as Number)).toString)
+
+  energy_cost_today.postUpdate((kwh_today.state as Number) * 2.0) // 2.0 Skr/kWh
+
+  //logInfo('logTime', 'kwh_current: ' + kwh_current.state + ', kwh_today: ' + kwh_today.state + ', kwh_month: ' + kwh_month.state + ', kwh_at_midnight: ' + kwh_at_midnight.state + ', kwh_at_new_month: ' + kwh_at_new_month.state)
+end
+
 // TV livingroom
 rule "TV power on"
 when

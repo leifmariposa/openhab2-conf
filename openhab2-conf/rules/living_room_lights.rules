@@ -14,17 +14,19 @@ rule "Livingroom_Brightness"
 when
   Item Livingroom_Brightness changed
 then
-  sendCommand(GardenBulbBrightness, Livingroom_Brightness.state);
-  sendCommand(LivingRoomLeftBulbBrightness, Livingroom_Brightness.state);
-  sendCommand(LivingRoomRightBulbBrightness, Livingroom_Brightness.state);
+  var Number brightness = ((Livingroom_Brightness.state) as Number)
+  sendCommand(GardenBulbBrightness, brightness);
+  sendCommand(LivingRoomLeftBulbBrightness, brightness);
+  sendCommand(LivingRoomRightBulbBrightness, brightness);
 end
 
 rule "Livingroom_Color"
 when
   Item Livingroom_Color changed
 then
-  sendCommand(LivingRoomLeftBulbColor, Livingroom_Color.state);
-  sendCommand(LivingRoomRightBulbColor, Livingroom_Color.state);
+  var Number color = ((Livingroom_Color.state) as Number)
+  sendCommand(LivingRoomLeftBulbColor, color);
+  sendCommand(LivingRoomRightBulbColor, color);
 end
 
 rule "Turn on all lights"

@@ -1,0 +1,53 @@
+Output to MQTT
+==============
+
+https://github.com/tubalainen/sparsnas_decoder
+
+https://github.com/tubalainen/sparsnas_decoder/blob/master/docker.md
+
+1. install docker
+curl -sSL https://get.docker.com | sh
+
+2. Build image
+sudo docker build -t sparsnas --build-arg SENSORS="597416 1000" --build-arg MQTT_HOST=192.168.1.15 --build-arg MQTT_PORT=1883 https://github.com/tubalainen/sparsnas_decoder.git
+
+3. Run image
+sudo docker run -it --device=/dev/bus/usb --name=sparsnas --restart=always sparsnas:latest
+
+
+
+
+Working, but only outputs to console
+====================================
+
+https://github.com/strigeus/sparsnas_decoder.git
+
+Change sensor id:
+#define SENSOR_ID 597416
+
+build:
+g++ -o sparsnas_decode -O3 sparsnas_decode.cpp
+
+collect data, about 20 sec:
+rtl_sdr -f 868000000 -s 1024000 -g 40 - > sparsnas.raw
+
+Change ferquencies:
+#define FREQUENCIES {-9150.000000, 30850.000000}
+#define FREQUENCIES {-6850.000000, 33150.000000}
+
+build again:
+g++ -o sparsnas_decode -O3 sparsnas_decode.cpp
+
+test:
+rtl_sdr -f 868000000 -s 1024000 -g 40 - | ./sparsnas_decode
+
+output:
+[2018-07-18 18:52:30] 38222:   366.7 W. 5435.334 kWh. Batt 100%. FreqErr: -0.65
+[2018-07-18 18:52:45] 38223:   364.2 W. 5435.336 kWh. Batt 100%. FreqErr: 1.15
+[2018-07-18 18:52:59] 38224:   364.3 W. 5435.337 kWh. Batt 100%. FreqErr: -0.55
+[2018-07-18 18:53:14] 38225:   363.4 W. 5435.339 kWh. Batt 100%. FreqErr: -0.82
+[2018-07-18 18:53:29] 38226:   365.3 W. 5435.340 kWh. Batt 100%. FreqErr: -0.35
+[2018-07-18 18:53:45] 38227:   365.0 W. 5435.342 kWh. Batt 100%. FreqErr: 0.72
+[2018-07-18 18:54:00] 38228:   364.6 W. 5435.343 kWh. Batt 100%. FreqErr: -0.75
+[2018-07-18 18:54:14] 38229:   365.1 W. 5435.345 kWh. Batt 100%. FreqErr: 0.25
+...

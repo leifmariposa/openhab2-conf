@@ -1,7 +1,7 @@
-Switch MQTT_Test "Testing.." { mqtt="<[broker:testing/mqtt/topic:state:default], >[broker:testing/mqtt/back-topic:command:*:default]" }
-// ^-- Item Type              ^-- Item linked Channel
-//         ^-- Item Name              ^-- Inbound MQTT configuration              ^-- Outbound MQTT configuration
-//                   ^-- Item Label
+//Switch MQTT_Test "Testing.." { mqtt="<[broker:testing/mqtt/topic:state:default], >[broker:testing/mqtt/back-topic:command:*:default]" }
+//// ^-- Item Type              ^-- Item linked Channel
+////         ^-- Item Name              ^-- Inbound MQTT configuration              ^-- Outbound MQTT configuration
+////                   ^-- Item Label
 
 Switch tv_power_on "TV on" (vent) {autoupdate="false"}
 Switch tv_power_off "TV off" (vent) {autoupdate="false"}
@@ -11,3 +11,22 @@ Switch tv_volume_down "TV volume down" (vent) {autoupdate="false"}
 Switch lg_power "LG on" (vent) {autoupdate="false"}
 Switch lg_volume_up "LG volume up" (vent) {autoupdate="false"}
 Switch lg_volume_down "LG volume down" (vent) {autoupdate="false"}
+
+/*
+ * Electricity
+ */
+String eletricity "Electricity %s" { mqtt="<[broker:sparsnas/597416:state:default]" }
+
+Number current_date "Date"
+Number current_month "Month"
+
+Number eletricity_consumption "Now [%.1f W]" <energy>
+Number kwh_current "Now [%.1f kWh]"
+Number kwh_at_midnight "At midnight [%.1f kWh]"
+Number kwh_at_new_month "At new month [%.1f kWh]"
+Number kwh_today "Today [%.1f kWh]" <measure_power_meter>
+Number kwh_yesterday "Yesterday [%.1f kWh]" <energy>
+Number kwh_month "This month [%.1f kWh]" <energy>
+Number kwh_last_month "Last month [%.1f kWh]" <energy>
+
+Number energy_cost_today "Today [%.2f Skr]" <price>

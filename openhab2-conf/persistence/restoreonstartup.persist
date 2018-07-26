@@ -1,0 +1,9 @@
+Strategies {
+}
+
+Items {
+  current_date : strategy = everyChange, restoreOnStartup
+  current_month : strategy = everyChange, restoreOnStartup
+  kwh_at_midnight : strategy = everyChange, restoreOnStartup
+  kwh_at_new_month : strategy = everyChange, restoreOnStartup
+}
