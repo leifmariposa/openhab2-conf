@@ -6,4 +6,12 @@ Items {
   current_month : strategy = everyChange, restoreOnStartup
   kwh_at_midnight : strategy = everyChange, restoreOnStartup
   kwh_at_new_month : strategy = everyChange, restoreOnStartup
+
+  kwh_yesterday : strategy = everyChange, restoreOnStartup
+  kwh_two_days_ago : strategy = everyChange, restoreOnStartup
+  kwh_three_days_ago : strategy = everyChange, restoreOnStartup
+  kwh_four_days_ago : strategy = everyChange, restoreOnStartup
+  kwh_five_days_ago : strategy = everyChange, restoreOnStartup
+  kwh_month : strategy = everyChange, restoreOnStartup
+  kwh_last_month : strategy = everyChange, restoreOnStartup
 }
