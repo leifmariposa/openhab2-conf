@@ -18,33 +18,39 @@ then
   var month	= now.getMonthOfYear
 
   if (kwh_at_midnight.state === NULL) {
-    logInfo('logTime', 'kwh_at_midnight reset to kwh_current')
     kwh_at_midnight.postUpdate((kwh_current.state).toString)
   }
   if (kwh_at_new_month.state === NULL) {
-    logInfo('logTime', 'kwh_at_new_month reset to kwh_current')
     kwh_at_new_month.postUpdate((kwh_current.state).toString)
   }
 
-  //logInfo('logTime', 'current_date: ' + current_date.state + ', new date: ' + date)
   if (current_date.state != date) {
     current_date.postUpdate((date).toString)
 
-    kwh_five_days_ago.postUpdate((kwh_four_days_ago).toString);
-    kwh_four_days_ago.postUpdate((kwh_three_days_ago).toString);
-    kwh_three_days_ago.postUpdate((kwh_two_days_ago).toString);
-    kwh_two_days_ago.postUpdate((kwh_yesterday).toString);
+    if (kwh_four_days_ago.state != NULL) {
+      kwh_five_days_ago.postUpdate((kwh_four_days_ago.state as Number).toString);
+    }
+
+    if (kwh_three_days_ago.state != NULL) {
+      kwh_four_days_ago.postUpdate((kwh_three_days_ago.state as Number).toString);
+    }
+
+    if (kwh_two_days_ago.state != NULL) {
+      kwh_three_days_ago.postUpdate((kwh_two_days_ago.state as Number).toString);
+    }
+
+    if (kwh_yesterday.state != NULL) {
+      kwh_two_days_ago.postUpdate((kwh_yesterday.state as Number).toString);
+    }
+
     kwh_yesterday.postUpdate(((kwh_current.state as Number) - (kwh_at_midnight.state as Number)).toString)
-    kwh_today.postUpdate((0).toString)
     kwh_at_midnight.postUpdate((kwh_current.state).toString)
   }
 
-  //logInfo('logTime', 'current_month: ' + current_month.state + ', new month: ' + month)
   if (current_month.state != month) {
     current_month.postUpdate((month).toString)
 
     kwh_last_month.postUpdate(((kwh_current.state as Number) - (kwh_at_new_month.state as Number)).toString)
-    kwh_month.postUpdate((0).toString)
     kwh_at_new_month.postUpdate((kwh_current.state).toString)
   }
 

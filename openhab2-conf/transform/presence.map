@@ -1,5 +1,5 @@
-ON=Home
-OFF=Away
-Home=ON
-Away=OFF
--=Unknown
+ON=Hemma
+OFF=Borta
+Hemma=ON
+Borta=OFF
+-=Okänt

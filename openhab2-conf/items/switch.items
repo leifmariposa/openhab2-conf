@@ -1,4 +1,4 @@
-Switch turn_on_all_lights "Turn on all lights" (vent) {autoupdate="false"}
-Switch turn_off_all_lights "Turn off all lights" (vent) {autoupdate="false"}
+Switch turn_on_all_lights "Alla lamor på" (vent) {autoupdate="false"}
+Switch turn_off_all_lights "Alla lampor av" (vent) {autoupdate="false"}
 
-Switch reboot_pi "Reboot" (vent) {autoupdate="false"}
+Switch reboot_pi "Starta om" (vent) {autoupdate="false"}
