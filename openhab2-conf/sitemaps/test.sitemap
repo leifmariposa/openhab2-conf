@@ -96,41 +96,82 @@ sitemap test label="Mostigen 1"
   }
 
   Frame label="El" {
-    Text item=eletricity_consumption label="Nu"
-    Text item=kwh_today label="Idag"
+    Text item=electricity_consumption label="Nu"
+    Text item=electricity_today label="Idag"
     Text item=energy_cost_today label="Idag"
     Text label="Mer el ..." {
       Frame label="Förbrukning:" {
-        Text item=eletricity_consumption label="Nu"
+        Text item=electricity_consumption label="Nu"
       }
       Frame label="Per dag:" {
-        Text item=kwh_today label="Idag"
-        Text item=kwh_yesterday label="Igår"
-        Text item=kwh_two_days_ago label="Två dagar sedan"
-        Text item=kwh_three_days_ago label="Tre dagar sedan"
-        Text item=kwh_four_days_ago label="Fyra dgar sedan"
-        Text item=kwh_five_days_ago label="Fem dagar sedan"
+        Text item=electricity_today label="Idag"
+        Text item=electricity_yesterday label="Igår"
+        Text item=electricity_two_days_ago label="Två dagar sedan"
+        Text item=electricity_three_days_ago label="Tre dagar sedan"
+        Text item=electricity_four_days_ago label="Fyra dgar sedan"
+        Text item=electricity_five_days_ago label="Fem dagar sedan"
       }
       Frame label="Per månad:" {
-        Text item=kwh_month label="Denna månad"
-        Text item=kwh_last_month label="Förra månaden"
+        Text item=electricity_month label="Denna månad"
+        Text item=electricity_last_month label="Förra månaden"
       }
       Text label="Graf ..." icon="line" {
         Frame label="Elförbrukning" {
           Switch item=General_ChartPeriod label="Tidsperiod" mappings=[0="Timme", 1="Dag", 2="Vecka", 3="Månad", 4="År"]
-          Chart item=eletricity_consumption period=h refresh=1000 visibility=[General_ChartPeriod==0]
-          Chart item=eletricity_consumption period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
-          Chart item=eletricity_consumption period=W refresh=1000 visibility=[General_ChartPeriod==2]
-          Chart item=eletricity_consumption period=M refresh=1000 visibility=[General_ChartPeriod==3]
-          Chart item=eletricity_consumption period=Y refresh=1000 visibility=[General_ChartPeriod==4]
+          Chart item=electricity_consumption period=h refresh=1000 visibility=[General_ChartPeriod==0]
+          Chart item=electricity_consumption period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
+          Chart item=electricity_consumption period=W refresh=1000 visibility=[General_ChartPeriod==2]
+          Chart item=electricity_consumption period=M refresh=1000 visibility=[General_ChartPeriod==3]
+          Chart item=electricity_consumption period=Y refresh=1000 visibility=[General_ChartPeriod==4]
         }
       }
       Text label="Debug ..." {
-        Text item=kwh_current label="Nu"
-        Text item=kwh_at_midnight label="Vid midnatt"
-        Text item=kwh_at_new_month label="Vid ny månad"
-        Setpoint item=current_date label="Datum"
-        Setpoint item=current_month label="Månad"
+        Text item=electricity_total label="Mätarställning"
+        Text item=electricity_at_midnight label="Vid midnatt"
+        Text item=electricity_at_new_month label="Vid ny månad"
+        Setpoint item=electricity_current_date label="Datum"
+        Setpoint item=electricity_current_month label="Månad"
+      }
+    }
+  }
+
+  Frame label="Vatten" {
+    Text item=water_flow label="Nu"
+    Text item=water_today label="Idag"
+    Text item=water_cost_today label="Idag"
+    Text label="Mer vatten ..." {
+      Frame label="Förbrukning:" {
+        Text item=water_flow label="Nu"
+        Text item=water_last_drain label="Sista tappning"
+      }
+      Frame label="Per dag:" {
+        Text item=water_today label="Idag"
+        Text item=water_yesterday label="Igår"
+        Text item=water_two_days_ago label="Två dagar sedan"
+        Text item=water_three_days_ago label="Tre dagar sedan"
+        Text item=water_four_days_ago label="Fyra dgar sedan"
+        Text item=water_five_days_ago label="Fem dagar sedan"
+      }
+      Frame label="Per månad:" {
+        Text item=water_month label="Denna månad"
+        Text item=water_last_month label="Förra månaden"
+      }
+      Text label="Graf ..." icon="line" {
+        Frame label="Vattenförbrukning" {
+          Switch item=General_ChartPeriod label="Tidsperiod" mappings=[0="Timme", 1="Dag", 2="Vecka", 3="Månad", 4="År"]
+          Chart item=water_flow period=h refresh=1000 visibility=[General_ChartPeriod==0]
+          Chart item=water_flow period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
+          Chart item=water_flow period=W refresh=1000 visibility=[General_ChartPeriod==2]
+          Chart item=water_flow period=M refresh=1000 visibility=[General_ChartPeriod==3]
+          Chart item=water_flow period=Y refresh=1000 visibility=[General_ChartPeriod==4]
+        }
+      }
+      Text label="Debug ..." {
+        Text item=water_total label="Mätarställning"
+        Text item=water_at_midnight label="Vid midnatt"
+        Text item=water_at_new_month label="Vid ny månad"
+        Setpoint item=water_current_date label="Datum"
+        Setpoint item=water_current_month label="Månad"
       }
     }
   }

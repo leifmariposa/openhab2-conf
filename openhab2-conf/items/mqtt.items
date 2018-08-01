@@ -12,25 +12,3 @@ Switch lg_power "LG on" (vent) {autoupdate="false"}
 Switch lg_volume_up "LG volume up" (vent) {autoupdate="false"}
 Switch lg_volume_down "LG volume down" (vent) {autoupdate="false"}
 
-/*
- * Electricity
- */
-String eletricity "Electricity %s" { mqtt="<[broker:sparsnas/597416:state:default]" }
-
-Number current_date "Date [%d]"
-Number current_month "Month [%d]"
-
-Number eletricity_consumption "Now [%.1f W]" <energy>
-Number kwh_current "Now [%.1f kWh]"
-Number kwh_at_midnight "At midnight [%.1f kWh]"
-Number kwh_at_new_month "At new month [%.1f kWh]"
-Number kwh_today "Today [%.1f kWh]" <measure_power_meter>
-Number kwh_yesterday "Yesterday [%.1f kWh]" <energy>
-Number kwh_two_days_ago "Two days ago [%.1f kWh]" <energy>
-Number kwh_three_days_ago "Three days ago [%.1f kWh]" <energy>
-Number kwh_four_days_ago "Four days ago [%.1f kWh]" <energy>
-Number kwh_five_days_ago "Five days ago [%.1f kWh]" <energy>
-Number kwh_month "This month [%.1f kWh]" <energy>
-Number kwh_last_month "Last month [%.1f kWh]" <energy>
-
-Number energy_cost_today "Today [%.2f Skr]" <price>

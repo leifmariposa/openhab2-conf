@@ -1,0 +1,64 @@
+// Electricity
+rule "Watt"
+when
+  Item electricity changed
+then
+  var String power  = transform("JSONPATH", "$.Watt", (electricity.state).toString)
+  electricity_consumption.postUpdate(power)
+
+  var String kwh  = transform("JSONPATH", "$.kWh", (electricity.state).toString)
+  electricity_total.postUpdate((kwh).toString)
+end
+
+rule "kWh"
+when
+  Item electricity_total changed
+then
+  var date	= now.getDayOfMonth
+  var month	= now.getMonthOfYear
+
+  if (electricity_at_midnight.state === NULL) {
+    electricity_at_midnight.postUpdate((electricity_total.state).toString)
+  }
+  if (electricity_at_new_month.state === NULL) {
+    electricity_at_new_month.postUpdate((electricity_total.state).toString)
+  }
+
+  if (electricity_current_date.state != date) {
+    electricity_current_date.postUpdate((date).toString)
+
+    if (electricity_four_days_ago.state != NULL) {
+      electricity_five_days_ago.postUpdate((electricity_four_days_ago.state as Number).toString);
+    }
+
+    if (electricity_three_days_ago.state != NULL) {
+      electricity_four_days_ago.postUpdate((electricity_three_days_ago.state as Number).toString);
+    }
+
+    if (electricity_two_days_ago.state != NULL) {
+      electricity_three_days_ago.postUpdate((electricity_two_days_ago.state as Number).toString);
+    }
+
+    if (electricity_yesterday.state != NULL) {
+      electricity_two_days_ago.postUpdate((electricity_yesterday.state as Number).toString);
+    }
+
+    electricity_yesterday.postUpdate(((electricity_total.state as Number) - (electricity_at_midnight.state as Number)).toString)
+    electricity_at_midnight.postUpdate((electricity_total.state).toString)
+  }
+
+  if (electricity_current_month.state != month) {
+    electricity_current_month.postUpdate((month).toString)
+
+    electricity_last_month.postUpdate(((electricity_total.state as Number) - (electricity_at_new_month.state as Number)).toString)
+    electricity_at_new_month.postUpdate((electricity_total.state).toString)
+  }
+
+  electricity_today.postUpdate(((electricity_total.state as Number) - (electricity_at_midnight.state as Number)).toString)
+  electricity_month.postUpdate(((electricity_total.state as Number) - (electricity_at_new_month.state as Number)).toString)
+
+  energy_cost_today.postUpdate((electricity_today.state as Number) * 2.0) // 2.0 Skr/kWh
+
+  //logInfo('logTime', 'electricity_total: ' + electricity_total.state + ', electricity_today: ' + electricity_today.state + ', electricity_month: ' + electricity_month.state + ', electricity_at_midnight: ' + electricity_at_midnight.state + ', electricity_at_new_month: ' + electricity_at_new_month.state)
+end
+

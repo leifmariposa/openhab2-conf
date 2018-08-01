@@ -3,3 +3,4 @@ CLOSE=Stängd
 Öppen=OPEN
 Stängd=CLOSE
 -=Okänt
+NULL=Okänt

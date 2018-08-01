@@ -1,4 +1,6 @@
 influx -username admin -password Bigoton111
 
+use openhab_db
+
 Erase all data:
 DROP SERIES FROM /.*/

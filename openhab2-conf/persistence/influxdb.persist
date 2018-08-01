@@ -18,5 +18,33 @@ Items {
   KitchenSensorTemperature: strategy = everyChange, everyFiveMinutes
   MasterBedroomSensorTemperature: strategy = everyChange, everyFiveMinutes
   ConservatorySensorTemperature: strategy = everyChange, everyFiveMinutes
-  eletricity_consumption: strategy = everyFiveMinutes
+
+  electricity_consumption : strategy = everyFiveMinutes
+  water_flow : strategy = everyChange, everyFiveMinutes
+
+
+  electricity_current_date : strategy = everyChange, restoreOnStartup
+  electricity_current_month : strategy = everyChange, restoreOnStartup
+  electricity_at_midnight : strategy = everyChange, restoreOnStartup
+  electricity_at_new_month : strategy = everyChange, restoreOnStartup
+
+  electricity_yesterday : strategy = everyChange, restoreOnStartup
+  electricity_two_days_ago : strategy = everyChange, restoreOnStartup
+  electricity_three_days_ago : strategy = everyChange, restoreOnStartup
+  electricity_four_days_ago : strategy = everyChange, restoreOnStartup
+  electricity_five_days_ago : strategy = everyChange, restoreOnStartup
+  electricity_last_month : strategy = everyChange, restoreOnStartup
+
+
+  water_current_date : strategy = everyChange, restoreOnStartup
+  water_current_month : strategy = everyChange, restoreOnStartup
+  water_at_midnight : strategy = everyChange, restoreOnStartup
+  water_at_new_month : strategy = everyChange, restoreOnStartup
+
+  water_yesterday : strategy = everyChange, restoreOnStartup
+  water_two_days_ago : strategy = everyChange, restoreOnStartup
+  water_three_days_ago : strategy = everyChange, restoreOnStartup
+  water_four_days_ago : strategy = everyChange, restoreOnStartup
+  water_five_days_ago : strategy = everyChange, restoreOnStartup
+  water_last_month : strategy = everyChange, restoreOnStartup
 }
