@@ -6,6 +6,9 @@ sitemap test label="Mostigen 1"
     Text item=KellysPhone label="Kelly"
     Text item=AlexandersPhone label="Alexander"
     Text item=JonathansPhone label="Jonathan"
+      Text label="Graf ..." icon="line" {
+        Webview url="http://mostigen1.ddns.net:3000/d/rJ0nHCZRz/vem-ar-hemma?refresh=5s&orgId=1" height=13
+      }
   }
 
   Frame label="Lampor" {
@@ -38,7 +41,8 @@ sitemap test label="Mostigen 1"
       Text item=KitchenSensorTemperature label="Kök"
       Text item=MasterBedroomSensorTemperature label="Sovrum"
       Text item=ConservatorySensorTemperature label="Uterum"
-      Text label="Grafer" icon="line" {
+      /*Text label="Grafer" icon="line" {
+        Webview url="http://mostigen1.ddns.net:3000/d/vgY0H8ZRz/temperaturer?refresh=5s&orgId=1" height=33
         Frame label="Timesperiod" {
           Switch item=General_ChartPeriod label="Välj" mappings=[0="Timme", 1="Dag", 2="Vecka", 3="Månad", 4="År"]
         }
@@ -91,7 +95,10 @@ sitemap test label="Mostigen 1"
           Chart item=FreezerSensorTemperature period=M refresh=1000 visibility=[General_ChartPeriod==3]
           Chart item=FreezerSensorTemperature period=Y refresh=1000 visibility=[General_ChartPeriod==4]
         }
-      }
+      }*/
+    }
+    Text label="Grafer ..." icon="line" {
+      Webview url="http://mostigen1.ddns.net:3000/d/vgY0H8ZRz/temperaturer?refresh=5s&orgId=1" height=32
     }
   }
 
@@ -116,14 +123,15 @@ sitemap test label="Mostigen 1"
         Text item=electricity_last_month label="Förra månaden"
       }
       Text label="Graf ..." icon="line" {
-        Frame label="Elförbrukning" {
+        Webview url="http://mostigen1.ddns.net:3000/d/jeLbWjZgk/el?refresh=5s&orgId=1" height=13
+        /*Frame label="Elförbrukning" {
           Switch item=General_ChartPeriod label="Tidsperiod" mappings=[0="Timme", 1="Dag", 2="Vecka", 3="Månad", 4="År"]
           Chart item=electricity_consumption period=h refresh=1000 visibility=[General_ChartPeriod==0]
           Chart item=electricity_consumption period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
           Chart item=electricity_consumption period=W refresh=1000 visibility=[General_ChartPeriod==2]
           Chart item=electricity_consumption period=M refresh=1000 visibility=[General_ChartPeriod==3]
           Chart item=electricity_consumption period=Y refresh=1000 visibility=[General_ChartPeriod==4]
-        }
+        }*/
       }
       Text label="Debug ..." {
         Text item=electricity_total label="Mätarställning"
@@ -157,14 +165,15 @@ sitemap test label="Mostigen 1"
         Text item=water_last_month label="Förra månaden"
       }
       Text label="Graf ..." icon="line" {
-        Frame label="Vattenförbrukning" {
+        Webview url="http://mostigen1.ddns.net:3000/d/JEHtIjZRk/vatten?refresh=5s&orgId=1" height=13
+        /*Frame label="Vattenförbrukning" {
           Switch item=General_ChartPeriod label="Tidsperiod" mappings=[0="Timme", 1="Dag", 2="Vecka", 3="Månad", 4="År"]
           Chart item=water_flow period=h refresh=1000 visibility=[General_ChartPeriod==0]
           Chart item=water_flow period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
           Chart item=water_flow period=W refresh=1000 visibility=[General_ChartPeriod==2]
           Chart item=water_flow period=M refresh=1000 visibility=[General_ChartPeriod==3]
           Chart item=water_flow period=Y refresh=1000 visibility=[General_ChartPeriod==4]
-        }
+        }*/
       }
       Text label="Debug ..." {
         Text item=water_total label="Mätarställning"
@@ -192,15 +201,16 @@ sitemap test label="Mostigen 1"
     Group label="Mer information" item=GroupNeato
   }*/
 
+  Frame label="Grafer" {
+    Text label="Alla grafer ..." {
+      //Webview url="http://openhabianpi:3000/d/vgY0H8ZRz/temperature-dashboard?refresh=5s&orgId=1&from=now-2d&to=now" height=100
+      Webview url="http://mostigen1.ddns.net:3000/d/fzlEHCWRz/alla?refresh=5s&orgId=1" height=32
+    }
+  }
+
   Frame label="Övrigt" {
     Switch item=reboot_pi
     //Switch item=MQTT_Test
-  }
-
-  Frame label="Grafer" {
-    Text label="Alla grafer ..." {
-      Webview url="http://openhabianpi:3000/d/vgY0H8ZRz/temperature-dashboard?refresh=5s&orgId=1&from=now-2d&to=now" height=100
-    }
   }
 
   /*Frame label="MQTT" {
