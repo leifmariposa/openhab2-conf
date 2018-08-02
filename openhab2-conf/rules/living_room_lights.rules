@@ -38,6 +38,7 @@ then
   sendCommand(LivingRoomBureauLight, ON)
   sendCommand(LivingRoomWindow1Light, ON)
   sendCommand(LivingRoomWindow2Light, ON)
+  sendCommand(LivingroomSmartPlug, ON)
   sendCommand(Livingroom_Brightness, 50)
 end
 
@@ -50,7 +51,21 @@ then
   sendCommand(LivingRoomBureauLight, OFF)
   sendCommand(LivingRoomWindow1Light, OFF)
   sendCommand(LivingRoomWindow2Light, OFF)
+  sendCommand(LivingroomSmartPlug, OFF)
   sendCommand(Livingroom_Brightness, 0)
+end
+
+rule "Biografläge"
+when
+  Item cinema_mode received command ON
+then
+  sendCommand(EntranceWallLight, OFF)
+  sendCommand(HallwayLight, OFF)
+  sendCommand(LivingRoomBureauLight, OFF)
+  sendCommand(LivingRoomWindow1Light, OFF)
+  sendCommand(LivingRoomWindow2Light, OFF)
+  sendCommand(LivingroomSmartPlug, OFF)
+  sendCommand(Livingroom_Brightness, 2)
 end
 
 rule "About 1 hour before sunset"

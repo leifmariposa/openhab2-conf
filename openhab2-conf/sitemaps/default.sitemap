@@ -14,19 +14,31 @@ sitemap default label="Mostigen 1"
   Frame label="Lampor" {
     Switch item=turn_on_all_lights mappings=[ON="Aktivera"]
     Switch item=turn_off_all_lights mappings=[ON="Aktivera"]
+    Switch item=cinema_mode mappings=[ON="Aktivera"]
     Text label="Mer lampor ..." {
-      Switch item=EntranceWallLight label="Entre"
-      Switch item=HallwayLight label="Hall"
-      Switch item=LivingRoomBureauLight label="Vardagsrum, byrå"
-      Switch item=LivingRoomWindow1Light label="Vardagsrum, fönster 1"
-      Switch item=LivingRoomWindow2Light label="Vardagsrum, fönster 2"
-      Slider item=Livingroom_Brightness label="Vardagsrum ljusstyrka [%.0f %%]"
-      Slider item=Livingroom_Color label="Vardagsrum ljusfärg [%.0f %%]"
-      Slider item=LivingRoomLeftBulbBrightness label="Vardagsrum vänster ljusstyrka [%.0f %%]"
-      Slider item=LivingRoomRightBulbBrightness label="Vardagsrum höger ljusstyrka [%.0f %%]"
-      Slider item=GardenBulbBrightness label="Trädgård ljusstyrka [%.0f %%]"
-      Slider item=LivingRoomLeftBulbColor label="Vardagsrum vänster ljusfärg [%.0f %%]"
-      Slider item=LivingRoomRightBulbColor label="Vardagsrum höger ljusfärg [%.0f %%]"
+      Frame label="Av/på lampor" {
+        Switch item=EntranceWallLight label="Entre"
+        Switch item=HallwayLight label="Hall"
+        Switch item=LivingRoomBureauLight label="Vardagsrum, byrå"
+        Switch item=LivingRoomWindow1Light label="Vardagsrum, fönster 1"
+        Switch item=LivingRoomWindow2Light label="Vardagsrum, fönster 2"
+        Switch item=LivingroomSmartPlug label="Mammas lampa"
+      }
+      /*Frame label="" {
+        Slider item=Livingroom_Brightness label="Vardagsrum ljusstyrka [%.0f %%]"
+        Slider item=Livingroom_Color label="Vardagsrum ljusfärg [%.0f %%]"
+      }*/
+      Frame label="Lampa till vänster om tv" {
+        Slider item=LivingRoomLeftBulbBrightness label="Ljusstyrka [%.0f %%]"
+        Slider item=LivingRoomLeftBulbColor label="Färg [%.0f %%]"
+      }
+      Frame label="Lampa till höger om tv" {
+        Slider item=LivingRoomRightBulbBrightness label="Ljusstyrka [%.0f %%]"
+        Slider item=LivingRoomRightBulbColor label="Färg [%.0f %%]"
+      }
+      Frame label="Trädgård" {
+        Slider item=GardenBulbBrightness label="Ljusstyrka [%.0f %%]"
+      }
     }
   }
 

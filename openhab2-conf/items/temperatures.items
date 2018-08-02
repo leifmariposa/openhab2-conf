@@ -8,11 +8,11 @@ Number KitchenSensorTemperature "Kitchen" <temperature> { channel="rfxcom:temper
 Number MasterBedroomSensorTemperature "Master bedroom" <temperature> { channel="rfxcom:temperature:rfx:18432:temperature" }
 Number ConservatorySensorTemperature "Conservatory" <temperature> { channel="rfxcom:temperature:rfx:16384:temperature" }
 
-Switch LivingRoomSwitch1 "Switch" <lighting2> { channel="rfxcom:lighting2:rfx:livingroomswitch1:command" }
-Switch LivingRoomSwitch2 "Switch" <lighting2> { channel="rfxcom:lighting2:rfx:livingroomswitch2:command" }
+Switch LivingRoomSwitch1 "Switch" <switch> { channel="rfxcom:lighting2:rfx:livingroomswitch1:command" }
+Switch LivingRoomSwitch2 "Switch" <switch> { channel="rfxcom:lighting2:rfx:livingroomswitch2:command" }
 
-Switch EntranceWallLight "Light" <lighting2> { channel="rfxcom:lighting2:rfx:lightentrancewall:command" }
-Switch LivingRoomBureauLight "Light" <lighting2> { channel="rfxcom:lighting2:rfx:lightlivingroombureau:command" }
-Switch LivingRoomWindow1Light "Light" <lighting2> { channel="rfxcom:lighting2:rfx:lightlivingroomwindow1:command" }
-Switch LivingRoomWindow2Light "Light" <lighting2> { channel="rfxcom:lighting2:rfx:lightlivingroomwindow2:command" }
-Switch HallwayLight "Light" <lighting2> { channel="rfxcom:lighting2:rfx:lighthallway:command" }
+Switch EntranceWallLight "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lightentrancewall:command" }
+Switch LivingRoomBureauLight "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lightlivingroombureau:command" }
+Switch LivingRoomWindow1Light "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lightlivingroomwindow1:command" }
+Switch LivingRoomWindow2Light "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lightlivingroomwindow2:command" }
+Switch HallwayLight "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lighthallway:command" }
