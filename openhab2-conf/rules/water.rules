@@ -19,7 +19,10 @@ then
   water_total.postUpdate((total).toString)
 
   var String drain  = transform("JSONPATH", "$.drain", (water.state).toString)
-  water_last_drain.postUpdate((drain).toString)
+  var Number drain_value = Float::parseFloat(drain)
+  if (drain_value != 0) {
+    water_last_drain.postUpdate((drain_value).toString)
+  }
 end
 
 rule "Total water"
