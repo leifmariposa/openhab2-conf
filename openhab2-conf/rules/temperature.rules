@@ -17,10 +17,10 @@ then
   if (temperature > limit) {
     if (freezer_alarm_triggered == false) {
       freezer_alarm_triggered = true
-      sendMail("leifmariposa@hotmail.com", "Mostigen 1", "The temperature in the freezer is high: " + temperature.toString() + " °C")
-      sendMail("kellymariposa@gmail.com", "Mostigen 1", "The temperature in the freezer is high: " + temperature.toString() + " °C")
-      sendMail("alexandermikael@gmail.com", "Mostigen 1", "The temperature in the freezer is high: " + temperature.toString() + " °C")
-      sendMail("jonfpersson@gmail.com", "Mostigen 1", "The temperature in the freezer is high: " + temperature.toString() + " °C")
+      sendMail("leifmariposa@hotmail.com", "Mostigen 1", "Hög temperatur i frysen: " + temperature.toString() + " °C")
+      sendMail("kellymariposa@gmail.com", "Mostigen 1", "Hög temperatur i frysen: " + temperature.toString() + " °C")
+      sendMail("alexandermikael@gmail.com", "Mostigen 1", "Hög temperatur i frysen: " + temperature.toString() + " °C")
+      sendMail("jonfpersson@gmail.com", "Mostigen 1", "Hög temperatur i frysen: " + temperature.toString() + " °C")
     }
   } else {
     freezer_alarm_triggered = false
@@ -34,18 +34,21 @@ rule "Fridge temperature alarm"
 when
   Item FridgeSensorTemperature changed
 then
-  var Number limit = 5.0
+  var Number limit = 6.0
   var Number temperature = ((FridgeSensorTemperature.state) as DecimalType).floatValue
-
+  logInfo('logTime', 'Fridge temperature temperature: {}, limit: {}, fridge_alarm_triggered: {}', temperature, limit, fridge_alarm_triggered)
   if (temperature > limit) {
+    logInfo('logTime', 'Fridge temperature temperature: a: ')
     if (fridge_alarm_triggered == false) {
+      logInfo('logTime', 'Fridge temperature temperature: b')
       fridge_alarm_triggered = true
-      sendMail("leifmariposa@hotmail.com", "Mostigen 1", "The temperature in the freezer is high: " + temperature.toString() + " °C")
-      sendMail("kellymariposa@gmail.com", "Mostigen 1", "The temperature in the freezer is high: " + temperature.toString() + " °C")
-      sendMail("alexandermikael@gmail.com", "Mostigen 1", "The temperature in the freezer is high: " + temperature.toString() + " °C")
-      sendMail("jonfpersson@gmail.com", "Mostigen 1", "The temperature in the freezer is high: " + temperature.toString() + " °C")
+      sendMail("leifmariposa@hotmail.com", "Mostigen 1", "Hög temperatur i kylskåpet: " + temperature.toString() + " °C")
+      sendMail("kellymariposa@gmail.com", "Mostigen 1", "Hög temperatur i kylskåpet: " + temperature.toString() + " °C")
+      sendMail("alexandermikael@gmail.com", "Mostigen 1", "Hög temperatur i kylskåpet: " + temperature.toString() + " °C")
+      sendMail("jonfpersson@gmail.com", "Mostigen 1", "Hög temperatur i kylskåpet: " + temperature.toString() + " °C")
     }
   } else {
-    fridge_alarm_triggered = true
+    logInfo('logTime', 'Fridge temperature temperature: c')
+    fridge_alarm_triggered = false
   }
 end
