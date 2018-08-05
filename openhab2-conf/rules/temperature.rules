@@ -36,11 +36,11 @@ when
 then
   var Number limit = 6.0
   var Number temperature = ((FridgeSensorTemperature.state) as DecimalType).floatValue
-  logInfo('logTime', 'Fridge temperature temperature: {}, limit: {}, fridge_alarm_triggered: {}', temperature, limit, fridge_alarm_triggered)
+  //logInfo('logTime', 'Fridge temperature temperature: {}, limit: {}, fridge_alarm_triggered: {}', temperature, limit, fridge_alarm_triggered)
   if (temperature > limit) {
-    logInfo('logTime', 'Fridge temperature temperature: a: ')
+    //logInfo('logTime', 'Fridge temperature temperature: a: ')
     if (fridge_alarm_triggered == false) {
-      logInfo('logTime', 'Fridge temperature temperature: b')
+      //logInfo('logTime', 'Fridge temperature temperature: b')
       fridge_alarm_triggered = true
       sendMail("leifmariposa@hotmail.com", "Mostigen 1", "Hög temperatur i kylskåpet: " + temperature.toString() + " °C")
       sendMail("kellymariposa@gmail.com", "Mostigen 1", "Hög temperatur i kylskåpet: " + temperature.toString() + " °C")
@@ -48,7 +48,7 @@ then
       sendMail("jonfpersson@gmail.com", "Mostigen 1", "Hög temperatur i kylskåpet: " + temperature.toString() + " °C")
     }
   } else {
-    logInfo('logTime', 'Fridge temperature temperature: c')
+    //logInfo('logTime', 'Fridge temperature temperature: c')
     fridge_alarm_triggered = false
   }
 end
