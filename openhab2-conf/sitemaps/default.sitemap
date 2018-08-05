@@ -134,23 +134,27 @@ sitemap default label="Mostigen 1"
         Text item=electricity_month label="Denna månad"
         Text item=electricity_last_month label="Förra månaden"
       }
-      Text label="Graf ..." icon="line" {
-        Webview url="http://mostigen1.ddns.net:3000/d/jeLbWjZgk/el?refresh=5s&orgId=1" height=13
-        /*Frame label="Elförbrukning" {
-          Switch item=General_ChartPeriod label="Tidsperiod" mappings=[0="Timme", 1="Dag", 2="Vecka", 3="Månad", 4="År"]
-          Chart item=electricity_consumption period=h refresh=1000 visibility=[General_ChartPeriod==0]
-          Chart item=electricity_consumption period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
-          Chart item=electricity_consumption period=W refresh=1000 visibility=[General_ChartPeriod==2]
-          Chart item=electricity_consumption period=M refresh=1000 visibility=[General_ChartPeriod==3]
-          Chart item=electricity_consumption period=Y refresh=1000 visibility=[General_ChartPeriod==4]
-        }*/
+      Frame {
+        Text label="Graf ..." icon="line" {
+          Webview url="http://mostigen1.ddns.net:3000/d/jeLbWjZgk/el?refresh=5s&orgId=1" height=13
+          /*Frame label="Elförbrukning" {
+            Switch item=General_ChartPeriod label="Tidsperiod" mappings=[0="Timme", 1="Dag", 2="Vecka", 3="Månad", 4="År"]
+            Chart item=electricity_consumption period=h refresh=1000 visibility=[General_ChartPeriod==0]
+            Chart item=electricity_consumption period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
+            Chart item=electricity_consumption period=W refresh=1000 visibility=[General_ChartPeriod==2]
+            Chart item=electricity_consumption period=M refresh=1000 visibility=[General_ChartPeriod==3]
+            Chart item=electricity_consumption period=Y refresh=1000 visibility=[General_ChartPeriod==4]
+          }*/
+        }
       }
-      Text label="Debug ..." {
-        Text item=electricity_total label="Mätarställning"
-        Text item=electricity_at_midnight label="Vid midnatt"
-        Text item=electricity_at_new_month label="Vid ny månad"
-        Setpoint item=electricity_current_date label="Datum"
-        Setpoint item=electricity_current_month label="Månad"
+      Frame {
+        Text label="Debug ..." {
+          Text item=electricity_total label="Mätarställning"
+          Text item=electricity_at_midnight label="Vid midnatt"
+          Text item=electricity_at_new_month label="Vid ny månad"
+          Setpoint item=electricity_current_date label="Datum"
+          Setpoint item=electricity_current_month label="Månad"
+        }
       }
     }
   }
@@ -176,23 +180,27 @@ sitemap default label="Mostigen 1"
         Text item=water_month label="Denna månad"
         Text item=water_last_month label="Förra månaden"
       }
-      Text label="Graf ..." icon="line" {
-        Webview url="http://mostigen1.ddns.net:3000/d/JEHtIjZRk/vatten?refresh=5s&orgId=1" height=13
-        /*Frame label="Vattenförbrukning" {
-          Switch item=General_ChartPeriod label="Tidsperiod" mappings=[0="Timme", 1="Dag", 2="Vecka", 3="Månad", 4="År"]
-          Chart item=water_flow period=h refresh=1000 visibility=[General_ChartPeriod==0]
-          Chart item=water_flow period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
-          Chart item=water_flow period=W refresh=1000 visibility=[General_ChartPeriod==2]
-          Chart item=water_flow period=M refresh=1000 visibility=[General_ChartPeriod==3]
-          Chart item=water_flow period=Y refresh=1000 visibility=[General_ChartPeriod==4]
-        }*/
+      Frame {
+        Text label="Graf ..." icon="line" {
+          Webview url="http://mostigen1.ddns.net:3000/d/JEHtIjZRk/vatten?refresh=5s&orgId=1" height=13
+          /*Frame label="Vattenförbrukning" {
+            Switch item=General_ChartPeriod label="Tidsperiod" mappings=[0="Timme", 1="Dag", 2="Vecka", 3="Månad", 4="År"]
+            Chart item=water_flow period=h refresh=1000 visibility=[General_ChartPeriod==0]
+            Chart item=water_flow period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
+            Chart item=water_flow period=W refresh=1000 visibility=[General_ChartPeriod==2]
+            Chart item=water_flow period=M refresh=1000 visibility=[General_ChartPeriod==3]
+            Chart item=water_flow period=Y refresh=1000 visibility=[General_ChartPeriod==4]
+          }*/
+        }
       }
-      Text label="Debug ..." {
-        Text item=water_total label="Mätarställning"
-        Text item=water_at_midnight label="Vid midnatt"
-        Text item=water_at_new_month label="Vid ny månad"
-        Setpoint item=water_current_date label="Datum"
-        Setpoint item=water_current_month label="Månad"
+      Frame {
+        Text label="Debug ..." {
+          Text item=water_total label="Mätarställning"
+          Text item=water_at_midnight label="Vid midnatt"
+          Text item=water_at_new_month label="Vid ny månad"
+          Setpoint item=water_current_date label="Datum"
+          Setpoint item=water_current_month label="Månad"
+        }
       }
     }
   }
