@@ -1,0 +1,26 @@
+
+# Manipulate items
+
+http://{{host}}:8080/classicui/CMD?water_at_midnight=513600
+
+###
+
+http://{{host}}:8080/classicui/CMD?water_at_new_month=503000
+
+###
+#REST
+
+# get all items
+http://{{host}}:8080/rest/items?recursive=false
+
+###
+# Gets a single item
+http://{{host}}:8080/rest/items/water_at_midnight
+
+###
+# Gets the state of an item
+http://{{host}}:8080/rest/items/water_total/state
+
+###
+
+http://{{host}}:8080/rest/persistence/items/electricity_consumption

@@ -19,7 +19,9 @@ Items {
   MasterBedroomSensorTemperature: strategy = everyChange, everyFiveMinutes
   ConservatorySensorTemperature: strategy = everyChange, everyFiveMinutes
 
+  electricity_total : strategy = everyFiveMinutes
   electricity_consumption : strategy = everyFiveMinutes
+  water_total : strategy = everyFiveMinutes
   water_flow : strategy = everyChange, everyFiveMinutes
 
 

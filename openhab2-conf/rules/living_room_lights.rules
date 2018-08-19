@@ -33,39 +33,45 @@ rule "Turn on all lights"
 when
   Item turn_on_all_lights received command ON
 then
+  sendCommand(LivingRoomWindow1Light, ON)
+  sendCommand(LivingRoomWindow2Light, ON)
   sendCommand(EntranceWallLight, ON)
   sendCommand(HallwayLight, ON)
   sendCommand(LivingRoomBureauLight, ON)
-  sendCommand(LivingRoomWindow1Light, ON)
-  sendCommand(LivingRoomWindow2Light, ON)
   sendCommand(LivingroomSmartPlug, ON)
   sendCommand(Livingroom_Brightness, 50)
+  sendCommand(LivingRoomWindow1Light, ON)
+  sendCommand(LivingRoomWindow2Light, ON)
 end
 
 rule "Turn off all lights"
 when
   Item turn_off_all_lights received command ON
 then
+  sendCommand(LivingRoomWindow1Light, OFF)
+  sendCommand(LivingRoomWindow2Light, OFF)
   sendCommand(EntranceWallLight, OFF)
   sendCommand(HallwayLight, OFF)
   sendCommand(LivingRoomBureauLight, OFF)
-  sendCommand(LivingRoomWindow1Light, OFF)
-  sendCommand(LivingRoomWindow2Light, OFF)
   sendCommand(LivingroomSmartPlug, OFF)
   sendCommand(Livingroom_Brightness, 0)
+  sendCommand(LivingRoomWindow1Light, OFF)
+  sendCommand(LivingRoomWindow2Light, OFF)
 end
 
 rule "Biografläge"
 when
   Item cinema_mode received command ON
 then
+  sendCommand(LivingRoomWindow1Light, OFF)
+  sendCommand(LivingRoomWindow2Light, OFF)
   sendCommand(EntranceWallLight, OFF)
   sendCommand(HallwayLight, OFF)
   sendCommand(LivingRoomBureauLight, OFF)
-  sendCommand(LivingRoomWindow1Light, OFF)
-  sendCommand(LivingRoomWindow2Light, OFF)
   sendCommand(LivingroomSmartPlug, OFF)
   sendCommand(Livingroom_Brightness, 2)
+  sendCommand(LivingRoomWindow1Light, OFF)
+  sendCommand(LivingRoomWindow2Light, OFF)
 end
 
 rule "About 1 hour before sunset"
@@ -79,7 +85,7 @@ then
     sendCommand(turn_on_all_lights, ON)
   }
 
-  PrevSunElevation = SunElevation.state
+  PrevSunElevation = SunElevation.state as Number
 end
 
 rule "Wall switch 2 -> lights on"
