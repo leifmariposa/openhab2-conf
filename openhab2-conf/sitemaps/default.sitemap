@@ -24,10 +24,6 @@ sitemap default label="Mostigen 1"
         Switch item=LivingRoomWindow2Light label="Vardagsrum, fönster 2"
         Switch item=LivingroomSmartPlug label="Mammas lampa"
       }
-      /*Frame label="" {
-        Slider item=Livingroom_Brightness label="Vardagsrum ljusstyrka [%.0f %%]"
-        Slider item=Livingroom_Color label="Vardagsrum ljusfärg [%.0f %%]"
-      }*/
       Frame label="Lampa till vänster om tv" {
         Slider item=LivingRoomLeftBulbBrightness label="Ljusstyrka [%.0f %%]"
         Slider item=LivingRoomLeftBulbColor label="Färg [%.0f %%]"
@@ -53,61 +49,6 @@ sitemap default label="Mostigen 1"
       Text item=KitchenSensorTemperature label="Kök"
       Text item=MasterBedroomSensorTemperature label="Sovrum"
       Text item=ConservatorySensorTemperature label="Uterum"
-      /*Text label="Grafer" icon="line" {
-        Webview url="http://mostigen1.ddns.net:3000/d/vgY0H8ZRz/temperaturer?refresh=5s&orgId=1" height=33
-        Frame label="Timesperiod" {
-          Switch item=General_ChartPeriod label="Välj" mappings=[0="Timme", 1="Dag", 2="Vecka", 3="Månad", 4="År"]
-        }
-        Frame label="Ute" {
-          Chart item=GardenSensorTemperature period=h refresh=1000 visibility=[General_ChartPeriod==0]
-          Chart item=GardenSensorTemperature period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
-          Chart item=GardenSensorTemperature period=W refresh=1000 visibility=[General_ChartPeriod==2]
-          Chart item=GardenSensorTemperature period=M refresh=1000 visibility=[General_ChartPeriod==3]
-          Chart item=GardenSensorTemperature period=Y refresh=1000 visibility=[General_ChartPeriod==4]
-        }
-        Frame label="Uterum" {
-          Chart item=ConservatorySensorTemperature period=h refresh=1000 visibility=[General_ChartPeriod==0]
-          Chart item=ConservatorySensorTemperature period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
-          Chart item=ConservatorySensorTemperature period=W refresh=1000 visibility=[General_ChartPeriod==2]
-          Chart item=ConservatorySensorTemperature period=M refresh=1000 visibility=[General_ChartPeriod==3]
-          Chart item=ConservatorySensorTemperature period=Y refresh=1000 visibility=[General_ChartPeriod==4]
-        }
-        Frame label="Vardagsrum" {
-          Chart item=LivingRoomSensorTemperature period=h refresh=1000 visibility=[General_ChartPeriod==0]
-          Chart item=LivingRoomSensorTemperature period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
-          Chart item=LivingRoomSensorTemperature period=W refresh=1000 visibility=[General_ChartPeriod==2]
-          Chart item=LivingRoomSensorTemperature period=M refresh=1000 visibility=[General_ChartPeriod==3]
-          Chart item=LivingRoomSensorTemperature period=Y refresh=1000 visibility=[General_ChartPeriod==4]
-        }
-        Frame label="Kök" {
-          Chart item=KitchenSensorTemperature period=h refresh=1000 visibility=[General_ChartPeriod==0]
-          Chart item=KitchenSensorTemperature period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
-          Chart item=KitchenSensorTemperature period=W refresh=1000 visibility=[General_ChartPeriod==2]
-          Chart item=KitchenSensorTemperature period=M refresh=1000 visibility=[General_ChartPeriod==3]
-          Chart item=KitchenSensorTemperature period=Y refresh=1000 visibility=[General_ChartPeriod==4]
-        }
-        Frame label="Sovrum" {
-          Chart item=MasterBedroomSensorTemperature period=h refresh=1000 visibility=[General_ChartPeriod==0]
-          Chart item=MasterBedroomSensorTemperature period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
-          Chart item=MasterBedroomSensorTemperature period=W refresh=1000 visibility=[General_ChartPeriod==2]
-          Chart item=MasterBedroomSensorTemperature period=M refresh=1000 visibility=[General_ChartPeriod==3]
-          Chart item=MasterBedroomSensorTemperature period=Y refresh=1000 visibility=[General_ChartPeriod==4]
-        }
-        Frame label="Kylskåp" {
-          Chart item=FridgeSensorTemperature period=h refresh=1000 visibility=[General_ChartPeriod==0]
-          Chart item=FridgeSensorTemperature period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
-          Chart item=FridgeSensorTemperature period=W refresh=1000 visibility=[General_ChartPeriod==2]
-          Chart item=FridgeSensorTemperature period=M refresh=1000 visibility=[General_ChartPeriod==3]
-          Chart item=FridgeSensorTemperature period=Y refresh=1000 visibility=[General_ChartPeriod==4]
-        }
-        Frame label="Frys" {
-          Chart item=FreezerSensorTemperature period=h refresh=1000 visibility=[General_ChartPeriod==0]
-          Chart item=FreezerSensorTemperature period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
-          Chart item=FreezerSensorTemperature period=W refresh=1000 visibility=[General_ChartPeriod==2]
-          Chart item=FreezerSensorTemperature period=M refresh=1000 visibility=[General_ChartPeriod==3]
-          Chart item=FreezerSensorTemperature period=Y refresh=1000 visibility=[General_ChartPeriod==4]
-        }
-      }*/
     }
     Text label="Grafer ..." icon="line" {
       Webview url="http://mostigen1.ddns.net:3000/d/vgY0H8ZRz/temperaturer?refresh=5s&orgId=1" height=32
@@ -118,44 +59,8 @@ sitemap default label="Mostigen 1"
     Text item=electricity_consumption label="Nu"
     Text item=electricity_today label="Idag"
     Text item=energy_cost_today label="Idag"
-    Text label="Mer el ..." {
-      Frame label="Förbrukning:" {
-        Text item=electricity_consumption label="Nu"
-      }
-      Frame label="Per dag:" {
-        Text item=electricity_today label="Idag"
-        Text item=electricity_yesterday label="Igår"
-        Text item=electricity_two_days_ago label="Två dagar sedan"
-        Text item=electricity_three_days_ago label="Tre dagar sedan"
-        Text item=electricity_four_days_ago label="Fyra dgar sedan"
-        Text item=electricity_five_days_ago label="Fem dagar sedan"
-      }
-      Frame label="Per månad:" {
-        Text item=electricity_month label="Denna månad"
-        Text item=electricity_last_month label="Förra månaden"
-      }
-      Frame {
-        Text label="Graf ..." icon="line" {
-          Webview url="http://mostigen1.ddns.net:3000/d/jeLbWjZgk/el?refresh=5s&orgId=1" height=13
-          /*Frame label="Elförbrukning" {
-            Switch item=General_ChartPeriod label="Tidsperiod" mappings=[0="Timme", 1="Dag", 2="Vecka", 3="Månad", 4="År"]
-            Chart item=electricity_consumption period=h refresh=1000 visibility=[General_ChartPeriod==0]
-            Chart item=electricity_consumption period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
-            Chart item=electricity_consumption period=W refresh=1000 visibility=[General_ChartPeriod==2]
-            Chart item=electricity_consumption period=M refresh=1000 visibility=[General_ChartPeriod==3]
-            Chart item=electricity_consumption period=Y refresh=1000 visibility=[General_ChartPeriod==4]
-          }*/
-        }
-      }
-      Frame {
-        Text label="Debug ..." {
-          Text item=electricity_total label="Mätarställning"
-          Text item=electricity_at_midnight label="Vid midnatt"
-          Text item=electricity_at_new_month label="Vid ny månad"
-          Setpoint item=electricity_current_date label="Datum"
-          Setpoint item=electricity_current_month label="Månad"
-        }
-      }
+    Text label="Grafer ..." icon="line" {
+      Webview url="http://mostigen1.ddns.net:3000/d/jeLbWjZgk/el?refresh=5s&orgId=1" height=39
     }
   }
 
@@ -163,45 +68,8 @@ sitemap default label="Mostigen 1"
     Text item=water_flow label="Nu"
     Text item=water_today label="Idag"
     Text item=water_cost_today label="Idag"
-    Text label="Mer vatten ..." {
-      Frame label="Förbrukning:" {
-        Text item=water_flow label="Nu"
-        Text item=water_last_drain label="Sista tappning"
-      }
-      Frame label="Per dag:" {
-        Text item=water_today label="Idag"
-        Text item=water_yesterday label="Igår"
-        Text item=water_two_days_ago label="Två dagar sedan"
-        Text item=water_three_days_ago label="Tre dagar sedan"
-        Text item=water_four_days_ago label="Fyra dgar sedan"
-        Text item=water_five_days_ago label="Fem dagar sedan"
-      }
-      Frame label="Per månad:" {
-        Text item=water_month label="Denna månad"
-        Text item=water_last_month label="Förra månaden"
-      }
-      Frame {
-        Text label="Graf ..." icon="line" {
-          Webview url="http://mostigen1.ddns.net:3000/d/JEHtIjZRk/vatten?refresh=5s&orgId=1" height=13
-          /*Frame label="Vattenförbrukning" {
-            Switch item=General_ChartPeriod label="Tidsperiod" mappings=[0="Timme", 1="Dag", 2="Vecka", 3="Månad", 4="År"]
-            Chart item=water_flow period=h refresh=1000 visibility=[General_ChartPeriod==0]
-            Chart item=water_flow period=d refresh=1000 visibility=[General_ChartPeriod==1, General_ChartPeriod=="NULL"]
-            Chart item=water_flow period=W refresh=1000 visibility=[General_ChartPeriod==2]
-            Chart item=water_flow period=M refresh=1000 visibility=[General_ChartPeriod==3]
-            Chart item=water_flow period=Y refresh=1000 visibility=[General_ChartPeriod==4]
-          }*/
-        }
-      }
-      Frame {
-        Text label="Debug ..." {
-          Text item=water_total label="Mätarställning"
-          Text item=water_at_midnight label="Vid midnatt"
-          Text item=water_at_new_month label="Vid ny månad"
-          Setpoint item=water_current_date label="Datum"
-          Setpoint item=water_current_month label="Månad"
-        }
-      }
+    Text label="Grafer ..." icon="line" {
+      Webview url="http://mostigen1.ddns.net:3000/d/JEHtIjZRk/vatten?refresh=5s&orgId=1" height=39
     }
   }
 
@@ -223,13 +91,25 @@ sitemap default label="Mostigen 1"
 
   Frame label="Grafer" {
     Text label="Alla grafer ..." {
-      //Webview url="http://openhabianpi:3000/d/vgY0H8ZRz/temperature-dashboard?refresh=5s&orgId=1&from=now-2d&to=now" height=100
       Webview url="http://mostigen1.ddns.net:3000/d/fzlEHCWRz/alla?refresh=5s&orgId=1" height=32
     }
   }
 
   Frame label="Övrigt" {
     Switch item=reboot_pi
+    Text label="Debug ..." {
+      Frame label="El" {
+        Text item=electricity_total label="Mätarställning"
+        Text item=electricity_at_midnight label="Vid midnatt"
+        Setpoint item=electricity_current_date label="Datum"
+      }
+      Frame label="Vatten" {
+        Text item=water_total label="Mätarställning"
+        Text item=water_at_midnight label="Vid midnatt"
+        Text item=water_last_drain label="Sista tappning"
+        Setpoint item=water_current_date label="Datum"
+      }
+    }
     //Switch item=MQTT_Test
   }
 

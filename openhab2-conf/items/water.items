@@ -9,17 +9,7 @@ Number water_total "Water total [%.1f l]"
 Number water_last_drain "Water last drain [%.1f l]"
 
 Number water_current_date "Date [%d]"
-Number water_current_month "Month [%d]"
 Number water_at_midnight "At midnight [%.1f l]"
-Number water_at_new_month "At new month [%.1f l]"
 
 Number water_today "Today [%.1f l]" <water>
-Number water_yesterday "Yesterday [%.1f l]" <water>
-Number water_two_days_ago "Two days ago [%.1f l]" <water>
-Number water_three_days_ago "Three days ago [%.1f l]" <water>
-Number water_four_days_ago "Four days ago [%.1f l]" <water>
-Number water_five_days_ago "Five days ago [%.1f l]" <water>
-Number water_month "This month [%.1f l]" <water>
-Number water_last_month "Last month [%.1f l]" <water>
-
 Number water_cost_today "Today [%.2f Skr]" <price>

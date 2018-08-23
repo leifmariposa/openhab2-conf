@@ -30,49 +30,17 @@ when
   Item water_total changed
 then
   var date	= now.getDayOfMonth
-  var month	= now.getMonthOfYear
 
   if (water_at_midnight.state === NULL) {
     water_at_midnight.postUpdate((water_total.state).toString)
   }
-  if (water_at_new_month.state === NULL) {
-    water_at_new_month.postUpdate((water_total.state).toString)
-  }
 
   if (water_current_date.state != date) {
     water_current_date.postUpdate((date).toString)
-
-    if (water_four_days_ago.state != NULL) {
-      water_five_days_ago.postUpdate((water_four_days_ago.state as Number).toString);
-    }
-
-    if (water_three_days_ago.state != NULL) {
-      water_four_days_ago.postUpdate((water_three_days_ago.state as Number).toString);
-    }
-
-    if (water_two_days_ago.state != NULL) {
-      water_three_days_ago.postUpdate((water_two_days_ago.state as Number).toString);
-    }
-
-    if (water_yesterday.state != NULL) {
-      water_two_days_ago.postUpdate((water_yesterday.state as Number).toString);
-    }
-
-    water_yesterday.postUpdate(((water_total.state as Number) - (water_at_midnight.state as Number)).toString)
     water_at_midnight.postUpdate((water_total.state).toString)
   }
 
-  if (water_current_month.state != month) {
-    water_current_month.postUpdate((month).toString)
-
-    water_last_month.postUpdate(((water_total.state as Number) - (water_at_new_month.state as Number)).toString)
-    water_at_new_month.postUpdate((water_total.state).toString)
-  }
-
   water_today.postUpdate(((water_total.state as Number) - (water_at_midnight.state as Number)).toString)
-  water_month.postUpdate(((water_total.state as Number) - (water_at_new_month.state as Number)).toString)
 
   water_cost_today.postUpdate((water_today.state as Number) * 0.03282) // 0,03282 Skr/kWh
-
-  //logInfo('logTime', 'water_total: ' + water_total.state + ', water_today: ' + water_today.state + ', water_month: ' + water_month.state + ', water_at_midnight: ' + water_at_midnight.state + ', water_at_new_month: ' + water_at_new_month.state)
 end

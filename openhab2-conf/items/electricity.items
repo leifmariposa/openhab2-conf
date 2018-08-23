@@ -4,20 +4,10 @@
 String electricity "Electricity %s" { mqtt="<[broker:sparsnas/597416:state:default]" }
 
 Number electricity_current_date "Date [%d]"
-Number electricity_current_month "Month [%d]"
 
 Number electricity_consumption "Now [%.1f W]" <energy>
 Number electricity_total "Now [%.1f kWh]"
 Number electricity_at_midnight "At midnight [%.1f kWh]"
-Number electricity_at_new_month "At new month [%.1f kWh]"
 
 Number electricity_today "Today [%.1f kWh]" <energy>
-Number electricity_yesterday "Yesterday [%.1f kWh]" <energy>
-Number electricity_two_days_ago "Two days ago [%.1f kWh]" <energy>
-Number electricity_three_days_ago "Three days ago [%.1f kWh]" <energy>
-Number electricity_four_days_ago "Four days ago [%.1f kWh]" <energy>
-Number electricity_five_days_ago "Five days ago [%.1f kWh]" <energy>
-Number electricity_month "This month [%.1f kWh]" <energy>
-Number electricity_last_month "Last month [%.1f kWh]" <energy>
-
 Number energy_cost_today "Today [%.2f Skr]" <price>
