@@ -1,0 +1,38 @@
+INVALID=
+NULL=
+UNRECOGNIZED=
+
+IDLE=Inaktiv
+BUSY=Upptagen
+PAUSED=Pausad
+ERROR=Error
+
+HOUSE_CLEANING=Husrengöring
+SPOT_CLEANIN=Fläckrengöring
+MANUAL_CLEANING=Manuell rengöring
+DOCKING=Dockar
+USER_MENU_ACTIVE=Användarmeny aktiv
+SUSPENDED_CLEANING=Uppskjuten rengöring
+UPDATING=Uppdaterar
+COPYING_LOGS=Kopierar loggar
+RECOVERING_LOCATION=Återhämtar plats
+IEC_TEST=IEC test
+MAP_CLEANING=Kartrengöring
+EXPLORING_MAP=Utforskar karta
+AQUIRING_MAP_IDS=Skapar kart-id
+CREATING_MAP=Skapar karta
+SUSPENDED_EXPLORATION=Uppskjuten återhämtning
+
+MANUAL=Manuell rengöring
+SPOT=Fläckrengöring
+HOUSE=Husrengöring
+
+ECO=Eco
+TURBO=Turbo
+
+ON=Ja
+OFF=Nej
+
+NORMAL=Normal
+DOUBLE=Dubbel
+

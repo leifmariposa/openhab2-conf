@@ -79,15 +79,19 @@ sitemap default label="Mostigen 1"
     Switch item=EntranceDoorSensor label="Entredörr [MAP(open_close.map):%s]"
   }
 
-  /*Frame label="Neato BotVac Connected" {
-    Switch item=NeatoCommand mappings=[clean="Clean",stop="Stop",pause="Pause",resume="Resume", dock="Send to dock"]
-    Text item=NeatoBattery label="Battery level"
+  Frame label="Alice" {
+    //Switch item=NeatoCommand label=" " mappings=[clean="Städa",stop="Stopp",pause="Paus",resume="Återuppta", dock="Docka"]
+    Text item=NeatoCommand label="Status"
+    Text item=NeatoMode label="Mode"
+    Text item=NeatoCategory label="Kategori"
+    Text item=NeatoBattery label="Batteri nivå"
+    Text item=NeatoIsCharging label="Laddar"
     Text item=NeatoState
-    Text item=NeatoError label="Error Message" icon="siren"
-    Text item=NeatoAction label="Activity"
-    Text item=NeatoIsDocked label="In dock"
-    Group label="Mer information" item=GroupNeato
-  }*/
+    Text item=NeatoError label="Felmeddelande"
+    Text item=NeatoAction label="Aktivitet"
+    Text item=NeatoIsDocked label="I dockan"
+    Group label="Mer information" item=GroupNeato icon="text"
+  }
 
   Frame label="Grafer" {
     Text label="Alla grafer ..." {
