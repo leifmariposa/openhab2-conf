@@ -1,0 +1,5 @@
+Bridge netatmo:netatmoapi:home "Netatmo API" [ clientId="xxx", clientSecret="xxx", username = "xxx", password = "xxx", readStation=true, readThermostat=false] {
+    // Thing configuration:
+    Thing netatmo:NAMain:home:inside "Netatmo Inside"@"Living room"  [ id="aaa" ]
+    Thing netatmo:NAModule1:home:outside "Netatmo Outside"@"Garden"  [ id="bbb", parentId="aaa" ]
+}
