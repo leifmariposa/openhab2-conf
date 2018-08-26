@@ -15,7 +15,7 @@ DateTime Netatmo_Indoor_TimeStamp                     "TimeStamp [%1$td.%1$tm.%1
 DateTime Netatmo_Indoor_LastStatusStore               "LastStatusStore [%1$td.%1$tm.%1$tY %1$tH:%1$tM]"  <text>             { channel = "netatmo:NAMain:home:inside:LastStatusStore" }
 
 // Outdoor Module
-Number:Temperature Netatmo_Outdoor_Temperature        "Temperature [%.1f %unit%]"                        <temperature>      { channel = "netatmo:NAModule1:a451f347:0200002f34d0:Temperature" }
+Number:Temperature Netatmo_Outdoor_Temperature        "Temperature [%.1f %unit%]"                        <temperature>      { channel = "netatmo:NAModule1:home:outside:Temperature" }
 Number:Dimensionless Netatmo_Outdoor_Humidity         "Humidity [%d %unit%]"                             <humidity>         { channel = "netatmo:NAModule1:home:outside:Humidity" }
 Number Netatmo_Outdoor_Humidex                        "Humidex [%.0f]"                                   <temperature_hot>  { channel = "netatmo:NAModule1:home:outside:Humidex" }
 Number:Temperature Netatmo_Outdoor_HeatIndex          "HeatIndex [%.1f %unit%]"                          <temperature_hot>  { channel = "netatmo:NAModule1:home:outside:HeatIndex" }

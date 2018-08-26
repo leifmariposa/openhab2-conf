@@ -81,15 +81,13 @@ sitemap default label="Mostigen 1"
 
   Frame label="Alice" {
     //Switch item=NeatoCommand label=" " mappings=[clean="Städa",stop="Stopp",pause="Paus",resume="Återuppta", dock="Docka"]
-    Text item=NeatoCommand label="Status"
+    Text item=NeatoState label="Status"
+    Text item=NeatoAction label="Aktivitet"
     Text item=NeatoMode label="Mode"
-    Text item=NeatoCategory label="Kategori"
     Text item=NeatoBattery label="Batteri nivå"
     Text item=NeatoIsCharging label="Laddar"
-    Text item=NeatoState
-    Text item=NeatoError label="Felmeddelande"
-    Text item=NeatoAction label="Aktivitet"
     Text item=NeatoIsDocked label="Dockad"
+    Text item=NeatoError label="Felmeddelande"
     Group label="Mer information" item=GroupNeato icon=""
   }
 
