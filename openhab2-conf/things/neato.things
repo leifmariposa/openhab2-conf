@@ -1,2 +1,2 @@
 neato:neatoaccount:alice [ email="jonfpersson@gmail.com", password="mostigen1" ]
-neato:vacuumcleaner:alice "Alice"@"Kitchen" [ serial="xxx", secret="xxx", refresh=60, name="Alice" ]
+neato:vacuumcleaner:alice "Alice"@"Kitchen" [ serial="OPS06118-7C3866F157EE", secret="F2B83B1619857A36", refresh=60, name="Alice" ]

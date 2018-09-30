@@ -1,0 +1,12 @@
+
+on pi:
+  sudo visudo
+  openhabian ALL=NOPASSWD:/bin/dd
+
+  sudo systemctl stop openhab2.service
+
+on pc (about two hours):
+  ssh openhabian@openhabianpi "sudo dd if=/dev/mmcblk0 bs=1M | gzip -" | dd of=/c/Users/leifm/openhabianpi_backup.gz
+
+on pi:
+  sudo systemctl stop openhab2.service

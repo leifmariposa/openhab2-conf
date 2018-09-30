@@ -15,13 +15,13 @@ sitemap default label="Mostigen 1"
     Switch item=turn_on_all_lights mappings=[ON="Aktivera"]
     Switch item=turn_off_all_lights mappings=[ON="Aktivera"]
     Switch item=cinema_mode mappings=[ON="Aktivera"]
-    Text label="Mer lampor ..." icon="" {
+    Text label="Mer ..." icon="" {
       Frame label="Av/på lampor" {
         Switch item=EntranceWallLight label="Entre"
         Switch item=HallwayLight label="Hall"
         Switch item=LivingRoomBureauLight label="Vardagsrum, byrå"
-        Switch item=LivingRoomWindow1Light label="Vardagsrum, fönster 1"
-        Switch item=LivingRoomWindow2Light label="Vardagsrum, fönster 2"
+        //Switch item=LivingRoomWindow1Light label="Vardagsrum, fönster 1"
+        //Switch item=LivingRoomWindow2Light label="Vardagsrum, fönster 2"
         Switch item=LivingroomSmartPlug label="Mammas lampa"
       }
       Frame label="Lampa till vänster om tv" {
@@ -32,26 +32,68 @@ sitemap default label="Mostigen 1"
         Slider item=LivingRoomRightBulbBrightness label="Ljusstyrka [%.0f %%]"
         Slider item=LivingRoomRightBulbColor label="Färg [%.0f %%]"
       }
+      Frame label="Vardagsrum fönster" {
+        Slider item=LivingRoomWindow1Brightness label="Lampa 1 [%.0f %%]"
+        Slider item=LivingRoomWindow2Brightness label="Lampa 2 [%.0f %%]"
+        Slider item=LivingRoomWindow3Brightness label="Lampa 3 [%.0f %%]"
+      }
       Frame label="Trädgård" {
         Slider item=GardenBulbBrightness label="Ljusstyrka [%.0f %%]"
       }
     }
   }
 
-  Frame label="Temperaturer" {
-    Text item=LivingRoomSensorTemperature label="Inne"
-    Text item=GardenSensorTemperature label="Ute"
-    Text label="Fler temperaturer ..." icon="" {
-      Text item=FreezerSensorTemperature label="Frys"
-      Text item=FridgeSensorTemperature label="Kylskåp"
-      Text item=GardenSensorTemperature label="Ute"
-      Text item=LivingRoomSensorTemperature label="Vardagsrum"
-      Text item=KitchenSensorTemperature label="Kök"
-      Text item=MasterBedroomSensorTemperature label="Sovrum"
-      Text item=ConservatorySensorTemperature label="Uterum"
+  Frame label="Klimat" {
+    Text item=Netatmo_Indoor_Temperature label="Inne"
+    Text item=Netatmo_Outdoor_Temperature label="Ute"
+    Text item=Netatmo_Indoor_Humidity label="Inne"
+    Text item=Netatmo_Outdoor_Humidity label="Ute"
+    Text item=Netatmo_Indoor_Co2 valuecolor=[<800="green",<1000="orange",<1400="red",>1399="maroon"]
+    Text item=Netatmo_Indoor_Pressure
+    Text item=Netatmo_Indoor_Noise
+    Text label="Mer ..." icon="" {
+      Frame label="Temperaturer" {
+        Text item=Netatmo_Outdoor_Temperature label="Utomhus"
+        Text item=ConservatorySensorTemperature label="Uterum"
+        Text item=Netatmo_Indoor_Temperature label="Vardagsrum"
+        Text item=KitchenSensorTemperature label="Kök"
+        Text item=MasterBedroomSensorTemperature label="Sovrum"
+        Text item=LivingRoomSensorTemperature label="to be moved"
+        Text item=LaundryRoomSensorTemperature label="Tvättrum"
+        Text item=FridgeSensorTemperature label="Kylskåp"
+        Text item=FreezerSensorTemperature label="Frys"
+      }
+      Frame label="Netatmo innomhusgivare" {
+        Text item=Netatmo_Indoor_Humidity
+        Text item=Netatmo_Indoor_Humidex  valuecolor=[<20.1="green",<29.1="blue",<28.1="yellow",<45.1="orange",<54.1="red",>54.1="maroon"]
+        Text item=Netatmo_Indoor_HeatIndex
+        Text item=Netatmo_Indoor_Co2 valuecolor=[<800="green",<1000="orange",<1400="red",>1399="maroon"]
+        Text item=Netatmo_Indoor_Pressure
+        Text item=Netatmo_Indoor_Noise
+        Text item=Netatmo_Indoor_WifiStatus
+        Text item=Netatmo_Indoor_Location
+        Text item=Netatmo_Indoor_Dewpoint
+        Text item=Netatmo_Indoor_DewpointDepression
+        Text item=Netatmo_Indoor_AbsolutePressure
+        Text item=Netatmo_Indoor_TimeStamp
+        Text item=Netatmo_Indoor_LastStatusStore
+      }
+      Frame label="Netatmo utomhusgivare" {
+        Text item=Netatmo_Outdoor_Humidity
+        Text item=Netatmo_Outdoor_Humidex
+        Text item=Netatmo_Outdoor_HeatIndex
+        Text item=Netatmo_Outdoor_RfStatus
+        Text item=Netatmo_Outdoor_LowBattery
+        Text item=Netatmo_Outdoor_BatteryVP
+        Text item=Netatmo_Outdoor_TempTrend
+        Text item=Netatmo_Outdoor_Dewpoint
+        Text item=Netatmo_Outdoor_DewpointDepression
+        Text item=Netatmo_Outdoor_TimeStamp
+        Text item=Netatmo_Outdoor_LastMessage
+      }
     }
     Text label="Grafer ..." icon="line" {
-      Webview url="http://mostigen1.ddns.net:3000/d/vgY0H8ZRz/temperaturer?refresh=5s&orgId=1" height=32
+      Webview url="http://mostigen1.ddns.net:3000/d/vgY0H8ZRz/klimat?refresh=5s&orgId=1" height=63
     }
   }
 
@@ -88,48 +130,7 @@ sitemap default label="Mostigen 1"
     Text item=NeatoIsCharging label="Laddar"
     Text item=NeatoIsDocked label="Dockad"
     Text item=NeatoError label="Felmeddelande"
-    Group label="Mer information" item=GroupNeato icon=""
-  }
-
-  Frame label="Klimat" {
-    Text item=Netatmo_Indoor_Temperature
-    Text item=Netatmo_Indoor_Humidity
-    Text item=Netatmo_Indoor_Humidex valuecolor=[<20.1="green",<29.1="blue",<28.1="yellow",<45.1="orange",<54.1="red",>54.1="maroon"]
-    Text item=Netatmo_Indoor_Co2  valuecolor=[<800="green",<1000="orange",<1400="red",>1399="maroon"]
-    Text item=Netatmo_Indoor_Pressure
-    Text item=Netatmo_Indoor_Noise
-    Text label="Mer ..." icon="" {
-      Frame label="Inomhusklimat" {
-        Text item=Netatmo_Indoor_Temperature
-        Text item=Netatmo_Indoor_Humidity
-        Text item=Netatmo_Indoor_Humidex
-        Text item=Netatmo_Indoor_HeatIndex
-        Text item=Netatmo_Indoor_Co2
-        Text item=Netatmo_Indoor_Pressure
-        Text item=Netatmo_Indoor_Noise
-        Text item=Netatmo_Indoor_WifiStatus
-        Text item=Netatmo_Indoor_Location
-        Text item=Netatmo_Indoor_Dewpoint
-        Text item=Netatmo_Indoor_DewpointDepression
-        Text item=Netatmo_Indoor_AbsolutePressure
-        Text item=Netatmo_Indoor_TimeStamp
-        Text item=Netatmo_Indoor_LastStatusStore
-      }
-      Frame label="Utomhusklimat" {
-        Text item=Netatmo_Outdoor_Temperature
-        Text item=Netatmo_Outdoor_Humidity
-        Text item=Netatmo_Outdoor_Humidex
-        Text item=Netatmo_Outdoor_HeatIndex
-        Text item=Netatmo_Outdoor_RfStatus
-        Text item=Netatmo_Outdoor_LowBattery
-        Text item=Netatmo_Outdoor_BatteryVP
-        Text item=Netatmo_Outdoor_TempTrend
-        Text item=Netatmo_Outdoor_Dewpoint
-        Text item=Netatmo_Outdoor_DewpointDepression
-        Text item=Netatmo_Outdoor_TimeStamp
-        Text item=Netatmo_Outdoor_LastMessage
-      }
-    }
+    Group label="Mer ..." item=GroupNeato icon=""
   }
 
   Frame label="Grafer" {

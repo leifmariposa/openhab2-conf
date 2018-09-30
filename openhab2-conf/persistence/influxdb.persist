@@ -11,13 +11,18 @@ Items {
   KellysPhone: strategy = everyChange, everyFiveMinutes
   AlexandersPhone: strategy = everyChange, everyFiveMinutes
   JonathansPhone: strategy = everyChange, everyFiveMinutes
-  FreezerSensorTemperature: strategy = everyChange, everyFiveMinutes
-  GardenSensorTemperature: strategy = everyChange, everyFiveMinutes
-  FridgeSensorTemperature: strategy = everyChange, everyFiveMinutes
-  LivingRoomSensorTemperature: strategy = everyChange, everyFiveMinutes
+  Netatmo_Indoor_Temperature: strategy = everyChange, everyFiveMinutes
+  Netatmo_Outdoor_Temperature: strategy = everyChange, everyFiveMinutes
+  Netatmo_Indoor_Humidity: strategy = everyChange, everyFiveMinutes
+  Netatmo_Outdoor_Humidity: strategy = everyChange, everyFiveMinutes
+  Netatmo_Indoor_Co2: strategy = everyChange, everyFiveMinutes
+  Netatmo_Indoor_Pressure: strategy = everyChange, everyFiveMinutes
   KitchenSensorTemperature: strategy = everyChange, everyFiveMinutes
   MasterBedroomSensorTemperature: strategy = everyChange, everyFiveMinutes
   ConservatorySensorTemperature: strategy = everyChange, everyFiveMinutes
+  LaundryRoomSensorTemperature: strategy = everyChange, everyFiveMinutes
+  FreezerSensorTemperature: strategy = everyChange, everyFiveMinutes
+  FridgeSensorTemperature: strategy = everyChange, everyFiveMinutes
 
   electricity_total : strategy = everyFiveMinutes
   electricity_consumption : strategy = everyFiveMinutes

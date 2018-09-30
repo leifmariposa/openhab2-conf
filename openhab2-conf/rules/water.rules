@@ -42,5 +42,5 @@ then
 
   water_today.postUpdate(((water_total.state as Number) - (water_at_midnight.state as Number)).toString)
 
-  water_cost_today.postUpdate((water_today.state as Number) * 0.03282) // 0,03282 Skr/kWh
+  water_cost_today.postUpdate((water_today.state as Number) * 0.03282) // 0,03282 Skr/l
 end
