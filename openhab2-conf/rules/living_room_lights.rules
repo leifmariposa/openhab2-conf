@@ -29,6 +29,22 @@ then
   sendCommand(LivingRoomRightBulbColor, color);
 end
 
+rule "Turn on morning lights"
+when
+  Item turn_on_morning_lights received command ON
+then
+  sendCommand(EntranceWallLight, ON)
+  sendCommand(HallwayLight, ON)
+end
+
+rule "Turn off morning lights"
+when
+  Item turn_off_morning_lights received command ON
+then
+  sendCommand(EntranceWallLight, OFF)
+  sendCommand(HallwayLight, OFF)
+end
+
 rule "Turn on all lights"
 when
   Item turn_on_all_lights received command ON
@@ -120,6 +136,24 @@ when
 then
   logInfo('logTime', 'Time -> lights off')
   sendCommand(turn_off_all_lights, ON)
+end
+
+rule "Time -> morning lights on"
+when
+  //         ss mm hh
+  Time cron "00 30 06 * * ? *"
+then
+  logInfo('logTime', 'Time -> morning lights on')
+  sendCommand(turn_on_morning_lights, ON)
+end
+
+rule "Time -> morning lights off"
+when
+  //         ss mm hh
+  Time cron "00 30 07 * * ? *"
+then
+  logInfo('logTime', 'Time -> morning lights off')
+  sendCommand(turn_off_morning_lights, ON)
 end
 
 rule "Reboot"

@@ -1,5 +1,7 @@
 Switch turn_on_all_lights "Alla lamor på" (vent) {autoupdate="false"}
 Switch turn_off_all_lights "Alla lampor av" (vent) {autoupdate="false"}
 Switch cinema_mode "Biografläge" (vent) {autoupdate="false"}
+Switch turn_on_morning_lights "Morgon lamor på" (vent) {autoupdate="false"}
+Switch turn_off_morning_lights "Morgon lampor av" (vent) {autoupdate="false"}
 
 Switch reboot_pi "Starta om" (vent) {autoupdate="false"}

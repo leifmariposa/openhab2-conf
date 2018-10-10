@@ -3,6 +3,9 @@
 ////         ^-- Item Name              ^-- Inbound MQTT configuration              ^-- Outbound MQTT configuration
 ////                   ^-- Item Label
 
+// Test
+Switch mqtt_test "MQTT Test" (vent) {autoupdate="false"}
+
 Switch tv_power_on "TV on" (vent) {autoupdate="false"}
 Switch tv_power_off "TV off" (vent) {autoupdate="false"}
 Switch tv_volume_up "TV volume up" (vent) {autoupdate="false"}

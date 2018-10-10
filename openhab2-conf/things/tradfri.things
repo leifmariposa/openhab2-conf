@@ -3,7 +3,7 @@ Bridge tradfri:gateway:mygateway [ host="192.168.1.10", code="ODXl9oyZeTOQUUTi" 
     0100 GardenBulb "Garden Bulb"@"Garden" [ id=65537 ]
     0220 LivingRoomLeftBulb "Living Room Left Bulb"@"Living room" [ id=65539 ]
     0220 LivingRoomRightBulb "Living Room Right Bulb"@"Living room" [ id=65538 ]
-    0100 LivingRoomWindow1Bulb "LivingRoom Window 1 Bulb"@"Living room" [ id=65540 ]
-    0100 LivingRoomWindow2Bulb "LivingRoom Window 2 Bulb"@"Living room" [ id=65541 ]
+    0100 LivingRoomWindow1Bulb "LivingRoom Window 1 Bulb"@"Living room" [ id=65541 ]
+    0100 LivingRoomWindow2Bulb "LivingRoom Window 2 Bulb"@"Living room" [ id=65540 ]
     0100 LivingRoomWindow3Bulb "LivingRoom Window 3 Bulb"@"Living room" [ id=65542 ]
 }

@@ -34,6 +34,7 @@ TimeoutStopSec=20
 WantedBy=multi-user.target
 
 sudo systemctl daemon-reload
+sudo service enable broadlink.service
 sudo service broadlink start
 
 

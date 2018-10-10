@@ -1,3 +1,79 @@
+var Number prev_setpoint = 0.0
+
+// Test
+rule "MQTT Test"
+when
+  Item mqtt_test received command ON
+then
+  logInfo('logTime', 'broadlink/tv/samsung/poweron')
+  publish("broker", "broadlink/tv/samsung/poweron", "replay")
+end
+
+
+rule "Temperature_rule"
+when
+  Time cron "0 */10 * ? * *"
+  //Item Netatmo_Indoor_Temperature changed
+then
+  var Number temperature = ((Netatmo_Indoor_Temperature.state) as Number).floatValue
+  var Number setpoint = 0
+
+  if (temperature < 19.5) {
+    setpoint = 26
+  } else if (temperature < 20.0) {
+    setpoint = 25
+  } else if (temperature < 20.5) {
+    setpoint = 24
+  } else if (temperature < 21.0) {
+    setpoint = 23
+  } else if (temperature < 21.5) {
+    setpoint = 22
+  } else if (temperature < 22.0) {
+    setpoint = 21
+  } else if (temperature < 22.5) {
+    setpoint = 20
+  } else if (temperature < 23.0) {
+    setpoint = 19
+  } else {
+    setpoint = 18
+  }
+
+  logInfo('logTime', 'temperature: ' + temperature.toString() + ' setpoint: ' + setpoint.toString() + ' , prev_setpoint: ' + prev_setpoint.toString())
+  if (setpoint != prev_setpoint) {
+    logInfo('logTime', 'setpoint changed, sending command to ac')
+    prev_setpoint = setpoint
+    if (setpoint == 18) {
+      logInfo('logTime', 'sending ac/sharp/heat_aoto_18')
+      publish("broker", "broadlink/ac/sharp/heat_auto_18", "replay")
+    } else if (setpoint == 19) {
+      logInfo('logTime', 'sending ac/sharp/heat_aoto_19')
+      publish("broker", "broadlink/ac/sharp/heat_auto_19", "replay")
+    } else if (setpoint == 20) {
+      logInfo('logTime', 'sending ac/sharp/heat_aoto_20')
+      publish("broker", "broadlink/ac/sharp/heat_auto_20", "replay")
+    } else if (setpoint == 21) {
+      logInfo('logTime', 'sending ac/sharp/heat_aoto_21')
+      publish("broker", "broadlink/ac/sharp/heat_auto_21", "replay")
+    } else if (setpoint == 22) {
+      logInfo('logTime', 'sending ac/sharp/heat_aoto_22')
+      publish("broker", "broadlink/ac/sharp/heat_auto_22", "replay")
+    } else if (setpoint == 23) {
+      logInfo('logTime', 'sending ac/sharp/heat_aoto_23')
+      publish("broker", "broadlink/ac/sharp/heat_auto_23", "replay")
+    } else if (setpoint == 24) {
+      logInfo('logTime', 'sending ac/sharp/heat_aoto_24')
+      publish("broker", "broadlink/ac/sharp/heat_auto_24", "replay")
+    } else if (setpoint == 25) {
+      logInfo('logTime', 'sending ac/sharp/heat_aoto_25')
+      publish("broker", "broadlink/ac/sharp/heat_auto_25", "replay")
+    } else if (setpoint == 26) {
+      logInfo('logTime', 'sending ac/sharp/heat_aoto_26')
+      publish("broker", "broadlink/ac/sharp/heat_auto_26", "replay")
+    }
+    TemperatureSetpoint.postUpdate(setpoint)
+  }
+end
+
 // TV livingroom
 rule "TV power on"
 when

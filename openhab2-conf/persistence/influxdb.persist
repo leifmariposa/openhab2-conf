@@ -11,6 +11,7 @@ Items {
   KellysPhone: strategy = everyChange, everyFiveMinutes
   AlexandersPhone: strategy = everyChange, everyFiveMinutes
   JonathansPhone: strategy = everyChange, everyFiveMinutes
+  TemperatureSetpoint: strategy = everyChange, everyFiveMinutes
   Netatmo_Indoor_Temperature: strategy = everyChange, everyFiveMinutes
   Netatmo_Outdoor_Temperature: strategy = everyChange, everyFiveMinutes
   Netatmo_Indoor_Humidity: strategy = everyChange, everyFiveMinutes

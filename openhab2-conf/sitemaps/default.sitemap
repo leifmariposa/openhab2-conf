@@ -44,6 +44,7 @@ sitemap default label="Mostigen 1"
   }
 
   Frame label="Klimat" {
+    Text item=TemperatureSetpoint label="Börvärde"
     Text item=Netatmo_Indoor_Temperature label="Inne"
     Text item=Netatmo_Outdoor_Temperature label="Ute"
     Text item=Netatmo_Indoor_Humidity label="Inne"
@@ -155,6 +156,7 @@ sitemap default label="Mostigen 1"
       }
     }
     //Switch item=MQTT_Test
+    Switch item=mqtt_test
   }
 
   /*Frame label="MQTT" {

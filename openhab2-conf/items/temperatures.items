@@ -1,5 +1,7 @@
 // itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig}
 
+Number TemperatureSetpoint "Temperature Setpoint [%.1f °C]" <heating>
+
 Number FreezerSensorTemperature "Freezer" <temperature> { channel="rfxcom:temperature:rfx:22528:temperature" }
 Number LaundryRoomSensorTemperature "LaundryRoom" <temperature> { channel="rfxcom:temperature:rfx:16896:temperature" }
 Number FridgeSensorTemperature "Kitchen" <temperature> { channel="rfxcom:temperature:rfx:19968:temperature" }
