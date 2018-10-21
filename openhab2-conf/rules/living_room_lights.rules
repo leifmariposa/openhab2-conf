@@ -18,6 +18,9 @@ then
   sendCommand(GardenBulbBrightness, brightness);
   sendCommand(LivingRoomLeftBulbBrightness, brightness);
   sendCommand(LivingRoomRightBulbBrightness, brightness);
+  sendCommand(LivingRoomWindow1Brightness, brightness)
+  sendCommand(LivingRoomWindow2Brightness, brightness)
+  sendCommand(LivingRoomWindow3Brightness, brightness)
 end
 
 rule "Livingroom_Color"
@@ -45,55 +48,48 @@ then
   sendCommand(HallwayLight, OFF)
 end
 
-rule "Turn on all lights"
+rule "Turn on all lights full"
 when
-  Item turn_on_all_lights received command ON
+  Item turn_on_all_lights_full received command ON
 then
-  //sendCommand(LivingRoomWindow1Light, ON)
-  //sendCommand(LivingRoomWindow2Light, ON)
+  sendCommand(EntranceWallLight, ON)
+  sendCommand(HallwayLight, ON)
+  sendCommand(LivingRoomBureauLight, ON)
+  sendCommand(LivingroomSmartPlug, ON)
+  sendCommand(Livingroom_Brightness, 100)
+end
+
+rule "Turn on all lights_half"
+when
+  Item turn_on_all_lights_half received command ON
+then
   sendCommand(EntranceWallLight, ON)
   sendCommand(HallwayLight, ON)
   sendCommand(LivingRoomBureauLight, ON)
   sendCommand(LivingroomSmartPlug, ON)
   sendCommand(Livingroom_Brightness, 50)
-  //sendCommand(LivingRoomWindow1Light, ON)
-  //sendCommand(LivingRoomWindow2Light, ON)
-  sendCommand(LivingRoomWindow1Brightness, 50)
-  sendCommand(LivingRoomWindow2Brightness, 50)
-  sendCommand(LivingRoomWindow3Brightness, 50)
 end
 
 rule "Turn off all lights"
 when
   Item turn_off_all_lights received command ON
 then
-  //sendCommand(LivingRoomWindow1Light, OFF)
-  //sendCommand(LivingRoomWindow2Light, OFF)
   sendCommand(EntranceWallLight, OFF)
   sendCommand(HallwayLight, OFF)
   sendCommand(LivingRoomBureauLight, OFF)
   sendCommand(LivingroomSmartPlug, OFF)
   sendCommand(Livingroom_Brightness, 0)
-  //sendCommand(LivingRoomWindow1Light, OFF)
-  //sendCommand(LivingRoomWindow2Light, OFF)
-  sendCommand(LivingRoomWindow1Brightness, 0)
-  sendCommand(LivingRoomWindow2Brightness, 0)
-  sendCommand(LivingRoomWindow3Brightness, 0)
 end
 
 rule "Biografläge"
 when
   Item cinema_mode received command ON
 then
-  //sendCommand(LivingRoomWindow1Light, OFF)
-  //sendCommand(LivingRoomWindow2Light, OFF)
   sendCommand(EntranceWallLight, OFF)
   sendCommand(HallwayLight, OFF)
   sendCommand(LivingRoomBureauLight, OFF)
   sendCommand(LivingroomSmartPlug, OFF)
   sendCommand(Livingroom_Brightness, 2)
-  //sendCommand(LivingRoomWindow1Light, OFF)
-  //sendCommand(LivingRoomWindow2Light, OFF)
   sendCommand(LivingRoomWindow1Brightness, 0)
   sendCommand(LivingRoomWindow2Brightness, 0)
   sendCommand(LivingRoomWindow3Brightness, 0)
@@ -107,7 +103,7 @@ then
 
   if (SunElevation.state < limit && PrevSunElevation >= limit) {
     logInfo('logTime', 'Sun -> lights on')
-    sendCommand(turn_on_all_lights, ON)
+    sendCommand(turn_on_all_lights_half, ON)
   }
 
   PrevSunElevation = SunElevation.state as Number
@@ -118,7 +114,12 @@ when
   Item LivingRoomSwitch2 changed
 then
   logInfo('logTime', 'Wall switch 2 -> lights on')
-  sendCommand(turn_on_all_lights, ON)
+  var Number brightness = ((Livingroom_Brightness.state) as Number)
+  if (brightness == 50) {
+    sendCommand(turn_on_all_lights_full, ON)
+  } else {
+    sendCommand(turn_on_all_lights_half, ON)
+  }
 end
 
 rule "Wall switch 1 -> lights off"

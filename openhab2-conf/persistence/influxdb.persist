@@ -18,6 +18,7 @@ Items {
   Netatmo_Outdoor_Humidity: strategy = everyChange, everyFiveMinutes
   Netatmo_Indoor_Co2: strategy = everyChange, everyFiveMinutes
   Netatmo_Indoor_Pressure: strategy = everyChange, everyFiveMinutes
+  Netatmo_Indoor_Noise: strategy = everyChange, everyFiveMinutes
   KitchenSensorTemperature: strategy = everyChange, everyFiveMinutes
   MasterBedroomSensorTemperature: strategy = everyChange, everyFiveMinutes
   ConservatorySensorTemperature: strategy = everyChange, everyFiveMinutes
