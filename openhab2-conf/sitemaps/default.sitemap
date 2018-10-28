@@ -12,8 +12,7 @@ sitemap default label="Mostigen 1"
   }
 
   Frame label="Lampor" {
-    Switch item=turn_on_all_lights_full mappings=[ON="Aktivera"]
-    Switch item=turn_on_all_lights_half mappings=[ON="Aktivera"]
+    Switch item=turn_on_all_lights_toggle mappings=[ON="Aktivera"]
     Switch item=cinema_mode mappings=[ON="Aktivera"]
     Switch item=turn_off_all_lights mappings=[ON="Aktivera"]
     Text label="Mer ..." icon="" {
