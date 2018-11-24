@@ -1,0 +1,26 @@
+var Timer timer = null
+
+rule "Init"
+when
+	System started
+then
+  logInfo('logTime', 'system started')
+  if (timer === null) {
+    timer = createTimer(now.plusSeconds(10), [ |
+      logInfo('logTime', 'timeout')
+      //if (ThermostatMode.state === NULL) {
+      //  ThermostatMode.postUpdate("off")
+      //}
+
+      //if (ThermostatTemp.state === NULL) {
+      //  ThermostatTemp.postUpdate(21.0)
+      //}
+
+      //if (ThermostatSetpoint.state === NULL) {
+      //  ThermostatSetpoint.postUpdate(21.0)
+      //}
+
+      timer = null
+    ] )
+  }
+end

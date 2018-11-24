@@ -114,7 +114,10 @@ when
   Item turn_on_all_lights_toggle received command ON
 then
   logInfo('logTime', 'Wall switch 2 -> lights on')
-  var Number brightness = ((Livingroom_Brightness.state) as Number)
+  var Number brightness = 0
+  if (Livingroom_Brightness.state !== NULL) {
+    brightness = ((Livingroom_Brightness.state) as Number)
+  }
   if (brightness == 50) {
     sendCommand(turn_on_all_lights_full, ON)
   } else {
@@ -127,7 +130,10 @@ when
   Item LivingRoomSwitch2 changed
 then
   logInfo('logTime', 'Wall switch 2 -> lights on')
-  var Number brightness = ((Livingroom_Brightness.state) as Number)
+  var Number brightness = 0
+  if (Livingroom_Brightness.state !== NULL) {
+    brightness = ((Livingroom_Brightness.state) as Number)
+  }
   if (brightness == 50) {
     sendCommand(turn_on_all_lights_full, ON)
   } else {

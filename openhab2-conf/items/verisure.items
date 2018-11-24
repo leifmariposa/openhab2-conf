@@ -9,5 +9,6 @@ Number KitchenClimateSensor2Hum "Humidity" <humidity> { channel="verisure:climat
 String KitchenClimateSensor2Last "Last update" <lastupdate> { channel="verisure:climatesensor:1:2AAS_W66F:lastupdate" }
 
 String EntranceDoorSensor "Door" { channel="verisure:doorwindow:1:2J45_7HEH:state" }
+String EntranceDoorLock "Lock [%s]" <lock> { channel="verisure:lock:1:2B55P3RS:status" }
 
 Switch LivingroomSmartPlug "Light" <lightbulb> { channel="verisure:smartplug:1:2A77_H2QX:active" }

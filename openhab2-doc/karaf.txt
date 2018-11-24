@@ -7,4 +7,10 @@ openhab> smarthome:things list
 remove a thing:
 openhab> smarthome:things remove chromecast:chromecast:01ca93c4581606fb41838ea8d295c78a
 
- log:set TRACE org.openhab.binding.verisure
+
+log:list  # list all the different corrent log levels
+
+log:set TRACE org.openhab.binding.verisure
+
+log:set INFO smarthome.event   # will show changes of items
+log:set WARN smarthome.event   # will not show changes of items

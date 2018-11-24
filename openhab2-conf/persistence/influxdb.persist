@@ -11,7 +11,7 @@ Items {
   KellysPhone: strategy = everyChange, everyFiveMinutes
   AlexandersPhone: strategy = everyChange, everyFiveMinutes
   JonathansPhone: strategy = everyChange, everyFiveMinutes
-  TemperatureSetpoint: strategy = everyChange, everyFiveMinutes
+  AcSetpoint: strategy = everyChange, everyFiveMinutes
   Netatmo_Indoor_Temperature: strategy = everyChange, everyFiveMinutes
   Netatmo_Outdoor_Temperature: strategy = everyChange, everyFiveMinutes
   Netatmo_Indoor_Humidity: strategy = everyChange, everyFiveMinutes
@@ -30,4 +30,7 @@ Items {
   electricity_consumption : strategy = everyFiveMinutes
   water_total : strategy = everyFiveMinutes
   water_flow : strategy = everyChange, everyFiveMinutes
+
+  LivingRoomThermostatMode: strategy = everyChange, everyFiveMinutes, restoreOnStartup
+  LivingRoomThermostatSetpoint: strategy = everyChange, everyFiveMinutes, restoreOnStartup
 }

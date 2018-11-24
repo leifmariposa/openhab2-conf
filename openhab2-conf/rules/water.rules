@@ -31,6 +31,12 @@ when
 then
   var date	= now.getDayOfMonth
 
+  if (water_at_midnight === NULL) {
+    return
+  }
+  if (water_today === NULL) {
+    return
+  }
   if (water_at_midnight.state === NULL) {
     water_at_midnight.postUpdate((water_total.state).toString)
   }

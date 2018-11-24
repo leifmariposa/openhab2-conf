@@ -1,4 +1,5 @@
 var Number prev_ac_setpoint = 0.0
+var String prev_ac_mode = ""
 
 // Test
 rule "MQTT Test"
@@ -13,91 +14,81 @@ end
 rule "Temperature_rule"
 when
   Time cron "0 */10 * ? * *"
-  //Item Netatmo_Indoor_Temperature changed
 then
-  var Number livingroom_temperature = ((Netatmo_Indoor_Temperature.state) as Number).floatValue
-  var Number outside_temperature = ((Netatmo_Outdoor_Temperature.state) as Number).floatValue
-  var Number livingroom_setpoint = 21.0;
-  var Number livingroom_temperature_factor = 2.0
-  var Number outside_temperature_factor = 0.05
-  var Number ac_setpoint = 0
-
-
-  ac_setpoint = (livingroom_setpoint + 
-                 (22.0 - livingroom_temperature) * livingroom_temperature_factor +
-                 (15.0 - outside_temperature) * outside_temperature_factor).intValue;
-  /*
-               25 =          21.0       +  (22.0 -         20.0         ) * 2.0
-               23 =          21.0       +  (22.0 -         21.0         ) * 2.0
-               21 =          21.0       +  (22.0 -         22.0         ) * 2.0
-               19 =          21.0       +  (22.0 -         23.0         ) * 2.0
-
-  x = (20.0 - outside_temperature) * outside_temperature_factor
-  -0.25  = (15.0 - 20.0) * 0.05
-   0.0  = (15.0 - 15.0) * 0.05
-   0.25  = (15.0 - 10.0) * 0.05
-   0.5  = (15.0 -  5.0) * 0.05
-   0.75  = (15.0 -  0.0) * 0.05
-   1.0  = (15.0 -  -5.0) * 0.05
-*/
-/*
-  if (livingroom_temperature < 19.5) {
-    ac_setpoint = 26
-  } else if (livingroom_temperature < 20.0) {
-    ac_setpoint = 25
-  } else if (livingroom_temperature < 20.5) {
-    ac_setpoint = 24
-  } else if (livingroom_temperature < 21.0) {
-    ac_setpoint = 23
-  } else if (livingroom_temperature < 21.5) {
-    ac_setpoint = 22
-  } else if (livingroom_temperature < 22.0) {
-    ac_setpoint = 21
-  } else if (livingroom_temperature < 22.5) {
-    ac_setpoint = 20
-  } else if (livingroom_temperature < 23.0) {
-    ac_setpoint = 19
-  } else {
-    ac_setpoint = 18
+  if (LivingRoomThermostatMode.state === NULL) {
+    LivingRoomThermostatMode.postUpdate("off")
   }
-*/
-  logInfo('logTime', 
-          'livingroom temperature: ' + livingroom_temperature.toString() + 
-          ' outside temperature ' + outside_temperature.toString() + 
-          ' ac setpoint: ' + ac_setpoint.toString() + 
-          ' prev_ac_setpoint: ' + prev_ac_setpoint.toString())
-  if (ac_setpoint != prev_ac_setpoint) {
-    logInfo('logTime', 'ac_setpoint changed, sending command to ac')
-    prev_ac_setpoint = ac_setpoint
-    if (ac_setpoint <= 18) {
-      logInfo('logTime', 'sending ac/sharp/heat_auto_18')
-      publish("broker", "broadlink/ac/sharp/heat_auto_18", "replay")
-    } else if (ac_setpoint <= 19) {
-      logInfo('logTime', 'sending ac/sharp/heat_auto_19')
-      publish("broker", "broadlink/ac/sharp/heat_auto_19", "replay")
-    } else if (ac_setpoint <= 20) {
-      logInfo('logTime', 'sending ac/sharp/heat_auto_20')
-      publish("broker", "broadlink/ac/sharp/heat_auto_20", "replay")
-    } else if (ac_setpoint <= 21) {
-      logInfo('logTime', 'sending ac/sharp/heat_auto_21')
-      publish("broker", "broadlink/ac/sharp/heat_auto_21", "replay")
-    } else if (ac_setpoint <= 22) {
-      logInfo('logTime', 'sending ac/sharp/heat_auto_22')
-      publish("broker", "broadlink/ac/sharp/heat_auto_22", "replay")
-    } else if (ac_setpoint <= 23) {
-      logInfo('logTime', 'sending ac/sharp/heat_auto_23')
-      publish("broker", "broadlink/ac/sharp/heat_auto_23", "replay")
-    } else if (ac_setpoint <= 24) {
-      logInfo('logTime', 'sending ac/sharp/heat_auto_24')
-      publish("broker", "broadlink/ac/sharp/heat_auto_24", "replay")
-    } else if (ac_setpoint <= 25) {
-      logInfo('logTime', 'sending ac/sharp/heat_auto_25')
-      publish("broker", "broadlink/ac/sharp/heat_auto_25", "replay")
-    } else if (ac_setpoint <= 26) {
-      logInfo('logTime', 'sending ac/sharp/heat_auto_26')
-      publish("broker", "broadlink/ac/sharp/heat_auto_26", "replay")
+  if (LivingRoomThermostatSetpoint.state === NULL) {
+    LivingRoomThermostatSetpoint.postUpdate(21.0)
+  }
+  if (Netatmo_Indoor_Temperature.state === NULL) {
+    return
+  }
+
+  var String ac_mode = LivingRoomThermostatMode.state.toString()
+  var Number indoor_temperature = ((Netatmo_Indoor_Temperature.state) as Number).floatValue
+  var Number outdoor_temperature = ((Netatmo_Outdoor_Temperature.state) as Number).floatValue
+  var Number thermostat_setpoint = ((LivingRoomThermostatSetpoint.state) as Number).floatValue
+  var Number indoor_temperature_factor = 2.5
+  var Number outdoor_temperature_factor = 0.05
+  var Number ac_setpoint
+
+  if (ac_mode != prev_ac_mode) {
+    prev_ac_mode = ac_mode
+    if (ac_mode == "off") {
+      logInfo('logTime', 'sending ac/sharp/off')
+      publish("broker", "broadlink/ac/sharp/off", "replay")
     }
-    TemperatureSetpoint.postUpdate(ac_setpoint)
+  }
+
+  if (ac_mode == "off") {
+    logInfo('logTime',
+            'ac mode: ' + ac_mode)
+  } else if (ac_mode == "heat") {
+    ac_setpoint = (thermostat_setpoint +
+                  (22.0 - indoor_temperature) * indoor_temperature_factor +
+                  (15.0 - outdoor_temperature) * outdoor_temperature_factor).intValue;
+
+    logInfo('logTime',
+            'ac mode: ' + ac_mode + 
+            ', thermostat setpoint: ' + thermostat_setpoint.toString() + 
+            ', indoor temperature: ' + indoor_temperature.toString() +
+            ', outdoor temperature ' + outdoor_temperature.toString() +
+            ', ac setpoint: ' + ac_setpoint.toString())
+    if (ac_setpoint != prev_ac_setpoint) {
+      prev_ac_setpoint = ac_setpoint
+      if (ac_setpoint <= 18) {
+        logInfo('logTime', 'sending ac/sharp/heat_auto_18')
+        publish("broker", "broadlink/ac/sharp/heat_auto_18", "replay")
+      } else if (ac_setpoint <= 19) {
+        logInfo('logTime', 'sending ac/sharp/heat_auto_19')
+        publish("broker", "broadlink/ac/sharp/heat_auto_19", "replay")
+      } else if (ac_setpoint <= 20) {
+        logInfo('logTime', 'sending ac/sharp/heat_auto_20')
+        publish("broker", "broadlink/ac/sharp/heat_auto_20", "replay")
+      } else if (ac_setpoint <= 21) {
+        logInfo('logTime', 'sending ac/sharp/heat_auto_21')
+        publish("broker", "broadlink/ac/sharp/heat_auto_21", "replay")
+      } else if (ac_setpoint <= 22) {
+        logInfo('logTime', 'sending ac/sharp/heat_auto_22')
+        publish("broker", "broadlink/ac/sharp/heat_auto_22", "replay")
+      } else if (ac_setpoint <= 23) {
+        logInfo('logTime', 'sending ac/sharp/heat_auto_23')
+        publish("broker", "broadlink/ac/sharp/heat_auto_23", "replay")
+      } else if (ac_setpoint <= 24) {
+        logInfo('logTime', 'sending ac/sharp/heat_auto_24')
+        publish("broker", "broadlink/ac/sharp/heat_auto_24", "replay")
+      } else if (ac_setpoint <= 25) {
+        logInfo('logTime', 'sending ac/sharp/heat_auto_25')
+        publish("broker", "broadlink/ac/sharp/heat_auto_25", "replay")
+      } else if (ac_setpoint <= 26) {
+        logInfo('logTime', 'sending ac/sharp/heat_auto_26')
+        publish("broker", "broadlink/ac/sharp/heat_auto_26", "replay")
+      } else {
+        logInfo('logTime', 'temperature out of range')
+      }
+      AcSetpoint.postUpdate(ac_setpoint)
+    }
   }
 end
 

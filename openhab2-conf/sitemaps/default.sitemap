@@ -44,7 +44,8 @@ sitemap default label="Mostigen 1"
   }
 
   Frame label="Klimat" {
-    Text item=TemperatureSetpoint label="Börvärde"
+    Setpoint item=LivingRoomThermostatSetpoint label="Termostat börvärde" step=0.5
+    Text item=AcSetpoint label="AC börvärde"
     Text item=Netatmo_Indoor_Temperature label="Inne"
     Text item=Netatmo_Outdoor_Temperature label="Ute"
     Text item=Netatmo_Indoor_Humidity label="Inne"
@@ -119,6 +120,7 @@ sitemap default label="Mostigen 1"
   Frame label="Larm" {
     Text item=AlarmStatus label="Status"
     Text item=AlarmStatusTimeChanged label="Senaste av/på-aktivering"
+    Text item=EntranceDoorLock label="Lås"
     Switch item=EntranceDoorSensor label="Entredörr [MAP(open_close.map):%s]"
   }
 
