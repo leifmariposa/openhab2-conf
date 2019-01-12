@@ -14,5 +14,5 @@ Bridge rfxcom:bridge:rfx "RFXCOM USB Transceiver"@"System" [ serialPort="/dev/tt
   Thing lighting2 lightlivingroombureau "Light Bureau"@"Living room" [deviceId="4977550.2", subType="AC"]
   Thing lighting2 lightlivingroomwindow1 "Light Window 1"@"Living room" [deviceId="4977550.3", subType="AC"]
   Thing lighting2 lightlivingroomwindow2 "Light Window 2"@"Living room" [deviceId="4977550.4", subType="AC"]
-  Thing lighting2 lighthallway "Light"@"Hallway" [deviceId="4977550.5", subType="AC"]
+  //Thing lighting2 lighthallway "Light"@"Hallway" [deviceId="4977550.5", subType="AC"]
 }

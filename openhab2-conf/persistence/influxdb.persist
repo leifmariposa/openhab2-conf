@@ -30,6 +30,8 @@ Items {
   electricity_consumption : strategy = everyFiveMinutes
   water_total : strategy = everyFiveMinutes
   water_flow : strategy = everyChange, everyFiveMinutes
+  electricity_at_midnight : strategy = everyChange
+  electricity_at_new_month : strategy = everyChange
 
   LivingRoomThermostatMode: strategy = everyChange, everyFiveMinutes, restoreOnStartup
   LivingRoomThermostatSetpoint: strategy = everyChange, everyFiveMinutes, restoreOnStartup

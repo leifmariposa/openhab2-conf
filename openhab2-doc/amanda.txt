@@ -1,0 +1,28 @@
+Install with:
+sudo openhabian-config
+
+Install sshfs:
+sudo apt-get install sshfs
+
+ssh-keygen -t RSA -C "leifmariposa@hotmail.com"
+ssh-copy-id pi@backuppi.local
+
+Add allow_other to /etc/fuse.conf
+
+sudo mkdir /mnt/backup
+sudo chown openhabian:openhabian /mnt/backup
+sshfs -o allow_other pi@backuppi.local:/home/pi/backup/openhabianpi /mnt/backup
+
+Run to configure Amanda backup:
+sudo openhabian-config
+
+Test:
+First change to backup user:
+//su backup
+sudo su - backup
+amcheck openhab-dir
+
+
+Run:
+sudo su - backup
+amdump openhab-dir

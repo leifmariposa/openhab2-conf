@@ -10,6 +10,11 @@ Dimmer LivingRoomWindow1Brightness "Living Room Window 1 [%s]" { channel="tradfr
 Dimmer LivingRoomWindow2Brightness "Living Room Window 2 [%s]" { channel="tradfri:0100:mygateway:LivingRoomWindow2Bulb:brightness" }
 Dimmer LivingRoomWindow3Brightness "Living Room Window 3 [%s]" { channel="tradfri:0100:mygateway:LivingRoomWindow3Bulb:brightness" }
 
+Dimmer LivingRoomBureau1Brightness "Living Room Bureau 1 [%s]" { channel="tradfri:0100:mygateway:LivingRoomBureau1Bulb:brightness" }
+Dimmer LivingRoomBureau2Brightness "Living Room Bureau 2 [%s]" { channel="tradfri:0100:mygateway:LivingRoomBureau2Bulb:brightness" }
+
+Dimmer HallwayBrightness "Hallway [%s]" { channel="tradfri:0100:mygateway:HallwayBulb:brightness" }
+
 Number RemoteControlBatteryLevel { channel="tradfri:0830:mygateway:TradfriRemoteControl:battery_level" }
 Switch RemoteControlBatteryLow { channel="tradfri:0830:mygateway:TradfriRemoteControl:battery_low" }
 

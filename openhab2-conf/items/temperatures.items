@@ -14,12 +14,11 @@ Switch LivingRoomSwitch1 "Switch" <switch> { channel="rfxcom:lighting2:rfx:livin
 Switch LivingRoomSwitch2 "Switch" <switch> { channel="rfxcom:lighting2:rfx:livingroomswitch2:command" }
 
 Switch EntranceWallLight "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lightentrancewall:command" }
-Switch LivingRoomBureauLight "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lightlivingroombureau:command" }
-Switch LivingRoomWindow1Light "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lightlivingroomwindow1:command" }
-Switch LivingRoomWindow2Light "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lightlivingroomwindow2:command" }
-Switch HallwayLight "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lighthallway:command" }
+//Switch LivingRoomWindow1Light "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lightlivingroomwindow1:command" }
+//Switch LivingRoomWindow2Light "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lightlivingroomwindow2:command" }
+//Switch HallwayLight "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lighthallway:command" }
 
-Group groupThermostat "Main Termostat" [ "Thermostat", "Celsius" ]
+Group groupThermostat "Termostat" [ "Thermostat", "Celsius" ]
 String LivingRoomThermostatMode "Värme/Kyla Mode [%s]" <temperature> (groupThermostat) [ "homekit:HeatingCoolingMode" ]
 Number LivingRoomThermostatTemp	"Temperatur [%.1f °C]" <temperature> (groupThermostat) [ "CurrentTemperature" ] { channel = "netatmo:NAMain:home:inside:Temperature" }
 Number LivingRoomThermostatSetpoint "Termostat börvärde [%.1f °C]" <heating> (groupThermostat) [ "TargetTemperature" ]

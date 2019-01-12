@@ -8,6 +8,9 @@ remove a thing:
 openhab> smarthome:things remove chromecast:chromecast:01ca93c4581606fb41838ea8d295c78a
 
 
+Log levels
+OFF, FATAL, ERROR, WARN, INFO, DEBUG, TRACE, ALL
+
 log:list  # list all the different corrent log levels
 
 log:set TRACE org.openhab.binding.verisure

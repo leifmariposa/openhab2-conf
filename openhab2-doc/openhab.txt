@@ -1,0 +1,6 @@
+Update...
+sudo openhabian-config
+
+Amanda backup ?????
+
+ac/sharp/off -> get kallluft

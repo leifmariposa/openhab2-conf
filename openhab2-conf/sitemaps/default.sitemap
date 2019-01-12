@@ -18,24 +18,21 @@ sitemap default label="Mostigen 1"
     Text label="Mer ..." icon="" {
       Frame label="Av/på lampor" {
         Switch item=EntranceWallLight label="Entre"
-        Switch item=HallwayLight label="Hall"
-        Switch item=LivingRoomBureauLight label="Vardagsrum, byrå"
-        //Switch item=LivingRoomWindow1Light label="Vardagsrum, fönster 1"
-        //Switch item=LivingRoomWindow2Light label="Vardagsrum, fönster 2"
         Switch item=LivingroomSmartPlug label="Mammas lampa"
       }
-      Frame label="Lampa till vänster om tv" {
-        Slider item=LivingRoomLeftBulbBrightness label="Ljusstyrka [%.0f %%]"
-        Slider item=LivingRoomLeftBulbColor label="Färg [%.0f %%]"
+      Frame label="Vardagsrum" {
+        Slider item=LivingRoomLeftBulbBrightness label="Vänster om tv, ljusstyrka [%.0f %%]"
+        Slider item=LivingRoomLeftBulbColor label="Vänster om tv, färg [%.0f %%]"
+        Slider item=LivingRoomRightBulbBrightness label="Höger om tv, ljusstyrka [%.0f %%]"
+        Slider item=LivingRoomRightBulbColor label="Höger om tv, färg [%.0f %%]"
+        Slider item=LivingRoomWindow1Brightness label="Fönster 1 [%.0f %%]"
+        Slider item=LivingRoomWindow2Brightness label="Fönster 2 [%.0f %%]"
+        Slider item=LivingRoomWindow3Brightness label="Fönster 3 [%.0f %%]"
+        Slider item=LivingRoomBureau1Brightness label="Byrå 1 [%.0f %%]"
+        Slider item=LivingRoomBureau2Brightness label="Byrå 2 [%.0f %%]"
       }
-      Frame label="Lampa till höger om tv" {
-        Slider item=LivingRoomRightBulbBrightness label="Ljusstyrka [%.0f %%]"
-        Slider item=LivingRoomRightBulbColor label="Färg [%.0f %%]"
-      }
-      Frame label="Vardagsrum fönster" {
-        Slider item=LivingRoomWindow1Brightness label="Lampa 1 [%.0f %%]"
-        Slider item=LivingRoomWindow2Brightness label="Lampa 2 [%.0f %%]"
-        Slider item=LivingRoomWindow3Brightness label="Lampa 3 [%.0f %%]"
+      Frame label="Hallen" {
+        Slider item=HallwayBrightness label="Lampa [%.0f %%]"
       }
       Frame label="Trädgård" {
         Slider item=GardenBulbBrightness label="Ljusstyrka [%.0f %%]"
@@ -101,8 +98,13 @@ sitemap default label="Mostigen 1"
 
   Frame label="El" {
     Text item=electricity_consumption label="Nu"
+    Text item=electricity_meter label="Mätarställning"
+    Text item=electricity_at_midnight label="Mätarställning midnatt"
     Text item=electricity_today label="Idag"
     Text item=energy_cost_today label="Idag"
+    Text item=electricity_at_new_month label="Mätarställning månadsskifte"
+    Text item=electricity_this_month label="Denna månad"
+    Text item=energy_cost_this_month label="Denna månad"
     Text label="Grafer ..." icon="line" {
       Webview url="http://mostigen1.ddns.net:3000/d/jeLbWjZgk/el?refresh=5s&orgId=1" height=39
     }
@@ -121,6 +123,7 @@ sitemap default label="Mostigen 1"
     Text item=AlarmStatus label="Status"
     Text item=AlarmStatusTimeChanged label="Senaste av/på-aktivering"
     Text item=EntranceDoorLock label="Lås"
+    Text item=EntranceDoorLockTimeChanged label="Senaste upplåsning/låsning"
     Switch item=EntranceDoorSensor label="Entredörr [MAP(open_close.map):%s]"
   }
 

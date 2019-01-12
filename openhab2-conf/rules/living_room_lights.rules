@@ -12,15 +12,18 @@ var Number PrevSunElevation
 
 rule "Livingroom_Brightness"
 when
-  Item Livingroom_Brightness changed
+  Item Livingroom_Brightness received update
 then
   var Number brightness = ((Livingroom_Brightness.state) as Number)
-  sendCommand(GardenBulbBrightness, brightness);
   sendCommand(LivingRoomLeftBulbBrightness, brightness);
   sendCommand(LivingRoomRightBulbBrightness, brightness);
   sendCommand(LivingRoomWindow1Brightness, brightness)
   sendCommand(LivingRoomWindow2Brightness, brightness)
   sendCommand(LivingRoomWindow3Brightness, brightness)
+  sendCommand(LivingRoomBureau1Brightness, brightness)
+  sendCommand(LivingRoomBureau2Brightness, brightness)
+  sendCommand(HallwayBrightness, brightness)
+  sendCommand(GardenBulbBrightness, brightness);
 end
 
 rule "Livingroom_Color"
@@ -37,7 +40,7 @@ when
   Item turn_on_morning_lights received command ON
 then
   sendCommand(EntranceWallLight, ON)
-  sendCommand(HallwayLight, ON)
+  sendCommand(HallwayBrightness, 50)
 end
 
 rule "Turn off morning lights"
@@ -45,54 +48,55 @@ when
   Item turn_off_morning_lights received command ON
 then
   sendCommand(EntranceWallLight, OFF)
-  sendCommand(HallwayLight, OFF)
+  sendCommand(HallwayBrightness, 0)
 end
 
 rule "Turn on all lights full"
 when
   Item turn_on_all_lights_full received command ON
 then
+  logInfo('logTime', 'Turn on all lights full')
   sendCommand(EntranceWallLight, ON)
-  sendCommand(HallwayLight, ON)
-  sendCommand(LivingRoomBureauLight, ON)
   sendCommand(LivingroomSmartPlug, ON)
-  sendCommand(Livingroom_Brightness, 100)
+  postUpdate(Livingroom_Brightness, 100)
 end
 
 rule "Turn on all lights_half"
 when
   Item turn_on_all_lights_half received command ON
 then
+  logInfo('logTime', 'Turn on all lights half')
   sendCommand(EntranceWallLight, ON)
-  sendCommand(HallwayLight, ON)
-  sendCommand(LivingRoomBureauLight, ON)
   sendCommand(LivingroomSmartPlug, ON)
-  sendCommand(Livingroom_Brightness, 50)
+  postUpdate(Livingroom_Brightness, 50)
 end
 
 rule "Turn off all lights"
 when
   Item turn_off_all_lights received command ON
 then
+  logInfo('logTime', 'Turn off all lights')
   sendCommand(EntranceWallLight, OFF)
-  sendCommand(HallwayLight, OFF)
-  sendCommand(LivingRoomBureauLight, OFF)
   sendCommand(LivingroomSmartPlug, OFF)
-  sendCommand(Livingroom_Brightness, 0)
+  postUpdate(Livingroom_Brightness, 0)
 end
 
 rule "Biografläge"
 when
   Item cinema_mode received command ON
 then
+  logInfo('logTime', 'Biografläge')
   sendCommand(EntranceWallLight, OFF)
-  sendCommand(HallwayLight, OFF)
-  sendCommand(LivingRoomBureauLight, OFF)
   sendCommand(LivingroomSmartPlug, OFF)
-  sendCommand(Livingroom_Brightness, 2)
+  sendCommand(GardenBulbBrightness, 0);
+  sendCommand(LivingRoomLeftBulbBrightness, 2);
+  sendCommand(LivingRoomRightBulbBrightness, 2);
   sendCommand(LivingRoomWindow1Brightness, 0)
   sendCommand(LivingRoomWindow2Brightness, 0)
   sendCommand(LivingRoomWindow3Brightness, 0)
+  sendCommand(LivingRoomBureau1Brightness, 0)
+  sendCommand(LivingRoomBureau2Brightness, 0)
+  sendCommand(HallwayBrightness, 0)
 end
 
 rule "About 1 hour before sunset"
@@ -109,30 +113,14 @@ then
   PrevSunElevation = SunElevation.state as Number
 end
 
-rule "Sitemap button -> lights on"
+rule "Sitemap button/Wall switch 2 -> lights on"
 when
-  Item turn_on_all_lights_toggle received command ON
+  Item turn_on_all_lights_toggle received command ON or Item LivingRoomSwitch2 changed
 then
   logInfo('logTime', 'Wall switch 2 -> lights on')
   var Number brightness = 0
-  if (Livingroom_Brightness.state !== NULL) {
-    brightness = ((Livingroom_Brightness.state) as Number)
-  }
-  if (brightness == 50) {
-    sendCommand(turn_on_all_lights_full, ON)
-  } else {
-    sendCommand(turn_on_all_lights_half, ON)
-  }
-end
-
-rule "Wall switch 2 -> lights on"
-when
-  Item LivingRoomSwitch2 changed
-then
-  logInfo('logTime', 'Wall switch 2 -> lights on')
-  var Number brightness = 0
-  if (Livingroom_Brightness.state !== NULL) {
-    brightness = ((Livingroom_Brightness.state) as Number)
+  if (LivingRoomLeftBulbBrightness.state !== NULL) {
+    brightness = ((LivingRoomLeftBulbBrightness.state) as Number)
   }
   if (brightness == 50) {
     sendCommand(turn_on_all_lights_full, ON)

@@ -6,4 +6,7 @@ Bridge tradfri:gateway:mygateway [ host="192.168.1.10", code="ODXl9oyZeTOQUUTi" 
     0100 LivingRoomWindow1Bulb "LivingRoom Window 1 Bulb"@"Living room" [ id=65541 ]
     0100 LivingRoomWindow2Bulb "LivingRoom Window 2 Bulb"@"Living room" [ id=65540 ]
     0100 LivingRoomWindow3Bulb "LivingRoom Window 3 Bulb"@"Living room" [ id=65542 ]
+    0100 LivingRoomBureau1Bulb "LivingRoom Bureau 1 Bulb"@"Living room" [ id=65543 ]
+    0100 LivingRoomBureau2Bulb "LivingRoom Bureau 2 Bulb"@"Living room" [ id=65544 ]
+    0100 HallwayBulb "Hallway"@"Hallway" [ id=65546 ]
 }

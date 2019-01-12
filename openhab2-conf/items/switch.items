@@ -2,7 +2,7 @@ Switch turn_on_all_lights_full "Alla lamor på 100%" (vent) {autoupdate="false"}
 Switch turn_on_all_lights_half "Alla lamor på 50%" (vent) {autoupdate="false"}
 Switch turn_on_all_lights_toggle "Alla lamor på" (vent) {autoupdate="false"}
 Switch turn_off_all_lights "Alla lampor av" (vent) {autoupdate="false"}
-Switch cinema_mode "Biografläge" (vent) [ "Switchable" ] {autoupdate="false"}
+Switch cinema_mode "Biografläge" (vent) [ "Switchable" ]
 Switch turn_on_morning_lights "Morgon lamor på" (vent) {autoupdate="false"}
 Switch turn_off_morning_lights "Morgon lampor av" (vent) {autoupdate="false"}
 

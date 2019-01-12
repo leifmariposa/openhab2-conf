@@ -14,18 +14,46 @@ rule "kWh"
 when
   Item electricity_total changed
 then
-  var date	= now.getDayOfMonth
+  var date = now.getDayOfMonth
+  var month	= now.getMonthOfYear
 
-  if (electricity_at_midnight.state === NULL) {
-    electricity_at_midnight.postUpdate((electricity_total.state).toString)
+  electricity_meter.postUpdate((113160 + (electricity_total.state as Number)).toString)
+
+  //if (electricity_at_midnight.state === NULL) {
+  //  electricity_at_midnight.postUpdate((electricity_meter.state).toString)
+ //}
+
+  //if (electricity_at_new_month.state === NULL) {
+  //  electricity_at_new_month.postUpdate((electricity_meter.state).toString)
+  //}
+
+  if (electricity_current_date.state === NULL) {
+    electricity_current_date.postUpdate((date).toString)
   }
-
   if (electricity_current_date.state != date) {
     electricity_current_date.postUpdate((date).toString)
-    electricity_at_midnight.postUpdate((electricity_total.state).toString)
+    electricity_at_midnight.postUpdate((electricity_meter.state).toString)
+  }
+  if (electricity_at_midnight.state != NULL) {
+    electricity_today.postUpdate(((electricity_meter.state as Number) - (electricity_at_midnight.state as Number)).toString)
+    energy_cost_today.postUpdate((electricity_today.state as Number) * 1.6) // 1.60 Skr/kWh
   }
 
-  electricity_today.postUpdate(((electricity_total.state as Number) - (electricity_at_midnight.state as Number)).toString)
-  energy_cost_today.postUpdate((electricity_today.state as Number) * 2.0) // 2.0 Skr/kWh
+  if (electricity_current_month.state === NULL) {
+    electricity_current_month.postUpdate((month).toString)
+  }
+  if (electricity_current_month.state != month) {
+    electricity_current_month.postUpdate((month).toString)
+    electricity_at_new_month.postUpdate((electricity_meter.state).toString)
+  }
+  if (electricity_at_new_month.state != NULL) {
+    electricity_this_month.postUpdate(((electricity_meter.state as Number) - (electricity_at_new_month.state as Number)).toString)
+    energy_cost_this_month.postUpdate((electricity_this_month.state as Number) * 1.6) // 1.60 Skr/kWh
+  }
+
+//  if (electricity_at_new_month.state != NULL) {
+//    electricity_this_month.postUpdate(((electricity_meter.state as Number) - (electricity_at_new_month.state as Number)).toString)
+//  }
+//  energy_cost_this_month.postUpdate((electricity_this_month.state as Number) * 1.6) // 1.60 Skr/kWh
 end
 
