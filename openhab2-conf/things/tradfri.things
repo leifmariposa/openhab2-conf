@@ -1,4 +1,5 @@
-Bridge tradfri:gateway:mygateway [ host="192.168.1.10", code="ODXl9oyZeTOQUUTi" ] {
+//Bridge tradfri:gateway:mygateway [ host="192.168.1.10", code="ODXl9oyZeTOQUUTi" ] {
+Bridge tradfri:gateway:gwa0cc2b6f9869 [ host="192.168.1.10", identity="444aed16d86c4bd2811b82bc0a867712", preSharedKey="pjTOaLEwzpam2dt8" ] {
     0830 TradfriRemoteControl "Tradfri Remote Control"@"Living room" [ id=65536 ]
     0100 GardenBulb "Garden Bulb"@"Garden" [ id=65537 ]
     0220 LivingRoomLeftBulb "Living Room Left Bulb"@"Living room" [ id=65539 ]
@@ -9,4 +10,58 @@ Bridge tradfri:gateway:mygateway [ host="192.168.1.10", code="ODXl9oyZeTOQUUTi" 
     0100 LivingRoomBureau1Bulb "LivingRoom Bureau 1 Bulb"@"Living room" [ id=65543 ]
     0100 LivingRoomBureau2Bulb "LivingRoom Bureau 2 Bulb"@"Living room" [ id=65544 ]
     0100 HallwayBulb "Hallway"@"Hallway" [ id=65546 ]
+    0830 JonathansRemoteControl "Tradfri Remote Control"@"Jonathans room" [ id=65561 ]
+    0210 JonathansCeilingLamp "Ceiling Lamp"@"Jonathans room" [ id=65562 ]
+    0010 LivingRoomOutlet "Outlet"@"Living room" [ id=65555 ]
+    0820 LivingRoomOutletControl "Outlet Remote Control"@"Living room" [ id=65554 ]
+    0100 EntranceBulb "Entrance"@"Entrance" [ id=65563 ]
 }
+
+//2019-04-29 20:21:17.402 [INFO ] [el.core.internal.ModelRepositoryImpl] - Refreshing model 'tradfri.things'
+//2019-04-29 20:21:17.524 [INFO ] [radfri.handler.TradfriGatewayHandler] - Bridge configuration updated. Updating paired things (if any).
+//2019-04-29 20:21:17.665 [INFO ] [g.discovery.internal.PersistentInbox] - Added new thing 'tradfri:0830:gwa0cc2b6f9869:65558' to inbox.
+//2019-04-29 20:21:18.553 [INFO ] [g.discovery.internal.PersistentInbox] - Added new thing 'tradfri:0830:gwa0cc2b6f9869:65566' to inbox.
+//2019-04-29 20:21:19.363 [INFO ] [g.discovery.internal.PersistentInbox] - Added new thing 'tradfri:0100:gwa0cc2b6f9869:65542' to inbox.
+//2019-04-29 20:21:19.717 [INFO ] [g.discovery.internal.PersistentInbox] - Added new thing 'tradfri:0100:gwa0cc2b6f9869:65537' to inbox.
+//2019-04-29 20:21:19.970 [INFO ] [g.discovery.internal.PersistentInbox] - Added new thing 'tradfri:0100:gwa0cc2b6f9869:65540' to inbox.
+//2019-04-29 20:21:20.222 [INFO ] [g.discovery.internal.PersistentInbox] - Added new thing 'tradfri:0100:gwa0cc2b6f9869:65541' to inbox.
+//2019-04-29 20:21:20.497 [INFO ] [g.discovery.internal.PersistentInbox] - Added new thing 'tradfri:0220:gwa0cc2b6f9869:65538' to inbox.
+//2019-04-29 20:21:20.789 [INFO ] [g.discovery.internal.PersistentInbox] - Added new thing 'tradfri:0100:gwa0cc2b6f9869:65544' to inbox.
+//2019-04-29 20:21:21.102 [INFO ] [g.discovery.internal.PersistentInbox] - Added new thing 'tradfri:0100:gwa0cc2b6f9869:65543' to inbox.
+//2019-04-29 20:21:21.357 [INFO ] [g.discovery.internal.PersistentInbox] - Added new thing 'tradfri:0820:gwa0cc2b6f9869:65554' to inbox.
+//2019-04-29 20:21:21.613 [INFO ] [g.discovery.internal.PersistentInbox] - Added new thing 'tradfri:0100:gwa0cc2b6f9869:65563' to inbox.
+//2019-04-29 20:21:21.867 [INFO ] [g.discovery.internal.PersistentInbox] - Added new thing 'tradfri:0100:gwa0cc2b6f9869:65546' to inbox.
+
+//"tradfri:gateway:gwa0cc2b6f9869": {
+//    "class": "org.eclipse.smarthome.core.thing.internal.BridgeImpl",
+//    "value": {
+//      "label": "TRÅDFRI Gateway",
+//      "channels": [],
+//      "configuration": {
+//        "properties": {
+//          "host": "192.168.1.10",
+//          "preSharedKey": "pjTOaLEwzpam2dt8",
+//          "port": 5684,
+//          "identity": "444aed16d86c4bd2811b82bc0a867712"
+//        }
+//      },
+//      "properties": {
+//        "serialNumber": "gw-a0cc2b6f9869",
+//        "vendor": "IKEA of Sweden",
+//        "firmwareVersion": "1.8.25"
+//      },
+//      "uid": {
+//        "segments": [
+//          "tradfri",
+//          "gateway",
+//          "gwa0cc2b6f9869"
+//        ]
+//      },
+//      "thingTypeUID": {
+//        "segments": [
+//          "tradfri",
+//          "gateway"
+//        ]
+//      }
+//    }
+//  }

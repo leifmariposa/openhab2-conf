@@ -15,6 +15,9 @@ when
   Item Livingroom_Brightness received update
 then
   var Number brightness = ((Livingroom_Brightness.state) as Number)
+  sendCommand(EntranceBrightness, brightness)
+  sendCommand(GardenBulbBrightness, brightness);
+  sendCommand(HallwayBrightness, brightness)
   sendCommand(LivingRoomLeftBulbBrightness, brightness);
   sendCommand(LivingRoomRightBulbBrightness, brightness);
   sendCommand(LivingRoomWindow1Brightness, brightness)
@@ -22,8 +25,6 @@ then
   sendCommand(LivingRoomWindow3Brightness, brightness)
   sendCommand(LivingRoomBureau1Brightness, brightness)
   sendCommand(LivingRoomBureau2Brightness, brightness)
-  sendCommand(HallwayBrightness, brightness)
-  sendCommand(GardenBulbBrightness, brightness);
 end
 
 rule "Livingroom_Color"
@@ -39,7 +40,7 @@ rule "Turn on morning lights"
 when
   Item turn_on_morning_lights received command ON
 then
-  sendCommand(EntranceWallLight, ON)
+  sendCommand(EntranceBrightness, 50)
   sendCommand(HallwayBrightness, 50)
 end
 
@@ -47,7 +48,7 @@ rule "Turn off morning lights"
 when
   Item turn_off_morning_lights received command ON
 then
-  sendCommand(EntranceWallLight, OFF)
+  sendCommand(EntranceBrightness, 0)
   sendCommand(HallwayBrightness, 0)
 end
 
@@ -56,7 +57,6 @@ when
   Item turn_on_all_lights_full received command ON
 then
   logInfo('logTime', 'Turn on all lights full')
-  sendCommand(EntranceWallLight, ON)
   sendCommand(LivingroomSmartPlug, ON)
   postUpdate(Livingroom_Brightness, 100)
 end
@@ -66,7 +66,6 @@ when
   Item turn_on_all_lights_half received command ON
 then
   logInfo('logTime', 'Turn on all lights half')
-  sendCommand(EntranceWallLight, ON)
   sendCommand(LivingroomSmartPlug, ON)
   postUpdate(Livingroom_Brightness, 50)
 end
@@ -76,9 +75,8 @@ when
   Item turn_off_all_lights received command ON
 then
   logInfo('logTime', 'Turn off all lights')
-  sendCommand(EntranceWallLight, OFF)
   sendCommand(LivingroomSmartPlug, OFF)
-  postUpdate(Livingroom_Brightness, 0)
+  //postUpdate(Livingroom_Brightness, 0)
 end
 
 rule "Biografläge"
@@ -86,9 +84,10 @@ when
   Item cinema_mode received command ON
 then
   logInfo('logTime', 'Biografläge')
-  sendCommand(EntranceWallLight, OFF)
-  sendCommand(LivingroomSmartPlug, OFF)
+  sendCommand(EntranceBrightness, 0)
+  sendCommand(HallwayBrightness, 0)
   sendCommand(GardenBulbBrightness, 0);
+  sendCommand(LivingroomSmartPlug, OFF)
   sendCommand(LivingRoomLeftBulbBrightness, 2);
   sendCommand(LivingRoomRightBulbBrightness, 2);
   sendCommand(LivingRoomWindow1Brightness, 0)
@@ -96,7 +95,6 @@ then
   sendCommand(LivingRoomWindow3Brightness, 0)
   sendCommand(LivingRoomBureau1Brightness, 0)
   sendCommand(LivingRoomBureau2Brightness, 0)
-  sendCommand(HallwayBrightness, 0)
 end
 
 rule "About 1 hour before sunset"
@@ -105,6 +103,7 @@ when
 then
   var Number limit = 5.0
 
+  logInfo('logTime', 'SunElevation.state: {}', SunElevation.state)
   if (SunElevation.state < limit && PrevSunElevation >= limit) {
     logInfo('logTime', 'Sun -> lights on')
     sendCommand(turn_on_all_lights_half, ON)
@@ -151,8 +150,8 @@ when
   //         ss mm hh
   Time cron "00 30 06 * * ? *"
 then
-  logInfo('logTime', 'Time -> morning lights on')
-  sendCommand(turn_on_morning_lights, ON)
+  //logInfo('logTime', 'Time -> morning lights on')
+  //sendCommand(turn_on_morning_lights, ON)
 end
 
 rule "Time -> morning lights off"
@@ -160,8 +159,8 @@ when
   //         ss mm hh
   Time cron "00 30 07 * * ? *"
 then
-  logInfo('logTime', 'Time -> morning lights off')
-  sendCommand(turn_off_morning_lights, ON)
+  //logInfo('logTime', 'Time -> morning lights off')
+  //sendCommand(turn_off_morning_lights, ON)
 end
 
 rule "Reboot"
@@ -171,11 +170,27 @@ then
   executeCommandLine("sudo reboot", 1000)
 end
 
+rule "Turn on fan lamp"
+when
+  Item fan_lamp received command ON
+then
+  var String result = executeCommandLine("/home/openhabian/bluetooth/fan_lamp_on.sh", 1000)
+  logInfo('logTime', 'Turn on fan lamp: {}', result)
+end
+
+rule "Turn fan lamp off"
+when
+  Item fan_lamp received command OFF
+then
+  var String result = executeCommandLine("/home/openhabian/bluetooth/fan_lamp_off.sh", 1000)
+  logInfo('logTime', 'Turn off fan lamp: {}', result)
+end
+
 rule "WhoIsHome"
 when
   Time cron "0 * * ? * *"
 then
-  var String result = executeCommandLine("/home/openhabian/precence_detektion/leif.sh", 1000)
+  var String result = executeCommandLine("/srv/openhab2-misc/presence-detektion/leif.sh", 1000)
   if (result != "") {
     LeifIsHome = 5
   } else {
@@ -191,7 +206,7 @@ then
   }
   //logInfo('logTime', 'result: {}, LeifIsHome: {}', result, LeifIsHome)
 
-  result = executeCommandLine("/home/openhabian/precence_detektion/kelly.sh", 1000)
+  result = executeCommandLine("/srv/openhab2-misc/presence-detektion/kelly.sh", 1000)
   if (result != "") {
     KellyIsHome = 5
   } else {
@@ -207,7 +222,7 @@ then
   }
   //logInfo('logTime', 'result: {}, KellyIsHome: {}', result, KellyIsHome)
 
-  result = executeCommandLine("/home/openhabian/precence_detektion/alexander.sh", 1000)
+  result = executeCommandLine("/srv/openhab2-misc/presence-detektion/alexander.sh", 1000)
   if (result != "") {
     AlexanderIsHome = 5
   } else {
@@ -223,7 +238,7 @@ then
   }
   //logInfo('logTime', 'result: {}, AlexanderIsHome: {}', result, AlexanderIsHome)
 
-  result = executeCommandLine("/home/openhabian/precence_detektion/jonathan.sh", 1000)
+  result = executeCommandLine("/srv/openhab2-misc/presence-detektion/jonathan.sh", 1000)
   if (result != "") {
     JonathanIsHome = 5
   } else {

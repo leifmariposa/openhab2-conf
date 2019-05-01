@@ -1,0 +1,11 @@
+sitemap jonathan label="Jonathans Room"
+{
+  Frame label="Lampor" {
+    Slider item=JonathansCeilingLampColorTemperature label="Taklampa ljusstyrka [%.1f %%]"
+    Colorpicker item=JonathansCeilingLampColorLight label="Taklampa färg"
+  }
+  Frame label="Fjärrkontroll" {
+    Text item=RemoteControlBatteryLevel label="Batterinivå [%d %%]"
+    Switch item=RemoteControlBatteryLow label="Varning lågt batteri"
+  }
+}

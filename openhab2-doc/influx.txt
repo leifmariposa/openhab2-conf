@@ -2,5 +2,11 @@ influx -username admin -password Bigoton111
 
 use openhab_db
 
+list tables:
+show measurements
+
+Show last value:
+SELECT * FROM electricity_at_midnight GROUP BY * ORDER BY ASC LIMIT 1
+
 Erase all data:
 DROP SERIES FROM /.*/

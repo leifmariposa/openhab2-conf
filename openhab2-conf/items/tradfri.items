@@ -1,22 +1,29 @@
-Dimmer GardenBulbBrightness "Garden Light [%s]" { channel="tradfri:0100:mygateway:GardenBulb:brightness" }
+Dimmer GardenBulbBrightness "Garden Light [%s]" { channel="tradfri:0100:gwa0cc2b6f9869:GardenBulb:brightness" }
 
-Dimmer LivingRoomLeftBulbBrightness "Living Room Left Light [%s]" { channel="tradfri:0220:mygateway:LivingRoomLeftBulb:brightness" }
-Dimmer LivingRoomLeftBulbColor "Living Room Left Light Color [%s]" { channel="tradfri:0220:mygateway:LivingRoomLeftBulb:color_temperature" }
+Dimmer LivingRoomLeftBulbBrightness "Living Room Left Light [%s]" { channel="tradfri:0220:gwa0cc2b6f9869:LivingRoomLeftBulb:brightness" }
+Dimmer LivingRoomLeftBulbColor "Living Room Left Light Color [%s]" { channel="tradfri:0220:gwa0cc2b6f9869:LivingRoomLeftBulb:color_temperature" }
 
-Dimmer LivingRoomRightBulbBrightness "Living Room Right Light [%s]" { channel="tradfri:0220:mygateway:LivingRoomRightBulb:brightness" }
-Dimmer LivingRoomRightBulbColor "Living Room Right Light Color [%s]" { channel="tradfri:0220:mygateway:LivingRoomRightBulb:color_temperature" }
+Dimmer LivingRoomRightBulbBrightness "Living Room Right Light [%s]" { channel="tradfri:0220:gwa0cc2b6f9869:LivingRoomRightBulb:brightness" }
+Dimmer LivingRoomRightBulbColor "Living Room Right Light Color [%s]" { channel="tradfri:0220:gwa0cc2b6f9869:LivingRoomRightBulb:color_temperature" }
 
-Dimmer LivingRoomWindow1Brightness "Living Room Window 1 [%s]" { channel="tradfri:0100:mygateway:LivingRoomWindow1Bulb:brightness" }
-Dimmer LivingRoomWindow2Brightness "Living Room Window 2 [%s]" { channel="tradfri:0100:mygateway:LivingRoomWindow2Bulb:brightness" }
-Dimmer LivingRoomWindow3Brightness "Living Room Window 3 [%s]" { channel="tradfri:0100:mygateway:LivingRoomWindow3Bulb:brightness" }
+Dimmer LivingRoomWindow1Brightness "Living Room Window 1 [%s]" { channel="tradfri:0100:gwa0cc2b6f9869:LivingRoomWindow1Bulb:brightness" }
+Dimmer LivingRoomWindow2Brightness "Living Room Window 2 [%s]" { channel="tradfri:0100:gwa0cc2b6f9869:LivingRoomWindow2Bulb:brightness" }
+Dimmer LivingRoomWindow3Brightness "Living Room Window 3 [%s]" { channel="tradfri:0100:gwa0cc2b6f9869:LivingRoomWindow3Bulb:brightness" }
 
-Dimmer LivingRoomBureau1Brightness "Living Room Bureau 1 [%s]" { channel="tradfri:0100:mygateway:LivingRoomBureau1Bulb:brightness" }
-Dimmer LivingRoomBureau2Brightness "Living Room Bureau 2 [%s]" { channel="tradfri:0100:mygateway:LivingRoomBureau2Bulb:brightness" }
+Dimmer LivingRoomBureau1Brightness "Living Room Bureau 1 [%s]" { channel="tradfri:0100:gwa0cc2b6f9869:LivingRoomBureau1Bulb:brightness" }
+Dimmer LivingRoomBureau2Brightness "Living Room Bureau 2 [%s]" { channel="tradfri:0100:gwa0cc2b6f9869:LivingRoomBureau2Bulb:brightness" }
 
-Dimmer HallwayBrightness "Hallway [%s]" { channel="tradfri:0100:mygateway:HallwayBulb:brightness" }
+Dimmer HallwayBrightness "Hallway [%s]" { channel="tradfri:0100:gwa0cc2b6f9869:HallwayBulb:brightness" }
+Dimmer EntranceBrightness "Entrance [%s]" { channel="tradfri:0100:gwa0cc2b6f9869:EntranceBulb:brightness" }
 
-Number RemoteControlBatteryLevel { channel="tradfri:0830:mygateway:TradfriRemoteControl:battery_level" }
-Switch RemoteControlBatteryLow { channel="tradfri:0830:mygateway:TradfriRemoteControl:battery_low" }
+Number RemoteControlBatteryLevel { channel="tradfri:0830:gwa0cc2b6f9869:TradfriRemoteControl:battery_level" }
+Switch RemoteControlBatteryLow { channel="tradfri:0830:gwa0cc2b6f9869:TradfriRemoteControl:battery_low" }
 
 Dimmer Livingroom_Brightness "Living Room Brightness [%s]"
 Dimmer Livingroom_Color "Living Room Color [%s]"
+
+Dimmer JonathansCeilingLampColorTemperature { channel="tradfri:0210:gwa0cc2b6f9869:JonathansCeilingLamp:color_temperature" }
+Color JonathansCeilingLampColorLight { channel="tradfri:0210:gwa0cc2b6f9869:JonathansCeilingLamp:color" }
+
+Number JonathansRemoteControlBatteryLevel { channel="tradfri:0830:gwa0cc2b6f9869:JonathansRemoteControl:battery_level" }
+Switch JonathansRemoteControlBatteryLow { channel="tradfri:0830:gwa0cc2b6f9869:JonathansRemoteControl:battery_low" }

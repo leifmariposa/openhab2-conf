@@ -1,0 +1,2 @@
+Location	locationLP	"Location"		{channel="gpstracker:tracker:LP:lastLocation"}
+DateTime	lastSeenLP	"Last seen"		{channel="gpstracker:tracker:LP:lastReport"}

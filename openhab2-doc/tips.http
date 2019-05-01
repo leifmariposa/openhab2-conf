@@ -1,4 +1,8 @@
 
+http://openhabianpi:8080/rest/items/electricity_at_midnight
+
+http://openhabianpi:8080/classicui/CMD?electricity_at_midnight=130645
+
 # Manipulate items
 
 http://{{host}}:8080/classicui/CMD?water_at_midnight=513600

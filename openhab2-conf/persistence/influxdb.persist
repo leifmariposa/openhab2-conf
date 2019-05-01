@@ -25,14 +25,14 @@ Items {
   LaundryRoomSensorTemperature: strategy = everyChange, everyFiveMinutes
   FreezerSensorTemperature: strategy = everyChange, everyFiveMinutes
   FridgeSensorTemperature: strategy = everyChange, everyFiveMinutes
+  LivingRoomThermostatMode: strategy = everyChange, everyFiveMinutes, restoreOnStartup
+  LivingRoomThermostatSetpoint: strategy = everyChange, everyFiveMinutes, restoreOnStartup
 
   electricity_total : strategy = everyFiveMinutes
   electricity_consumption : strategy = everyFiveMinutes
   water_total : strategy = everyFiveMinutes
   water_flow : strategy = everyChange, everyFiveMinutes
-  electricity_at_midnight : strategy = everyChange
-  electricity_at_new_month : strategy = everyChange
 
-  LivingRoomThermostatMode: strategy = everyChange, everyFiveMinutes, restoreOnStartup
-  LivingRoomThermostatSetpoint: strategy = everyChange, everyFiveMinutes, restoreOnStartup
+  electricity_at_midnight : strategy = everyChange, restoreOnStartup
+  electricity_at_new_month : strategy = everyChange, restoreOnStartup
 }

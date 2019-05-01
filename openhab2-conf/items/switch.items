@@ -7,3 +7,5 @@ Switch turn_on_morning_lights "Morgon lamor på" (vent) {autoupdate="false"}
 Switch turn_off_morning_lights "Morgon lampor av" (vent) {autoupdate="false"}
 
 Switch reboot_pi "Starta om" (vent) {autoupdate="false"}
+
+Switch fan_lamp "Fläktlampa" (vent)

@@ -1,0 +1,2 @@
+//tracker definition
+Thing gpstracker:tracker:LP   "LP tracker" [trackerId="LP"]

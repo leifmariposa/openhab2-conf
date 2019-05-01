@@ -13,7 +13,7 @@ Number ConservatorySensorTemperature "Conservatory" <temperature> { channel="rfx
 Switch LivingRoomSwitch1 "Switch" <switch> { channel="rfxcom:lighting2:rfx:livingroomswitch1:command" }
 Switch LivingRoomSwitch2 "Switch" <switch> { channel="rfxcom:lighting2:rfx:livingroomswitch2:command" }
 
-Switch EntranceWallLight "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lightentrancewall:command" }
+//Switch EntranceWallLight "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lightentrancewall:command" }
 //Switch LivingRoomWindow1Light "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lightlivingroomwindow1:command" }
 //Switch LivingRoomWindow2Light "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lightlivingroomwindow2:command" }
 //Switch HallwayLight "Light" <lightbulb> { channel="rfxcom:lighting2:rfx:lighthallway:command" }

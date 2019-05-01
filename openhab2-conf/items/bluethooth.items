@@ -1,0 +1,2 @@
+Dimmer KitchenFan "Kitchen Fan [%d]" <fan> [ "Lighting" ]
+Dimmer KitchenFanLight "Kitchen Fan Light [%d %%]" <light> [ "Lighting" ]

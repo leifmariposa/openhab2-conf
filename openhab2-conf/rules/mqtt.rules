@@ -13,9 +13,9 @@ end
 
 rule "Temperature_rule"
 when
-  Time cron "0 */30 * ? * *" or Item LivingRoomThermostatSetpoint changed
+  Time cron "0 0 * ? * *" or Item LivingRoomThermostatSetpoint changed
 then
-  if (LivingRoomThermostatMode.state === NULL) {
+/*  if (LivingRoomThermostatMode.state === NULL) {
     LivingRoomThermostatMode.postUpdate("off")
   }
   if (LivingRoomThermostatSetpoint.state === NULL) {
@@ -94,7 +94,7 @@ then
       }
       AcSetpoint.postUpdate(ac_setpoint)
     }
-  }
+  }*/
 end
 
 // TV livingroom

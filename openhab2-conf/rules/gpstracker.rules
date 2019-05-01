@@ -1,0 +1,7 @@
+rule "locationLPChanged"
+when
+  Item locationLP changed
+then
+  val _position = locationLP.state as PointType
+  logInfo('logTime', 'locationLP: {}', locationLP)
+end

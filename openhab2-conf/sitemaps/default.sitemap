@@ -15,10 +15,23 @@ sitemap default label="Mostigen 1"
     Switch item=turn_on_all_lights_toggle mappings=[ON="Aktivera"]
     Switch item=cinema_mode mappings=[ON="Aktivera"]
     Switch item=turn_off_all_lights mappings=[ON="Aktivera"]
+    Text item=KitchenFan label="Köksfläkt"
+    Slider item=KitchenFan label="Köksfläkt"
+    Text item=KitchenFanLight label="Köksfläktslampa"
+    Slider item=KitchenFanLight label="Köksfläktslampa"
     Text label="Mer ..." icon="" {
       Frame label="Av/på lampor" {
-        Switch item=EntranceWallLight label="Entre"
+        //Switch item=EntranceWallLight label="Entre"
         Switch item=LivingroomSmartPlug label="Mammas lampa"
+      }
+      Frame label="Entre" {
+        Slider item=EntranceBrightness label="Lampa [%.0f %%]"
+      }
+      Frame label="Hallen" {
+        Slider item=HallwayBrightness label="Lampa [%.0f %%]"
+      }
+      Frame label="Kök" {
+        Switch item=fan_lamp icon=""
       }
       Frame label="Vardagsrum" {
         Slider item=LivingRoomLeftBulbBrightness label="Vänster om tv, ljusstyrka [%.0f %%]"
@@ -30,9 +43,6 @@ sitemap default label="Mostigen 1"
         Slider item=LivingRoomWindow3Brightness label="Fönster 3 [%.0f %%]"
         Slider item=LivingRoomBureau1Brightness label="Byrå 1 [%.0f %%]"
         Slider item=LivingRoomBureau2Brightness label="Byrå 2 [%.0f %%]"
-      }
-      Frame label="Hallen" {
-        Slider item=HallwayBrightness label="Lampa [%.0f %%]"
       }
       Frame label="Trädgård" {
         Slider item=GardenBulbBrightness label="Ljusstyrka [%.0f %%]"
@@ -143,6 +153,12 @@ sitemap default label="Mostigen 1"
     Text label="Alla grafer ..." icon="" {
       Webview url="http://mostigen1.ddns.net:3000/d/fzlEHCWRz/alla?refresh=5s&orgId=1" height=32
     }
+  }
+
+  Frame label="Var är Leif" {
+    Text item=locationLP
+    Text item=lastSeenLP
+    Mapview label="Karta" icon="movecontrol" item=locationLP height=14
   }
 
   Frame label="Övrigt" {
