@@ -1,63 +1,42 @@
 #!/bin/bash
 
-#sudo gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3130302d
+val=-1
 
-#echo $1
+for i in 1 2 3 4 5 6
+do
+  if (($1==0)); then
+    result=$(gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233344b6f636866656c64) # Kochfeld
+  elif (($1==1)); then
+    result=$(gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3030312d) # 001
+  elif (($1>=2 && $1<=14)); then
+    result=$(gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3031302d) # 010
+  elif (($1>=15 && $1<=24)); then
+    result=$(gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3032302d) # 020
+  elif (($1>=25 && $1<=34)); then
+    result=$(gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3033302d) # 030
+  elif (($1>=35 && $1<=44)); then
+    result=$(gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3034302d) # 040
+  elif (($1>=45 && $1<=54)); then
+    result=$(gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3035302d) # 050
+  elif (($1>=55 && $1<=64)); then
+    result=$(gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3036302d) # 060
+  elif (($1>=65 && $1<=74)); then
+    result=$(gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3037302d) # 070
+  elif (($1>=75 && $1<=84)); then
+    result=$(gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3038302d) # 080
+  elif (($1>=85 && $1<=94)); then
+    result=$(gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3039302d) # 090
+  else
+    result=$(gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3130302d) # 100
+  fi
 
-val=0
+  if [ "$result" == "Characteristic value was written successfully" ]; then
+    echo ok
+    exit
+  else
+    echo $i: $result
+  fi
+  sleep 2
+done
 
-if (($1==0)); then
-  #sudo gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3030302d
-  sudo gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233344b6f636866656c64 # Kochfeld
-elif (($1==1)); then
-  val=1
-  sudo gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3030312d
-elif (($1>=2 && $1<=14)); then
-  val=10
-  sudo gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3031302d
-elif (($1>=15 && $1<=24)); then
-  val=20
-  sudo gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3032302d
-elif (($1>=25 && $1<=34)); then
-  val=30
-  sudo gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3033302d
-elif (($1>=35 && $1<=44)); then
-  val=40
-  sudo gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3034302d
-elif (($1>=45 && $1<=54)); then
-  val=50
-  sudo gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3035302d
-elif (($1>=55 && $1<=64)); then
-  val=60
-  sudo gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3036302d
-elif (($1>=65 && $1<=74)); then
-  val=70
-  sudo gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3037302d
-elif (($1>=75 && $1<=84)); then
-  val=80
-  sudo gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3038302d
-elif (($1>=85)); then
-  val=100
-  sudo gatttool -b 00:1E:C0:57:41:35 --char-write-req -a 0x000B -n 313233342d44696d3130302d
-fi
-
-echo $val
-
-#if [[ $1 == [1-19] ]]; then
-#        echo "a"
-#fi
-#if [[ $1 == [20-39] ]]; then
-#        echo "b"
-#fi
-
-#case $1 in
-#[2-9])
-#  echo a
-#;;
-#[10-19])
-#  echo b
-#;;
-#*)
-#  echo bad
-#;;
-#esac
+echo "Timeout!"

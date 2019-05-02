@@ -2,23 +2,14 @@ rule "Kitchen Fan"
 when
   Item KitchenFan received update
 then
-  var String result = executeCommandLine("/srv/openhab2-misc/bluetooth/kitchen_fan.sh " + KitchenFan.state, 1000)
+  var String result = executeCommandLine("/srv/openhab2-misc/bluetooth/kitchen_fan.sh " + KitchenFan.state, 15000)
   logInfo('logTime', 'Kitchen fan set to: {}, result: {}', KitchenFan.state, result)
-  //if (KitchenFanLight.state != Integer::parseInt(result)) {
-    //sendCommand(KitchenFanLight, Integer::parseInt(result)  )
-    //postUpdate(KitchenFanLight, Integer::parseInt(result))
-    //KitchenFanLight.postUpdate(result)
-  //}
 end
+
 rule "Kitchen Fan Light"
 when
   Item KitchenFanLight received update
 then
-  var String result = executeCommandLine("/srv/openhab2-misc/bluetooth/kitchen_fan_lamp.sh " + KitchenFanLight.state, 1000)
-  logInfo('logTime', 'Kitchen fan lamp set to: {}, result: {}', KitchenFanLight.state, result)
-  if (KitchenFanLight.state != Integer::parseInt(result)) {
-    //sendCommand(KitchenFanLight, Integer::parseInt(result)  )
-    //postUpdate(KitchenFanLight, Integer::parseInt(result))
-    //KitchenFanLight.postUpdate(result)
-  }
+  var String result = executeCommandLine("/srv/openhab2-misc/bluetooth/kitchen_fan_lamp.sh " + KitchenFanLight.state, 15000)
+  logInfo('logTime', 'Kitchen fan light set to: {}, result: {}', KitchenFanLight.state, result)
 end
