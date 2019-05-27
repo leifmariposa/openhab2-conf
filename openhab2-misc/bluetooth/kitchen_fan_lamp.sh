@@ -31,10 +31,8 @@ do
   fi
 
   if [ "$result" == "Characteristic value was written successfully" ]; then
-    echo ok
+    echo $i - ok
     exit
-  else
-    echo $i: $result
   fi
   sleep 2
 done

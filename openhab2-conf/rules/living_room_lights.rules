@@ -76,7 +76,7 @@ when
 then
   logInfo('logTime', 'Turn off all lights')
   sendCommand(LivingroomSmartPlug, OFF)
-  //postUpdate(Livingroom_Brightness, 0)
+  postUpdate(Livingroom_Brightness, 0)
 end
 
 rule "Biografläge"
