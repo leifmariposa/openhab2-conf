@@ -15,6 +15,11 @@ sitemap default label="Mostigen 1"
     Switch item=turn_on_all_lights_toggle mappings=[ON="Aktivera"]
     Switch item=cinema_mode mappings=[ON="Aktivera"]
     Switch item=turn_off_all_lights mappings=[ON="Aktivera"]
+    Text item=LedStrip label="LED Strip"
+    Slider item=LedStrip label="LED Strip"
+    Text item=DummyLedStrip label="Dummy LED Strip"
+    Slider item=DummyLedStrip label="Dummy LED Strip"
+    Colorpicker item=DummyLedStrip label="Dummy LED Strip"
     Text item=KitchenFan label="Köksfläkt"
     Slider item=KitchenFan label="Köksfläkt"
     Text item=KitchenFanLight label="Köksfläktslampa"

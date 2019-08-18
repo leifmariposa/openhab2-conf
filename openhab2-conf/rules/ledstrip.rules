@@ -1,0 +1,19 @@
+rule "Led Strip"
+when
+  Item LedStrip received update
+then
+  var String result = executeCommandLine("/srv/openhab2-misc/ledstrip/ledstrip.sh " + LedStrip.state, 15000)
+  logInfo('logTime', 'LED strip set to: {}, result: {}', LedStrip.state, result)
+end
+
+rule "Dummy Led Strip"
+when
+  Item DummyLedStrip received update
+then
+  val red = (DummyLedStrip.state as HSBType).red * 2.55
+	val green = (DummyLedStrip.state as HSBType).green * 2.55
+	val blue = (DummyLedStrip.state as HSBType).blue * 2.55
+
+  var String result = executeCommandLine("/srv/openhab2-misc/ledstrip/dummyledstrip.sh " + red + " " + green + " " + blue, 15000)
+  logInfo('logTime', 'LED strip set to: {}, red: {}, green: {}, blue: {}, result: {}', DummyLedStrip.state, red, green, blue, result)
+end

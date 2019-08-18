@@ -1,0 +1,2 @@
+Dimmer LedStrip "Led Strip [%d]" <light> [ "Lighting" ]
+Color DummyLedStrip "Dummy Led Strip [%d]" <light> [ "Lighting" ]
