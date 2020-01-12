@@ -29,24 +29,12 @@ rule "Total water"
 when
   Item water_total changed
 then
-  var date	= now.getDayOfMonth
-
   if (water_at_midnight === NULL) {
     return
   }
   if (water_today === NULL) {
     return
   }
-  if (water_at_midnight.state === NULL) {
-    water_at_midnight.postUpdate((water_total.state).toString)
-  }
-
-  if (water_current_date.state != date) {
-    water_current_date.postUpdate((date).toString)
-    water_at_midnight.postUpdate((water_total.state).toString)
-  }
-
   water_today.postUpdate(((water_total.state as Number) - (water_at_midnight.state as Number)).toString)
-
   water_cost_today.postUpdate((water_today.state as Number) * 0.03282) // 0,03282 Skr/l
 end

@@ -3,57 +3,32 @@ rule "Watt"
 when
   Item electricity changed
 then
-  var String power  = transform("JSONPATH", "$.Watt", (electricity.state).toString)
+  var String power  = transform("JSONPATH", "$.watt", (electricity.state).toString)
   electricity_consumption.postUpdate(power)
 
-  var String kwh  = transform("JSONPATH", "$.kWh", (electricity.state).toString)
+  var String kwh  = transform("JSONPATH", "$.total", (electricity.state).toString)
   electricity_total.postUpdate((kwh).toString)
+
+  var String battery  = transform("JSONPATH", "$.battery", (electricity.state).toString)
+  electricity_battery.postUpdate((battery).toString)
 end
 
 rule "kWh"
 when
   Item electricity_total changed
 then
-  var date = now.getDayOfMonth
-  var month	= now.getMonthOfYear
-
   electricity_meter.postUpdate((113160 + (electricity_total.state as Number)).toString)
 
-  //if (electricity_at_midnight.state === NULL) {
-  //  electricity_at_midnight.postUpdate((electricity_meter.state).toString)
- //}
-
-  //if (electricity_at_new_month.state === NULL) {
-  //  electricity_at_new_month.postUpdate((electricity_meter.state).toString)
-  //}
-
-  if (electricity_current_date.state === NULL) {
-    electricity_current_date.postUpdate((date).toString)
-  }
-  if (electricity_current_date.state != date) {
-    electricity_current_date.postUpdate((date).toString)
-    electricity_at_midnight.postUpdate((electricity_meter.state).toString)
-  }
   if (electricity_at_midnight.state != NULL) {
     electricity_today.postUpdate(((electricity_meter.state as Number) - (electricity_at_midnight.state as Number)).toString)
     energy_cost_today.postUpdate((electricity_today.state as Number) * 1.6) // 1.60 Skr/kWh
+    electricity_info_today.postUpdate(String::format("%.1f kWh / %.2f Skr", ((electricity_today.state) as DecimalType).floatValue, ((energy_cost_today.state) as DecimalType).floatValue))
   }
 
-  if (electricity_current_month.state === NULL) {
-    electricity_current_month.postUpdate((month).toString)
-  }
-  if (electricity_current_month.state != month) {
-    electricity_current_month.postUpdate((month).toString)
-    electricity_at_new_month.postUpdate((electricity_meter.state).toString)
-  }
   if (electricity_at_new_month.state != NULL) {
     electricity_this_month.postUpdate(((electricity_meter.state as Number) - (electricity_at_new_month.state as Number)).toString)
     energy_cost_this_month.postUpdate((electricity_this_month.state as Number) * 1.6) // 1.60 Skr/kWh
+    electricity_info_this_month.postUpdate(String::format("%.0f kWh / %.0f Skr", ((electricity_this_month.state) as DecimalType).floatValue, ((energy_cost_this_month.state) as DecimalType).floatValue))
   }
-
-//  if (electricity_at_new_month.state != NULL) {
-//    electricity_this_month.postUpdate(((electricity_meter.state as Number) - (electricity_at_new_month.state as Number)).toString)
-//  }
-//  energy_cost_this_month.postUpdate((electricity_this_month.state as Number) * 1.6) // 1.60 Skr/kWh
 end
 

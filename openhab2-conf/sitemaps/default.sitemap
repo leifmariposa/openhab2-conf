@@ -25,10 +25,10 @@ sitemap default label="Mostigen 1"
     Text item=KitchenFanLight label="Köksfläktslampa"
     Slider item=KitchenFanLight label="Köksfläktslampa"
     Text label="Mer ..." icon="" {
-      Frame label="Av/på lampor" {
+      //Frame label="Av/på lampor" {
         //Switch item=EntranceWallLight label="Entre"
-        Switch item=LivingroomSmartPlug label="Mammas lampa"
-      }
+        //Switch item=LivingroomSmartPlug label="Mammas lampa"
+      //}
       Frame label="Entre" {
         Slider item=EntranceBrightness label="Lampa [%.0f %%]"
       }
@@ -113,16 +113,53 @@ sitemap default label="Mostigen 1"
 
   Frame label="El" {
     Text item=electricity_consumption label="Nu"
-    Text item=electricity_meter label="Mätarställning"
-    Text item=electricity_at_midnight label="Mätarställning midnatt"
-    Text item=electricity_today label="Idag"
-    Text item=energy_cost_today label="Idag"
-    Text item=electricity_at_new_month label="Mätarställning månadsskifte"
-    Text item=electricity_this_month label="Denna månad"
-    Text item=energy_cost_this_month label="Denna månad"
+    Text item=electricity_info_today label="Idag"
+    Text item=electricity_info_this_month label="Denna månad"
+    Text label="Mer ..." icon="" {
+      Text item=electricity_battery label="Sparsnäs sändarbatteri"
+      Text item=electricity_meter label="Mätarställning"
+      Text item=electricity_at_midnight label="Mätarställning midnatt"
+      Text item=electricity_today label="Idag"
+      Text item=energy_cost_today label="Idag"
+      Text item=electricity_at_new_month label="Mätarställning månadsskifte"
+      Text item=electricity_this_month label="Denna månad"
+      Text item=energy_cost_this_month label="Denna månad"
+    }
     Text label="Grafer ..." icon="line" {
       Webview url="http://mostigen1.ddns.net:3000/d/jeLbWjZgk/el?refresh=5s&orgId=1" height=39
     }
+  }
+
+  Frame label="Tibber" {
+    Text item=TibberAPICurrentTotal
+    Text item=TibberAPICurrentStartsAt
+    Text item=TibberAPIDailyFrom
+    Text item=TibberAPIDailyTo
+    Text item=TibberAPIDailyCost
+    Text item=TibberAPIDailyConsumption
+    Text item=TibberAPIHourlyFrom
+    Text item=TibberAPIHourlyTo
+    Text item=TibberAPIHourlyCost
+    Text item=TibberAPIHourlyConsumption
+    Text item=TibberAPILiveTimestamp
+    Text item=TibberAPILivePower
+    Text item=TibberAPILiveLastMeterConsumption
+    Text item=TibberAPILiveAccumulatedConsumption
+    Text item=TibberAPILiveAccumulatedCost
+    Text item=TibberAPILiveCurrency
+    Text item=TibberAPILiveMinPower
+    Text item=TibberAPILiveAveragePower
+    Text item=TibberAPILiveMaxPower
+    Text item=TibberAPILiveVoltage1
+    Text item=TibberAPILiveVoltage2
+    Text item=TibberAPILiveVoltage3
+    Text item=TibberAPILiveCurrent1
+    Text item=TibberAPILiveCurrent2
+    Text item=TibberAPILiveCurrent3
+    Text item=TibberAPILivePowerProduction
+    Text item=TibberAPILiveAccumulatedProduction
+    Text item=TibberAPILiveMinPowerproduction
+    Text item=TibberAPILiveMaxPowerproduction
   }
 
   Frame label="Vatten" {
@@ -134,25 +171,30 @@ sitemap default label="Mostigen 1"
     }
   }
 
-  Frame label="Larm" {
-    Text item=AlarmStatus label="Status"
-    Text item=AlarmStatusTimeChanged label="Senaste av/på-aktivering"
-    Text item=EntranceDoorLock label="Lås"
-    Text item=EntranceDoorLockTimeChanged label="Senaste upplåsning/låsning"
-    Switch item=EntranceDoorSensor label="Entredörr [MAP(open_close.map):%s]"
-  }
-
+//  Frame label="Larm" {
+//    Text item=AlarmStatus label="Status"
+//    Text item=AlarmStatusTimeChanged label="Senaste av/på-aktivering"
+//    Text item=EntranceDoorLock label="Lås"
+//    Text item=EntranceDoorLockTimeChanged label="Senaste upplåsning/låsning"
+//    Switch item=EntranceDoorSensor label="Entredörr [MAP(open_close.map):%s]"
+//  }
   Frame label="Alice" {
-    //Switch item=NeatoCommand label=" " mappings=[clean="Städa",stop="Stopp",pause="Paus",resume="Återuppta", dock="Docka"]
-    Text item=NeatoState label="Status"
-    Text item=NeatoAction label="Aktivitet"
-    Text item=NeatoMode label="Mode"
-    Text item=NeatoBattery label="Batteri nivå"
-    Text item=NeatoIsCharging label="Laddar"
-    Text item=NeatoIsDocked label="Dockad"
-    Text item=NeatoError label="Felmeddelande"
-    Group label="Mer ..." item=GroupNeato icon=""
+    Text item=NeatoBattery
+    Text item=NeatoIsCharging
+    Text item=NeatoIsDocked
+    Text item=NeatoError
   }
+//  Frame label="Alice" {
+    //Switch item=NeatoCommand label=" " mappings=[clean="Städa",stop="Stopp",pause="Paus",resume="Återuppta", dock="Docka"]
+//    Text item=NeatoState label="Status"
+//    Text item=NeatoAction label="Aktivitet"
+//    Text item=NeatoMode label="Mode"
+//    Text item=NeatoBattery label="Batteri nivå"
+//    Text item=NeatoIsCharging label="Laddar"
+//    Text item=NeatoIsDocked label="Dockad"
+//    Text item=NeatoError label="Felmeddelande"
+//    Group label="Mer ..." item=GroupNeato icon=""
+//  }
 
   Frame label="Grafer" {
     Text label="Alla grafer ..." icon="" {
@@ -172,13 +214,11 @@ sitemap default label="Mostigen 1"
       Frame label="El" {
         Text item=electricity_total label="Mätarställning"
         Text item=electricity_at_midnight label="Vid midnatt"
-        Setpoint item=electricity_current_date label="Datum"
       }
       Frame label="Vatten" {
         Text item=water_total label="Mätarställning"
         Text item=water_at_midnight label="Vid midnatt"
         Text item=water_last_drain label="Sista tappning"
-        Setpoint item=water_current_date label="Datum"
       }
     }
     //Switch item=MQTT_Test

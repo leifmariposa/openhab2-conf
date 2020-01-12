@@ -1,17 +1,17 @@
 Group GroupNeato
-Number NeatoBattery  "Battery level [%.0f %%]" <battery> (GroupNeato) { channel="neato:vacuumcleaner:alice:battery-level" }
-Number NeatoBatteryTotalCharges  "Battery total charges [%d]" <battery> (GroupNeato) { channel="neato:vacuumcleaner:alice:battery-totalcharges" }
-String NeatoState  "Status [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:state" }
-String NeatoAction  "Action [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:action" }
-Switch NeatoDockHasBeenSeen  "Seen dock [MAP(neato-sv.map):%s]" <presence> (GroupNeato) { channel="neato:vacuumcleaner:alice:dock-has-been-seen" }
-Switch NeatoIsDocked  "In dock [MAP(neato-sv.map):%s]" <presence> (GroupNeato) { channel="neato:vacuumcleaner:alice:is-docked" }
-Switch NeatoIsScheduled  "Scheduled [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:is-sceduled" }
-Switch NeatoIsCharging  "Is Charging [MAP(neato-sv.map):%s]" <heating> (GroupNeato) { channel="neato:vacuumcleaner:alice:is-charging" }
-String NeatoError  "Error [%s]" <error> (GroupNeato) { channel="neato:vacuumcleaner:alice:error" }
-String NeatoCommand  "Command [%s]" { channel="neato:vacuumcleaner:alice:command" }
-String NeatoCategory  "Cleaning Category [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:cleaning-category" }
-String NeatoMode  "Cleaning Mode [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:cleaning-mode" }
-String NeatoModifier  "Cleaning Modifier [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:alice:cleaning-modifier" }
-Number NeatoSpotWidth  "SpotWidth [%.0f]" <niveau> (GroupNeato) { channel="neato:vacuumcleaner:alice:spot-width" }
-Number NeatoSpotHeight  "SpotHeight [%.0f]" <niveau> (GroupNeato) { channel="neato:vacuumcleaner:alice:spot-height" }
+Number NeatoBattery  "Battery level [%.0f %%]" <battery> (GroupNeato) { channel="neato:vacuumcleaner:OPS06118-7C3866F157EE:battery-level" }
+//Number NeatoBatteryTotalCharges  "Battery total charges [%d]" <battery> (GroupNeato) { channel="neato:vacuumcleaner:OPS06118-7C3866F157EE:battery-totalcharges" }
+String NeatoState  "Status [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:OPS06118-7C3866F157EE:state" }
+String NeatoAction  "Action [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:OPS06118-7C3866F157EE:action" }
+Switch NeatoDockHasBeenSeen  "Seen dock [MAP(neato-sv.map):%s]" <presence> (GroupNeato) { channel="neato:vacuumcleaner:OPS06118-7C3866F157EE:dock-has-been-seen" }
+Switch NeatoIsDocked  "In dock [MAP(neato-sv.map):%s]" <presence> (GroupNeato) { channel="neato:vacuumcleaner:OPS06118-7C3866F157EE:is-docked" }
+Switch NeatoIsScheduled  "Scheduled [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:OPS06118-7C3866F157EE:is-sceduled" }
+Switch NeatoIsCharging  "Is Charging [MAP(neato-sv.map):%s]" <heating> (GroupNeato) { channel="neato:vacuumcleaner:OPS06118-7C3866F157EE:is-charging" }
+String NeatoError  "Error [%s]" <error> (GroupNeato) { channel="neato:vacuumcleaner:OPS06118-7C3866F157EE:error" }
+String NeatoCommand  "Command [%s]" { channel="neato:vacuumcleaner:OPS06118-7C3866F157EE:command" }
+String NeatoCategory  "Cleaning Category [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:OPS06118-7C3866F157EE:cleaning-category" }
+String NeatoMode  "Cleaning Mode [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:OPS06118-7C3866F157EE:cleaning-mode" }
+String NeatoModifier  "Cleaning Modifier [MAP(neato-sv.map):%s]" (GroupNeato) { channel="neato:vacuumcleaner:OPS06118-7C3866F157EE:cleaning-modifier" }
+Number NeatoSpotWidth  "SpotWidth [%.0f]" <niveau> (GroupNeato) { channel="neato:vacuumcleaner:OPS06118-7C3866F157EE:cleaning-spotwidth" }
+Number NeatoSpotHeight  "SpotHeight [%.0f]" <niveau> (GroupNeato) { channel="neato:vacuumcleaner:OPS06118-7C3866F157EE:cleaning-spotheight" }
 

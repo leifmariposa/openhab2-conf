@@ -8,7 +8,6 @@ Number water_last_ten_minutes "Water last ten minutes [%.1f l]"
 Number water_total "Water total [%.1f l]"
 Number water_last_drain "Water last drain [%.1f l]"
 
-Number water_current_date "Date [%d]"
 Number water_at_midnight "At midnight [%.1f l]"
 
 Number water_today "Today [%.1f l]" <water>

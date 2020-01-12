@@ -1,0 +1,14 @@
+rule "Reset daily energy counters"
+when
+  Time is midnight
+then
+  electricity_at_midnight.postUpdate((electricity_meter.state).toString)
+  water_at_midnight.postUpdate((water_total.state).toString)
+end
+
+rule "Every first of the month "
+when
+	Time cron "0 0 0 1 * ? *"
+then
+	electricity_at_new_month.postUpdate((electricity_meter.state).toString)
+end

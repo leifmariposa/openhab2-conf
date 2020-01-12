@@ -1,0 +1,9 @@
+Strategies {
+}
+
+Items {
+  LivingRoomThermostatMode: strategy = everyChange, restoreOnStartup
+  LivingRoomThermostatSetpoint: strategy = everyChange, restoreOnStartup
+  electricity_at_midnight : strategy = everyChange, restoreOnStartup
+  electricity_at_new_month : strategy = everyChange, restoreOnStartup
+}

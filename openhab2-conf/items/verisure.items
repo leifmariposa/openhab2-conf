@@ -1,15 +1,15 @@
-String AlarmStatus "Status [%s]" <lock> { channel="verisure:bridge:1:status" }
-String AlarmStatusTimeChanged "Status [%s]" <lock> { channel="verisure:bridge:1:timestamp" }
+//String AlarmStatus "Status [%s]" <lock> { channel="verisure:bridge:1:status" }
+//String AlarmStatusTimeChanged "Status [%s]" <lock> { channel="verisure:bridge:1:timestamp" }
 
-Number KitchenClimateSensor1Temp "Temperature" <temperature> { channel="verisure:climatesensor:1:2S2R_86V9:temperature" }
-String KitchenClimateSensor1Last "Last update" <lastupdate> { channel="verisure:climatesensor:1:2S2R_86V9:lastupdate" }
+//Number KitchenClimateSensor1Temp "Temperature" <temperature> { channel="verisure:climatesensor:1:2S2R_86V9:temperature" }
+//String KitchenClimateSensor1Last "Last update" <lastupdate> { channel="verisure:climatesensor:1:2S2R_86V9:lastupdate" }
 
-Number KitchenClimateSensor2Temp "Temperature" <temperature> { channel="verisure:climatesensor:1:2AAS_W66F:temperature" }
-Number KitchenClimateSensor2Hum "Humidity" <humidity> { channel="verisure:climatesensor:1:2AAS_W66F:humidity" }
-String KitchenClimateSensor2Last "Last update" <lastupdate> { channel="verisure:climatesensor:1:2AAS_W66F:lastupdate" }
+//Number KitchenClimateSensor2Temp "Temperature" <temperature> { channel="verisure:climatesensor:1:2AAS_W66F:temperature" }
+//Number KitchenClimateSensor2Hum "Humidity" <humidity> { channel="verisure:climatesensor:1:2AAS_W66F:humidity" }
+//String KitchenClimateSensor2Last "Last update" <lastupdate> { channel="verisure:climatesensor:1:2AAS_W66F:lastupdate" }
 
-String EntranceDoorSensor "Door" { channel="verisure:doorwindow:1:2J45_7HEH:state" }
-String EntranceDoorLock "Lock [%s]" <lock> { channel="verisure:lock:1:2B55P3RS:status" }
-String EntranceDoorLockTimeChanged "Lock [%s]" <lock> { channel="verisure:lock:1:2B55P3RS:timestamp" }
+//String EntranceDoorSensor "Door" { channel="verisure:doorwindow:1:2J45_7HEH:state" }
+//String EntranceDoorLock "Lock [%s]" <lock> { channel="verisure:lock:1:2B55P3RS:status" }
+//String EntranceDoorLockTimeChanged "Lock [%s]" <lock> { channel="verisure:lock:1:2B55P3RS:timestamp" }
 
-Switch LivingroomSmartPlug "Light" <lightbulb> { channel="verisure:smartplug:1:2A77_H2QX:active" }
+//Switch LivingroomSmartPlug "Light" <lightbulb> { channel="verisure:smartplug:1:2A77_H2QX:active" }
